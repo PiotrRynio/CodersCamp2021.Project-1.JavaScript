@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Dependencies
+node_modules
+yarn.lock
+
+# Tests
+coverage
+
+# Production
+dist
+dist-ssr
+
+# npm
+.npm
+
+# ESLint
+.eslintcache
+
+# Env files
+.env
+
+# OS
+.DS_Store
+*.pem
+*.local
+
+# Yarn
+.yarn
+.pnp.*

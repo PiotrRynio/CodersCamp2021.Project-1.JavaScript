@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "codezombiech.gitignore",
+    "coenraads.bracket-pair-colorizer-2",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mgmcdermott.vscode-language-babel",
+    "naumovs.color-highlight"
+  ]
+}

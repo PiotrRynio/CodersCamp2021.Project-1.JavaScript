@@ -1,0 +1,26 @@
+{
+  "name": "project",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "^14",
+    "yarn": "please-use-npm"
+  },
+  "volta": {
+    "node": "14.17.6"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.24.2",
+    "eslint-plugin-prettier": "4.0.0",
+    "prettier": "2.4.1",
+    "vite": "2.5.10"
+  }
+}
