@@ -6,3 +6,9 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.logo {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 60px;
+}
