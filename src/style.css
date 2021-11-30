@@ -1,6 +1,12 @@
+
 * {
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-image: url(./public/tlo.jpg);
+  background-size: cover;
 }
 
 #app {
@@ -14,5 +20,6 @@
 
 .logo {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 60px;
 }
