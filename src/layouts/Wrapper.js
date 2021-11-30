@@ -1,4 +1,4 @@
-import {PlayTheGameButton} from '../components/PlayTheGameButton';
+import { PlayTheGameButton } from '../components/PlayTheGameButton';
 
 export const Wrapper = () => {
   const wrapper = document.createElement('div');
