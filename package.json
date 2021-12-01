@@ -2,6 +2,7 @@
   "name": "project",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "engines": {
     "node": "^16",
     "yarn": "please-use-npm"

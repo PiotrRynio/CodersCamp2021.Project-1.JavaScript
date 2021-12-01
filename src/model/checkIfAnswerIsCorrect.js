@@ -1,5 +1,5 @@
-function checkIfAnswerIsCorrect(correctAnswer,userAnswer){
+exports.checkIfAnswerIsCorrect=(correctAnswer,userAnswer)=>{
   return (correctAnswer===userAnswer)
 };
 
-export default checkIfAnswerIsCorrect
+//export default checkIfAnswerIsCorrect
