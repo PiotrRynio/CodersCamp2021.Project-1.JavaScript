@@ -1,4 +1,4 @@
-import Wrapper from './layouts/bartoszWrapper';
+import Wrapper from './layouts/MainWrapper';
 import './scss/style.scss';
 
 function main() {

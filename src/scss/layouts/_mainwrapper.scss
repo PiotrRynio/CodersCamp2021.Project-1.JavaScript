@@ -1,0 +1,17 @@
+.mainWrapper {
+  background-color: blue;
+  width: 1280px;
+  height: 720px;
+}
+.upperSection {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 30%;
+}
+.lowerSection {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 70%;
+}

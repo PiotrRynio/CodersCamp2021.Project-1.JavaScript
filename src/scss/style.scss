@@ -3,11 +3,9 @@
 @import 'main';
 
 // * COMPONENTS
-@import 'components/example';
 
 // * LAYOUTS
-@import 'layouts/example';
-@import 'layouts/wrapper';
-@import 'layouts/optionssection';
+@import 'layouts/mainwrapper';
+@import 'layouts/logosection';
 @import 'layouts/choosegamesection';
-@import 'layouts/gamesection';
+@import 'layouts/mainsection';
