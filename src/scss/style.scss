@@ -4,8 +4,10 @@
 @import 'main';
 
 // * COMPONENTS
-@import 'components/example';
 
 // * LAYOUTS
-@import 'layouts/example';
-@import 'layouts/wrapper';
+
+@import 'layouts/mainwrapper';
+@import 'layouts/logosection';
+@import 'layouts/choosegamesection';
+@import 'layouts/mainsection';

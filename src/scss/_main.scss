@@ -1,6 +1,8 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  background-color: red;
-  font-size: 10px;
   font-family: $font-family-primary;
+  font-size: 10px;
 }
