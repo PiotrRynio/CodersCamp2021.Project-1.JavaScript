@@ -3,11 +3,12 @@
 @import 'vars';
 @import 'main';
 
-// * COMPONENTS
-
 // * LAYOUTS
 
 @import 'layouts/mainwrapper';
 @import 'layouts/logosection';
 @import 'layouts/choosegamesection';
 @import 'layouts/mainsection';
+
+// * COMPONENTS
+@import 'components/personimage';
