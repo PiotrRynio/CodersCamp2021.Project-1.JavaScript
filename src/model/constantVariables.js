@@ -1,0 +1,1 @@
+export const LAST_CHARACTER_ID = 57;
