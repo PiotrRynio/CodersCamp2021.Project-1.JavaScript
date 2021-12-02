@@ -1,8 +1,7 @@
-import Wrapper from './layouts/MainWrapper';
 import './scss/style.scss';
 
 function main() {
-  document.querySelector('#app').appendChild(Wrapper());
+  document.querySelector('#app');
 }
 
 main();
