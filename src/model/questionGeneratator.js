@@ -1,5 +1,5 @@
-import { LAST_CHARACTER_ID as lastIndex} from "./constantVariables";
-import { getRandomNumbers } from "./utilites";
+import { LAST_CHARACTER_ID, LAST_QUOTES_ID} from "../constants";
+import { randomNumbers } from "./utilites";
 
 const generateQuestion = async (type) => {
   if(type === "People")
@@ -8,34 +8,36 @@ const generateQuestion = async (type) => {
     return await generateQuoteQuestion();
 }
 
-const generateQuoteQuestion = async ( ) => {
-
-}
-
-const generatePeopleQuestion = async ( ) => {
+const generateQuoteQuestion = async () => {
   const firstIndex = 1;
   const numberOfAnswers = 4;
-  const randomIds = getRandomNumbers(firstIndex, lastIndex, numberOfAnswers);
-  const correctAnswerId = getRandomId(randomIds);
-  const answersData = await randomIds.map(getCharacterAnswer);
+  const [correctAnswerId] = randomNumbers(firstIndex, LAST_QUOTES_ID, 1);
+}
+
+const generatePeopleQuestion = async () => {
+  const firstIndex = 1;
+  const numberOfAnswers = 4;
+  const randomIds = randomNumbers(firstIndex, LAST_CHARACTER_ID, numberOfAnswers);
+  const correctAnswerId = randomId(randomIds);
+  const answersData = randomIds.map(await getCharacterAnswer);
   const question = {
+    rightAnswer: '',
     answers: [],
+    images: '',
   };
 
-  await answersData.forEach((answer) => {
-    answer.then(([data]) => {
-      if(data.char_id === correctAnswerId) {
-        question.rightAnswer = data.name;
-        question.images = data.img;
-      }
-      question.answers.push(data.name);
-    });
+  answersData.forEach(([data]) => {
+    if(data.char_id === correctAnswerId) {
+      question.rightAnswer = data.name;
+      question.images = data.img;
+    }
+    question.answers.push(data.name);
   });
 
   return question;
 }
 
-const getRandomId = (idArray) => {
+const randomId = (idArray) => {
   const correctIdIndex = Math.floor(Math.random() * idArray.length);
   return idArray[correctIdIndex];
 }

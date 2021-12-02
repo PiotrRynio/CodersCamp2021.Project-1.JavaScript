@@ -1,4 +1,4 @@
-export const getRandomNumbers = (min, max, howMuch) => {
+export const randomNumbers = (min, max, howMuch) => {
   const numbers = [];
   while(numbers.length != howMuch){
     const number = Math.floor(Math.random() * (max + 1)) + min;
