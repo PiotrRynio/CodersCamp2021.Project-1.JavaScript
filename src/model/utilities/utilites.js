@@ -7,3 +7,8 @@ export const randomNumbers = (min, max, howMuch) => {
   }
   return numbers;
 }
+
+export const randomValueFromArray = (idArray) => {
+  const correctIdIndex = Math.floor(Math.random() * idArray.length);
+  return idArray[correctIdIndex];
+}
