@@ -3,7 +3,7 @@ import questionGeneratator from './model/questionGeneratator';
 
 function main() {
   const askedQuestions = [];
-  console.log(questionGeneratator("deaths", askedQuestions));
+  console.log(questionGeneratator("quotes", askedQuestions));
   document.querySelector('#app');
 }
 
