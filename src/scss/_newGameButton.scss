@@ -1,9 +1,4 @@
 .newGameButton {
-  background: rgba(255, 255, 255, 0.25);
-  color: white;
-  font-weight: bold;
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,16 +7,22 @@
   -webkit-border-bottom-right-radius: 40px;
   -moz-border-radius-bottomright: 40px;
   border-bottom-right-radius: 40px;
-}
-
-.newGameButton:hover {
-  cursor: pointer;
-}
-
-.greenBlock {
-  background: rgb(20,73,58);
-  background: linear-gradient(145deg, rgba(20,73,58,1) 0%, rgba(1,101,36,1) 100%);
-  border: 4px solid #063612;
-  padding: 10px;
-  margin-right: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  transition: filter ease-in-out 0.2s;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.35);
+    filter: saturate(1.5);
+  }
+  
+  &__greenBlock {
+    background: linear-gradient(145deg, rgba(20,73,58,1) 0%, rgba(1,101,36,1) 100%);
+    border: 4px solid #063612;
+    padding: 10px;
+    margin-right: 5px;
+  }
 }
