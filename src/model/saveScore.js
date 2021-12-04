@@ -1,15 +1,15 @@
 const saveScore = (gameType, userName, userScore) =>{
 
-    const scoreTable = [];
-
-    if(getScoresForGameType(gameType) !== null){
-        scoreTable.push(JSON.parse(localStorage.getItem(gameType)));
-    }
+    let scoreTable = JSON.parse(localStorage.getItem(gameType));
 
     const scoreObject = {
         'name': userName, 
         'score': userScore
     };
+
+    if(!scoreTable){
+        scoreTable = [];
+    }
 
     scoreTable.push(scoreObject);
 
