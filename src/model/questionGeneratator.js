@@ -1,4 +1,4 @@
-import { randomNumbers, randomValueFromArray } from "./utilities/utilites";
+import { randomNumbers, randomValueFromArray } from "./utilities/utilities";
 
 const generateQuestion = async (type, askedQuestion) => {
   const data = await fetchData(type);
