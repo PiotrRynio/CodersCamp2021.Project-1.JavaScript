@@ -7,8 +7,3 @@ function main() {
 }
 
 main();
-saveScore("pojedync", "maciek", 3);
-saveScore("pojedyncz", "Michal", 8);
-saveScore("pojedyncza", "Adi", 1);
-
-console.log(getScoresForGameType());

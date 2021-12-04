@@ -1,29 +1,32 @@
 const saveScore = (gameType, userName, userScore) =>{
+
+    const scoreTable = [];
+
+    if(getScoresForGameType(gameType) !== null){
+        scoreTable.push(JSON.parse(localStorage.getItem(gameType)));
+    }
+
     const scoreObject = {
         'name': userName, 
         'score': userScore
     };
 
-    let userScore_serialized = JSON.stringify(scoreObject);
+    scoreTable.push(scoreObject);
+
+    let userScore_serialized = JSON.stringify(scoreTable);
 
     localStorage.setItem(gameType, userScore_serialized);
-    
-    //console.log(userScore_serialized);
+
 }
 
 export default saveScore;
 
 
-export const getScoresForGameType = ()  => {
+export const getScoresForGameType = (gameType)  => {
 
-    var values = [],
-    keys = Object.keys(localStorage),
-    i = keys.length;
+    const table = [];
+    table.push(JSON.parse(localStorage.getItem(gameType)));
 
-    while ( i-- ) {
-    values.push( localStorage.getItem(keys[i]) );
-    }
-
-    return values;
+    return table;
 
 }
