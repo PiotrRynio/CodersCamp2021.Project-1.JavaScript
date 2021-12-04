@@ -1,4 +1,4 @@
-export const randomNumbers = (lowestNumber, highestNumber, returnedArrayLength) => {
+const randomNumbers = (lowestNumber, highestNumber, returnedArrayLength) => {
   const numbers = [];
   while(numbers.length != returnedArrayLength){
     const number = Math.floor(Math.random() * ((highestNumber - lowestNumber + 1)) + lowestNumber);
@@ -9,8 +9,4 @@ export const randomNumbers = (lowestNumber, highestNumber, returnedArrayLength) 
   return numbers;
 }
 
-export const randomValueFromArray = (idArray) => {
-  const correctIdIndex = Math.floor(Math.random() * idArray.length);
-  return idArray[correctIdIndex];
-}
-
+export default randomNumbers;

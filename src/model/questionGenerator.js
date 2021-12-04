@@ -1,6 +1,7 @@
-import { randomNumbers, randomValueFromArray } from "./utilities/utilities";
+import randomNumbers from "./utilities/randomNumbers";
+import randomValueFromArray from "./utilities/randomValueFromArray";
 
-const generateQuestion = async (type, askedQuestion) => {
+const question = async (type, askedQuestion) => {
   const data = await fetchData(type);
   let answersIndexes;
   let correctAnswerIndex;
@@ -12,13 +13,11 @@ const generateQuestion = async (type, askedQuestion) => {
     areAnswersDifferent = areAllDifferent(filtredAnswers);
   } while(!areAnswersDifferent || askedQuestion.includes(correctAnswerIndex));
 
-  const dataForQuestion = {
-    answersIndexes,
-    correctAnswerIndex,
-    data,
-  };
-
-  return getQuestion(dataForQuestion);
+  return ({
+    answers: data.filter((_, index) => answersIndexes.includes(index)).map(({answer}) => answer),
+    correctAnswer: data[correctAnswerIndex].answer,
+    questionObject: data[correctAnswerIndex].questionObject,
+  })
 }
 
 const fetchData = async (type) => {
@@ -67,10 +66,4 @@ const areAllDifferent = (filtredAnswers) => {
   return true;
 }
 
-const getQuestion = ( {answersIndexes, correctAnswerIndex, data}) => ({
-  answers: data.filter((_, index) => answersIndexes.includes(index)).map(({answer}) => answer),
-  correctAnswer: data[correctAnswerIndex].answer,
-  questionObject: data[correctAnswerIndex].questionObject,
-});
-
-export default generateQuestion;
+export default question;
