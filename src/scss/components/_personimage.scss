@@ -7,7 +7,9 @@
     top: 50%;
     left: 25%;
     transform: translate(-50%, -50%);
-    
+    -moz-box-shadow: 0 0 10px 10px rgb(59, 59, 59);
+    -webkit-box-shadow: 0 0 10px 10px#888;
+    box-shadow: 0 0 15px 10px #505050;
 }
 
 .personImage > img {
