@@ -1,25 +1,18 @@
+import mainMenuButton from "./mainMenuButton";
+
 const mainMenu = (callback) => {
     const section = document.createElement('div');
     section.classList.add('mainMenu');
 
-    const buttonPeople = document.createElement('button')
-    buttonPeople.classList.add('mainMenu__button','mainMenu__peopleButton')
-    buttonPeople.innerText ='People';
-    section.appendChild(buttonPeople)
-    buttonPeople.addEventListener('click', ()=>callback('people'))
+    const peopleButton = mainMenuButton('mainMenu__button','People',callback)
+    section.appendChild(peopleButton)
 
-    const buttonQuotes = document.createElement('button')
-    buttonQuotes.classList.add('mainMenu__button','mainMenu__quotesButton')
-    buttonQuotes.innerText ='Quotes';
-    section.appendChild(buttonQuotes)
+    const quotesButton = mainMenuButton('mainMenu__button','Quotes',callback)
+    section.appendChild(quotesButton)
 
-    const buttonDeaths = document.createElement('button')
-    buttonDeaths.classList.add('mainMenu__button','mainMenu__deathsButton')
-    buttonDeaths.innerText ='Deaths';
-    section.appendChild(buttonDeaths)
-
-    // tu dorzucic componenty przyciskow
-
+    const deathsButton = mainMenuButton('mainMenu__button','Deaths',callback)
+    section.appendChild(deathsButton)
+    
     return section;
   };
 
