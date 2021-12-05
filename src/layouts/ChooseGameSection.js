@@ -1,5 +1,5 @@
 const ChooseGameSection = () => {
-  const chooseGame = document.createElement('div');
+  const chooseGame = document.createElement('section');
   chooseGame.classList.add('chooseGameSection');
   return chooseGame;
 };
