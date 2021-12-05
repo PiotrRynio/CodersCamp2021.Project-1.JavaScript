@@ -1,11 +1,6 @@
-import TestButton from '../components/TestButton';
-
 const MainSection = () => {
-  const mainSection = document.createElement('section');
+  const mainSection = document.createElement('div');
   mainSection.classList.add('mainSection');
-
-  mainSection.appendChild(TestButton());
-
   return mainSection;
 };
 export default MainSection;
