@@ -1,31 +1,28 @@
-export const mainMenu = () => {
-    /*
-    const section = document.getElementByClassName('chooseGameSection')
-    console.log(section)
-    const mainMenu = section.createElement('button');
-*/
-    const section = document.querySelector('.chooseGameSection');
-    //const low = section.querySelector('.upperSection')
-    const mainMenuElement = document.createElement('div');
-    mainMenuElement.classList.add('mainMenu');
-    section.appendChild(mainMenuElement)
-    
-  
+const mainMenu = (callback) => {
+    const section = document.createElement('div');
+    section.classList.add('mainMenu');
 
+    const buttonPeople = document.createElement('button')
+    buttonPeople.classList.add('mainMenu__button','mainMenu__peopleButton')
+    buttonPeople.innerText ='People';
+    section.appendChild(buttonPeople)
+    buttonPeople.addEventListener('click', ()=>callback('people'))
 
+    const buttonQuotes = document.createElement('button')
+    buttonQuotes.classList.add('mainMenu__button','mainMenu__quotesButton')
+    buttonQuotes.innerText ='Quotes';
+    section.appendChild(buttonQuotes)
 
-    //section.append(mainMenu); 
-    /*
-    button.classList.add('buttonPlayTheGame');
-    button.innerText= "PLAY THE GAME"
-   
-    
-const onButtonClick=()=>{
-    button.innerText = "GAME STARTED"*/
-    return section; 
-};
-/*
-button.addEventListener('click', onButtonClick)
-return button;
+    const buttonDeaths = document.createElement('button')
+    buttonDeaths.classList.add('mainMenu__button','mainMenu__deathsButton')
+    buttonDeaths.innerText ='Deaths';
+    section.appendChild(buttonDeaths)
+
+    // tu dorzucic componenty przyciskow
+
+    return section;
   };
-  */
+
+
+  export default mainMenu;
+  

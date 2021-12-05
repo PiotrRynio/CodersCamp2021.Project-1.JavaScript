@@ -1,18 +1,13 @@
-.main{
-    width: 60%;
-    height: 180px;
+.mainMenu{
     background: rgba(10, 0, 0, 0.7);
-    position: absolute;
     width: 711px;
     height: 119px;
-    left: 790px;
-    top: 112px; 
     border-radius: 20px 20px 0px 0px;
     display: flex;
     align-items: center;
     justify-content: space-around;   
 }
-.main .button{
+.mainMenu .mainMenu__button{
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
