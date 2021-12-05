@@ -1,4 +1,9 @@
-.buttonHallOfFame {
+.displayButton {
+  display: flex;
+  flex-direction: row;
+}
+
+.hallOfFameButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,40 +18,27 @@
   font-size: 2rem;
   letter-spacing: 0.1rem;
   transition: filter ease-in-out 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.35);
+    filter: saturate(1.5);
+  }
+
+  &__greenBlock {
+    width: 121px;
+    height: 133px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 77px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: linear-gradient(140.39deg, #14473b 0%, #016a25 100%);
+    box-sizing: border-box;
+  }
 }
-
-.buttonFirstLetter {
-  width: 121px;
-  height: 133px;
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 77px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #ffffff;
-
-  background: linear-gradient(140.39deg, #14473b 0%, #016a25 100%);
-  box-sizing: border-box;
-}
-
-// .buttonRestOfText {
-//   //position: absolute;
-//   width: 406px;
-//   height: 65px;
-//   left: 126px;
-//   top: 39px;
-
-//   font-family: Montserrat;
-//   font-style: normal;
-//   font-weight: bold;
-//   font-size: 64px;
-//   line-height: 78px;
-//   display: flex;
-//   align-items: center;
-
-//   color: #ffffff;
-// }
