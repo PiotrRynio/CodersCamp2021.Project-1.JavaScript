@@ -1,5 +1,5 @@
 const MainSection = () => {
-  const mainSection = document.createElement('div');
+  const mainSection = document.createElement('section');
   mainSection.classList.add('mainSection');
   return mainSection;
 };
