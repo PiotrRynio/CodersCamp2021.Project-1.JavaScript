@@ -1,15 +1,18 @@
 .buttonHallOfFame {
-  display: grid;
-  grid-template-columns: 133px 1fr;
-  justify-content: space-around;
-  //position: absolute;
-  width: 581px;
-  height: 133px;
-  left: 22px;
-  top: 19px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 50px;
+  border: none;
+  -webkit-border-bottom-right-radius: 40px;
+  -moz-border-radius-bottomright: 40px;
+  border-bottom-right-radius: 40px;
   background: rgba(255, 255, 255, 0.25);
-  border-radius: 0px 0px 40px 0px;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  transition: filter ease-in-out 0.2s;
 }
 
 .buttonFirstLetter {
@@ -30,20 +33,20 @@
   box-sizing: border-box;
 }
 
-.buttonRestOfText {
-  //position: absolute;
-  width: 406px;
-  height: 65px;
-  left: 126px;
-  top: 39px;
+// .buttonRestOfText {
+//   //position: absolute;
+//   width: 406px;
+//   height: 65px;
+//   left: 126px;
+//   top: 39px;
 
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 64px;
-  line-height: 78px;
-  display: flex;
-  align-items: center;
+//   font-family: Montserrat;
+//   font-style: normal;
+//   font-weight: bold;
+//   font-size: 64px;
+//   line-height: 78px;
+//   display: flex;
+//   align-items: center;
 
-  color: #ffffff;
-}
+//   color: #ffffff;
+// }
