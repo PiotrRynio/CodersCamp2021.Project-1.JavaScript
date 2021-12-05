@@ -1,6 +1,6 @@
-const randomValueFromArray = (idArray) => {
-  const correctIdIndex = Math.floor(Math.random() * idArray.length);
-  return idArray[correctIdIndex];
+const randomValueFromArray = (valueArray) => {
+  const randomArrayIndex = Math.floor(Math.random() * valueArray.length);
+  return valueArray[randomArrayIndex];
 }
 
 export default randomValueFromArray;
