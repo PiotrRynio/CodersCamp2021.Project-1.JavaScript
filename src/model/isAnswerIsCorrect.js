@@ -1,2 +1,3 @@
-export function isAnswerIsCorrect(correctAnswer,userAnswer)
-{return !!(userAnswer && (correctAnswer===userAnswer))};
+export function isAnswerIsCorrect(correctAnswer, userAnswer) {
+  return !!(userAnswer && correctAnswer === userAnswer);
+}
