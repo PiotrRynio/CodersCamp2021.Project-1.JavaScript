@@ -4,11 +4,13 @@
 @import 'main';
 
 // * COMPONENTS
+
 @import 'components/hallOfFameButton';
+@import 'src/scss/components/testButton';
 
 // * LAYOUTS
 
-@import 'layouts/mainwrapper';
-@import 'layouts/logosection';
-@import 'layouts/chooseGameSection';
-@import 'layouts/mainsection';
+@import 'src/scss/layouts/mainWrapper';
+@import 'src/scss/layouts/logoSection';
+@import 'src/scss/layouts/chooseGameSection';
+@import 'src/scss/layouts/mainSection';
