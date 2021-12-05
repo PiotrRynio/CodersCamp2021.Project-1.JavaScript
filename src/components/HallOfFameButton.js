@@ -1,4 +1,4 @@
-const HallOfFameButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
+const ManuButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
 
     const button = document.createElement('button');
     button.classList.add('displayButton');
@@ -17,19 +17,4 @@ const HallOfFameButton = (firstLetterButtonInnerText, restOfTextButtonInnerText)
     return button;
 }
 
-export default HallOfFameButton;
-
-const firstLetter = () =>{
-
-    
-
-    return firstLetter;
-}
-
-const restOfTextButton = () => {
-    const  restOfText = document.createElement('span');
-    restOfText.innerText = "all of fame";
-    restOfText.classList.add('hallOfFameButton')
-    
-    return restOfText;
-}
+export default ManuButton;
