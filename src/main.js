@@ -1,8 +1,9 @@
 import './scss/style.scss';
 import { mainMenu } from './components/mainMenu';
+import Wrapper from './components/MainWrapper';
 
 function main() {
-  document.querySelector('#app');
+  document.querySelector('#app').appendChild(Wrapper());
   document.querySelector('#app').appendChild(mainMenu());
 }
 
