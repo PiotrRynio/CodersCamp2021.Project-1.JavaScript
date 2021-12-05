@@ -6,7 +6,7 @@ const MainSection = () => {
   mainSection.classList.add('mainSection');
 
   mainSection.appendChild(TestButton());
-  mainSection.appendChild(HallOfFameButton());
+  mainSection.appendChild(HallOfFameButton('H', 'all of fame'));
 
   return mainSection;
 };
