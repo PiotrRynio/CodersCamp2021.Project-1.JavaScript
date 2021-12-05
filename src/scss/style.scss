@@ -4,10 +4,11 @@
 @import 'main';
 
 // * COMPONENTS
+@import 'src/scss/components/testButton';
 
 // * LAYOUTS
 
-@import 'layouts/mainwrapper';
-@import 'layouts/logosection';
-@import 'layouts/choosegamesection';
-@import 'layouts/mainsection';
+@import 'src/scss/layouts/mainWrapper';
+@import 'src/scss/layouts/logoSection';
+@import 'src/scss/layouts/chooseGameSection';
+@import 'src/scss/layouts/mainSection';
