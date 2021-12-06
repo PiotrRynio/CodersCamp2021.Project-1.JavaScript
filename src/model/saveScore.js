@@ -22,7 +22,7 @@ const saveScore = (gameType, userName, userScore) =>{
 export default saveScore;
 
 
-export const getScoresForGameType = (gameType)  => {
+export const getScores = (gameType)  => {
 
     const table = [];
     table.push(JSON.parse(localStorage.getItem(gameType)));
