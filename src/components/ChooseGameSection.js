@@ -1,9 +1,8 @@
-import mainMenu from "./mainMenu";
+import mainMenu from "./MainMenu";
 
 const ChooseGameSection = () => {
   let choosedMode; 
   function handleMainMenuButtonClick(buttonName){
-    console.log(`handlePeopleMainMenuButtonClick - clicked on ${buttonName}`);
     choosedMode = buttonName; 
   }
   const chooseGame = document.createElement('div');
