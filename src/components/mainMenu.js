@@ -1,21 +1,21 @@
-import mainMenuButton from "./mainMenuButton";
+import MainMenuButton from "./MainMenuButton";
 
-const mainMenu = (onButtonClick) => {
+const MainMenu = (onButtonClick) => {
     const section = document.createElement('div');
     section.classList.add('mainMenu');
 
-    const peopleButton = mainMenuButton('mainMenu__button','Characters',onButtonClick)
+    const peopleButton = MainMenuButton('mainMenu__button','Characters',onButtonClick)
     section.appendChild(peopleButton)
 
-    const quotesButton = mainMenuButton('mainMenu__button','Quotes',onButtonClick)
+    const quotesButton = MainMenuButton('mainMenu__button','Quotes',onButtonClick)
     section.appendChild(quotesButton)
 
-    const deathsButton = mainMenuButton('mainMenu__button','Deaths',onButtonClick)
+    const deathsButton = MainMenuButton('mainMenu__button','Deaths',onButtonClick)
     section.appendChild(deathsButton)
     
     return section;
   };
 
 
-  export default mainMenu;
+  export default MainMenu;
   
