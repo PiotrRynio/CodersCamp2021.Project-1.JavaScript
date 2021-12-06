@@ -1,6 +1,8 @@
-const saveScore = (gameType, userName, userScore) =>{
+export const saveScore = (gameType, userName, userScore) =>{
 
-    let scoreTable = JSON.parse(localStorage.getItem(gameType));
+    let scoreTable = localStorage.getItem(gameType);
+    console.log(scoreTable);
+    let scoreTableParse = JSON.parse(scoreTable);
 
     const scoreObject = {
         'name': userName, 
@@ -13,16 +15,14 @@ const saveScore = (gameType, userName, userScore) =>{
 
     scoreTable.push(scoreObject);
 
-    let userScore_serialized = JSON.stringify(scoreTable);
+    const userScore_serialized = JSON.stringify(scoreTable);
 
     localStorage.setItem(gameType, userScore_serialized);
 
 }
 
-export default saveScore;
 
-
-export const getScoresForGameType = (gameType)  => {
+export const getScores = (gameType)  => {
 
     const table = [];
     table.push(JSON.parse(localStorage.getItem(gameType)));
