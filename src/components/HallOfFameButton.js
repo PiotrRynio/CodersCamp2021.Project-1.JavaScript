@@ -1,7 +1,7 @@
 const ManuButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
 
     const button = document.createElement('button');
-    button.classList.add('displayButton');
+    button.classList.add('menuButton');
 
     const firstLetter = document.createElement('span');
     firstLetter.classList.add('hallOfFameButton__greenBlock');
