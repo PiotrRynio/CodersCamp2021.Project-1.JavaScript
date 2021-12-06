@@ -3,10 +3,10 @@ import mainMenu from "./mainMenu";
 const ChooseGameSection = () => {
   let choosedMode; 
   function handleMainMenuButtonClick(buttonName){
-    console.log(`handlePeopleMainMenuButtonClick - clicked on ${buttonName}`);
     choosedMode = buttonName; 
   }
-  const chooseGame = document.createElement('div');
+
+  const chooseGame = document.createElement('section');
   chooseGame.classList.add('chooseGameSection');
   chooseGame.appendChild(mainMenu(handleMainMenuButtonClick)); 
   return chooseGame;
