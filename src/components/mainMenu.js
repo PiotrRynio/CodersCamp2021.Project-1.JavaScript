@@ -4,18 +4,16 @@ const MainMenu = (onButtonClick) => {
     const section = document.createElement('div');
     section.classList.add('mainMenu');
 
-    const peopleButton = MainMenuButton('mainMenu__button','Characters',onButtonClick)
+    const peopleButton = MainMenuButton('Characters',onButtonClick)
     section.appendChild(peopleButton)
 
-    const quotesButton = MainMenuButton('mainMenu__button','Quotes',onButtonClick)
+    const quotesButton = MainMenuButton('Quotes',onButtonClick)
     section.appendChild(quotesButton)
 
-    const deathsButton = MainMenuButton('mainMenu__button','Deaths',onButtonClick)
+    const deathsButton = MainMenuButton('Deaths',onButtonClick)
     section.appendChild(deathsButton)
     
     return section;
   };
-
-
   export default MainMenu;
   
