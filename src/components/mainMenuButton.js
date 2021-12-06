@@ -1,4 +1,4 @@
-const mainMenuButton = (className,innerText,callback) => {
+const MainMenuButton = (className,innerText,callback) => {
     const button = document.createElement('button');
     button.classList.add(className)
     button.innerText = innerText;
@@ -7,5 +7,5 @@ const mainMenuButton = (className,innerText,callback) => {
     return button;
   };
 
-  export default mainMenuButton;
+  export default MainMenuButton;
   

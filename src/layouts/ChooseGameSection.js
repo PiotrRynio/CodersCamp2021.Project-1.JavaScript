@@ -1,4 +1,4 @@
-import mainMenu from "./mainMenu";
+import MainMenu from "../components/MainMenu"
 
 const ChooseGameSection = () => {
   let choosedMode; 
@@ -8,7 +8,7 @@ const ChooseGameSection = () => {
 
   const chooseGame = document.createElement('section');
   chooseGame.classList.add('chooseGameSection');
-  chooseGame.appendChild(mainMenu(handleMainMenuButtonClick)); 
+  chooseGame.appendChild(MainMenu(handleMainMenuButtonClick)); 
   return chooseGame;
 };
 
