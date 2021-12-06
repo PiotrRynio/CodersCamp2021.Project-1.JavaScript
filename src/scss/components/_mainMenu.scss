@@ -1,27 +1,29 @@
 .mainMenu{
-    background: rgba(255, 255, 255, 0.7);
-    width: 711px;
-    height: 119px;
-    border-radius: 20px 20px 0px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;   
+  background: rgba(255, 255, 255, 0.7);
+  width: 711px;
+  height: 119px;
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;   
+  
+ &__button{
+   padding: 0;
+   border: none;
+   background: none;
+   font-family: Montserrat;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 42px;
+   width: 200px;
+   height: 100px;
 }
-.mainMenu .mainMenu__button{
-  padding: 0;
-  border: none;
-  background: none;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 42px;
-  width: 200px;
-  height: 100px;
+ 
+&__button:focus { 
+  text-decoration: underline;
+  color:#000;
 }
-button:focus { 
-    text-decoration: underline;
-    color:#000;
-}
-button:hover {
+&__button:hover {
   cursor:pointer;
+}
 }

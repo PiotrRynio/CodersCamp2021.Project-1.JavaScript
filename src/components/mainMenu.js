@@ -1,16 +1,16 @@
 import mainMenuButton from "./mainMenuButton";
 
-const mainMenu = (callback) => {
+const mainMenu = (onButtonClick) => {
     const section = document.createElement('div');
     section.classList.add('mainMenu');
 
-    const peopleButton = mainMenuButton('mainMenu__button','People',callback)
+    const peopleButton = mainMenuButton('mainMenu__button','Characters',onButtonClick)
     section.appendChild(peopleButton)
 
-    const quotesButton = mainMenuButton('mainMenu__button','Quotes',callback)
+    const quotesButton = mainMenuButton('mainMenu__button','Quotes',onButtonClick)
     section.appendChild(quotesButton)
 
-    const deathsButton = mainMenuButton('mainMenu__button','Deaths',callback)
+    const deathsButton = mainMenuButton('mainMenu__button','Deaths',onButtonClick)
     section.appendChild(deathsButton)
     
     return section;
