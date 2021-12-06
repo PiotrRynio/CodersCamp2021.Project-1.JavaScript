@@ -14,13 +14,10 @@ const Wrapper = () => {
   wrapper.appendChild(upperSection);
   wrapper.appendChild(lowerSection);
 
-
   upperSection.appendChild(LogoSection());
   upperSection.appendChild(ChooseGameSection());
   lowerSection.appendChild(MainSection());
   return wrapper;
 };
-
-
 
 export default Wrapper;
