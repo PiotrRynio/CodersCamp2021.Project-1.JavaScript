@@ -20,4 +20,5 @@ const image_b64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAoHBw
 showImage(image_b64);
 // end of example
 
+
 export default PersonImage;
