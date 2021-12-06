@@ -1,14 +1,5 @@
 const config = {
-  presets: [
-    [
-      '@babel/env',
-      {
-        targets: {
-          node: 'current'
-        }
-      }
-    ]
-  ],
+  presets: ['@babel/env'],
 };
 
 module.exports = config;

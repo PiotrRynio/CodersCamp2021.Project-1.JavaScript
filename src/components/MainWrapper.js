@@ -3,14 +3,14 @@ import ChooseGameSection from './ChooseGameSection';
 import MainSection from './MainSection';
 
 const Wrapper = () => {
-  const wrapper = document.createElement('section');
-  const upperSection = document.createElement('section');
-  const lowerSection = document.createElement('section');
+  const wrapper = document.createElement('div');
+  const upperSection = document.createElement('div');
+  const lowerSection = document.createElement('div');
 
   wrapper.classList.add('mainWrapper');
   upperSection.classList.add('mainWrapper__upperSection');
   lowerSection.classList.add('mainWrapper__lowerSection');
- 
+
   wrapper.appendChild(upperSection);
   wrapper.appendChild(lowerSection);
 

@@ -38,9 +38,3 @@ dist-ssr
 # Yarn
 .yarn
 .pnp.*
-
-# VSCode
-.vscode
-
-# IntelliJ
-.idea
