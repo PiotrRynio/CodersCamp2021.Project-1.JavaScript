@@ -1,0 +1,32 @@
+.answersSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 800px;
+
+  &__answer {
+    font-size: 1.7rem;
+    border: 1px solid #444;
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 15px;
+
+    &:hover {
+      background-color: #EEE;
+      border-color: #333;
+    }
+
+    &.correct {
+      background-color: #036727;
+      color: #FFF;
+      border-color: #036727;
+    }
+
+    &.wrong {
+      background-color: #952525;
+      color: #FFF;
+      border-color: #952525;
+    }
+  }
+
+}
