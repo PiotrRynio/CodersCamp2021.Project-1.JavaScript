@@ -1,11 +1,11 @@
-.mainMenu{
+.modeMenu{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;  
   background: rgba(255, 255, 255, 0.7);
   width: 711px;
   height: 119px;
-  border-radius: 20px 20px 0px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;   
+  border-radius: 20px 20px 0px 0px; 
   
  &__button{
    padding: 0;
