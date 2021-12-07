@@ -1,18 +1,51 @@
 import { renderComponent } from '../testsUtilities/renderComponent';
 import MainImage, { defaultImage } from './MainImage';
 
-describe('hasMainImageProperClass', () => {
-  it('check if MainImage div component is including mainImage__container class', () => {
+describe('MainImage', () => {
+  it('check if container component is including mainImage__container class', () => {
     renderComponent(MainImage());
 
     const mainImage = MainImage();
     expect(mainImage.classList).toContain('mainImage__container');
   });
 
-  it('check if MainImage image component is showing a proper content (photo)', () => {
+  it('check if image component is including mainImage__image class', () => {
+    renderComponent(MainImage());
+
+    const mainImage = MainImage();
+    expect(mainImage.firstChild.classList).toContain('mainImage__image');
+  });
+
+  it('check if image component has an src attribute', () => {
+    renderComponent(MainImage());
+
+    const mainImage = MainImage();
+    expect(mainImage.firstChild.hasAttribute('src')).toBe(true);
+  });
+
+  it('check if image has an alternative text', () => {
+    renderComponent(MainImage());
+
+    const mainImage = MainImage();
+    expect(mainImage.firstChild.hasAttribute('alt')).toBe(true);
+  });
+
+  it('check if image component is showing a proper content (photo) in default', () => {
     renderComponent(MainImage());
 
     const mainImage = MainImage();
     expect(mainImage.firstChild.src).toEqual(defaultImage);
+  });
+
+  it('check if calling setImage function changes the photo', () => {
+    renderComponent(MainImage());
+
+    const mainImage = MainImage();
+    expect(mainImage.firstChild.src).toEqual(defaultImage);
+
+    const newPhotoUrl =
+      'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_steven-gomez-lg.jpg';
+    mainImage.setImage(newPhotoUrl);
+    expect(mainImage.firstChild.src).toEqual(newPhotoUrl);
   });
 });

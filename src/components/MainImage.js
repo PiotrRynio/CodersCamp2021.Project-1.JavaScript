@@ -10,11 +10,11 @@ const MainImage = (image_path = defaultImage) => {
   image.setAttribute('alt', 'Image of the questioned character');
   mainImage.appendChild(image);
 
-  function setImage(imagePath) {
+  mainImage.setImage = (imagePath) => {
     image.src = imagePath;
-  }
+  };
 
-  setImage(image_path);
+  mainImage.setImage(image_path);
 
   return mainImage;
 };
