@@ -1,8 +1,6 @@
 export const saveScore = (gameType, userName, userScore) =>{
 
-    let scoreTable = localStorage.getItem(gameType);
-    console.log(scoreTable);
-    let scoreTableParse = JSON.parse(scoreTable);
+    let scoreTable = getScores(gameType);
 
     const scoreObject = {
         'name': userName, 
@@ -24,8 +22,7 @@ export const saveScore = (gameType, userName, userScore) =>{
 
 export const getScores = (gameType)  => {
 
-    const table = [];
-    table.push(JSON.parse(localStorage.getItem(gameType)));
+    const table = JSON.parse(localStorage.getItem(gameType));
 
     return table;
 
