@@ -5,9 +5,6 @@ function main() {
   document.querySelector('#app').appendChild(Wrapper());
 }
 
-main();
 
 
-
-   
-
+     main();
