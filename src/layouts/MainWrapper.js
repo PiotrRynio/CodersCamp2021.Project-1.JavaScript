@@ -10,7 +10,7 @@ const Wrapper = () => {
   wrapper.classList.add('mainWrapper');
   upperSection.classList.add('mainWrapper__upperSection');
   lowerSection.classList.add('mainWrapper__lowerSection');
- 
+
   wrapper.appendChild(upperSection);
   wrapper.appendChild(lowerSection);
 

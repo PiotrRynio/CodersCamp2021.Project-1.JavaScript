@@ -1,4 +1,4 @@
-const NewGameButton = () => {
+const NewGameButton = (onButtonClick) => {
   const button = document.createElement('button');
   const span = document.createElement('span');
 
@@ -9,6 +9,8 @@ const NewGameButton = () => {
   span.textContent = 'N';
 
   button.appendChild(span);
+
+  button.addEventListener('click', onButtonClick);
 
   return button;
 };
