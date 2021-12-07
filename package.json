@@ -16,7 +16,7 @@
     "test": "jest --env=jsdom",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:ci": "jest --ci --silent --coverage"
+    "test:ci": "jest --ci --silent --coverage --env=jsdom"
   },
   "dependencies": {
     "@testing-library/jest-dom": "5.16.1"
