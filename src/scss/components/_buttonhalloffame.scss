@@ -13,6 +13,9 @@
 }
 
 .buttonFirstLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   width: 121px;
   height: 133px;
@@ -21,9 +24,6 @@
   font-style: normal;
   font-weight: 600;
   font-size: 77px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   color: #ffffff;
 
