@@ -1,4 +1,4 @@
-const ManuButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
+const MenuButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
 
     const button = document.createElement('button');
     button.classList.add('menuButton');
@@ -8,7 +8,7 @@ const ManuButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
     firstLetter.innerText = firstLetterButtonInnerText;
 
     const  restOfText = document.createElement('span');
-    restOfText.classList.add('hallOfFameButton')
+    restOfText.classList.add('menuButton')
     restOfText.innerText = restOfTextButtonInnerText;
     
     button.appendChild(firstLetter);
@@ -17,4 +17,4 @@ const ManuButton = (firstLetterButtonInnerText, restOfTextButtonInnerText) => {
     return button;
 }
 
-export default ManuButton;
+export default MenuButton;
