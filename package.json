@@ -13,20 +13,15 @@
     "dev": "vite",
     "build": "vite build",
     "start": "vite preview",
-    "test": "jest --env=jsdom",
-    "test:watch": "jest --watch  --env=jsdom",
-    "test:cov": "jest --coverage  --env=jsdom",
-    "test:ci": "jest --ci --silent --coverage --env=jsdom"
-  },
-  "dependencies": {
-    "@testing-library/jest-dom": "5.16.1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:ci": "jest --ci --silent --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "7.16.4",
     "@babel/preset-env": "^7.16.4",
-    "@testing-library/dom": "^7.26.6",
-    "@testing-library/user-event": "^12.2.2",
     "eslint": "7.32.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.3.0",
@@ -36,7 +31,6 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-testing-library": "^5.0.0",
     "jest": "27.4.3",
-    "jest-config": "27.4.3",
     "prettier": "2.4.1",
     "sass": "1.44.0",
     "vite": "2.5.10"
