@@ -2,21 +2,26 @@ import Player from './Player';
 
 describe('Player', () => {
   const player = Player();
-  const testCallback = (testAray) => testAray.push(5);
+  const mockCallback = jest.fn();
+  const testQuestion = {
+    answers: ["Declan's men and his cook.", 'Los Pollos driver', 'No-Doze', 'Max Arciniega'],
+    correctAnswer: 'NoDoze',
+    questionObject: 'Beaten to death.',
+  };
 
-  it('if askQuestion call functions with certain parametrs', () => {
-    const testAray = [];
+  it('callback powinien zostac wywołany raz jesli zadamy graczowi pytanie', () => {
+    player.askQuestion(mockCallback, testQuestion);
 
-    player.askQuestion(testCallback, testAray);
-
-    expect(testAray).toContain(5);
+    expect(mockCallback.mock.calls.length).toBe(1);
   });
 
-  it('if answer call functions with certain parametrs', () => {
-    const testAray = [];
+  it('callback powinien zostac wywolany jesli gracz odpowie', () => {
+    player.answer(mockCallback, testQuestion);
 
-    player.answer(testCallback, testAray);
+    expect(mockCallback.mock.calls.length).toBe(2);
+  });
 
-    expect(testAray).toContain(5);
+  it('callback powinien zostac wywoalny z testQuestion jako argument', () => {
+    expect(mockCallback.mock.calls[0][0]).toBe(testQuestion);
   });
 });
