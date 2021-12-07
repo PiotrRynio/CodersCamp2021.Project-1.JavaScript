@@ -1,0 +1,51 @@
+.buttonHallOfFame {
+  display: grid;
+  grid-template-columns: 133px 1fr;
+  justify-content: space-around;
+  position: absolute;
+  width: 581px;
+  height: 133px;
+  left: 22px;
+  top: 19px;
+
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 0px 0px 40px 0px;
+}
+
+.buttonFirstLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 121px;
+  height: 133px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 77px;
+
+  color: #ffffff;
+
+  background: linear-gradient(140.39deg, #14473b 0%, #016a25 100%);
+  border: 4px solid #063612;
+  box-sizing: border-box;
+}
+
+.buttonRestOfText {
+  position: absolute;
+  width: 406px;
+  height: 65px;
+  left: 126px;
+  top: 39px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 78px;
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+}
