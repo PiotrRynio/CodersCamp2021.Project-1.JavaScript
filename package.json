@@ -14,8 +14,8 @@
     "build": "vite build",
     "start": "vite preview",
     "test": "jest --env=jsdom",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test:watch": "jest --watch  --env=jsdom",
+    "test:cov": "jest --coverage  --env=jsdom",
     "test:ci": "jest --ci --silent --coverage --env=jsdom"
   },
   "dependencies": {
