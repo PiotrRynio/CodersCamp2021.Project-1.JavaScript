@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { renderComponent } from './renderComponent';
 import TestButton from './TestButton';
 
-describe('renderComponent', () => {
+describe('TestButton', () => {
   it('should show rendered component and...', () => {
     renderComponent(TestButton());
 
