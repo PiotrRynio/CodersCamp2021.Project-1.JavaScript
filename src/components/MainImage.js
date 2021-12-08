@@ -3,10 +3,10 @@ export const defaultImage =
 
 const MainImage = (image_path = defaultImage) => {
   const mainImage = document.createElement('div');
-  mainImage.classList.add('mainImage__container');
+  mainImage.classList.add('mainImageContainer');
 
   const image = document.createElement('img');
-  image.classList.add('mainImage__image');
+  image.classList.add('mainImageContainer__image');
   image.setAttribute('alt', 'Image of the questioned character');
   mainImage.appendChild(image);
 

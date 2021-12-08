@@ -2,18 +2,18 @@ import { renderComponent } from '../testsUtilities/renderComponent';
 import MainImage, { defaultImage } from './MainImage';
 
 describe('MainImage', () => {
-  it('check if container component is including mainImage__container class', () => {
+  it('check if container component is including mainImageContainer class', () => {
     renderComponent(MainImage());
 
     const mainImage = MainImage();
-    expect(mainImage.classList).toContain('mainImage__container');
+    expect(mainImage.classList).toContain('mainImageContainer');
   });
 
-  it('check if image component is including mainImage__image class', () => {
+  it('check if image component is including mainImageContainer__image class', () => {
     renderComponent(MainImage());
 
     const mainImage = MainImage();
-    expect(mainImage.firstChild.classList).toContain('mainImage__image');
+    expect(mainImage.firstChild.classList).toContain('mainImageContainer__image');
   });
 
   it('check if image component has an src attribute', () => {
