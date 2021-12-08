@@ -1,4 +1,6 @@
 const NewGameButton = (onButtonClick) => {
+  const text = 'New Game';
+
   const button = document.createElement('button');
   const firstLetter = document.createElement('firstletter');
   const elementNum = document.createElement('span');
@@ -7,8 +9,8 @@ const NewGameButton = (onButtonClick) => {
   firstLetter.classList.add('newGameButton__first-letter');
   elementNum.classList.add('elementNum');
 
-  button.textContent = 'ew Game';
-  firstLetter.textContent = 'N';
+  button.textContent = text.substring(1, 8);
+  firstLetter.textContent = text.charAt(0);
   elementNum.textContent = '7';
 
   button.appendChild(firstLetter);
