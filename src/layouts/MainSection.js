@@ -1,4 +1,4 @@
-import AnswerSection from "./AnswersSection";
+import AnswerSection from '../components/AnswersSection/AnswersSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -7,9 +7,9 @@ const MainSection = () => {
   const answers = ['Walter White', 'Jesse Pinkman', 'Hank Shrader', 'Saul Goodman'];
   const handler = (isCorrect, answer) => {
     console.log(answer, isCorrect);
-  }
+  };
 
-  mainSection.append(AnswerSection({answers, correctAnswer: 'Walter White'}, handler));
+  mainSection.append(AnswerSection({ answers, correctAnswer: 'Walter White' }, handler));
   return mainSection;
 };
 export default MainSection;

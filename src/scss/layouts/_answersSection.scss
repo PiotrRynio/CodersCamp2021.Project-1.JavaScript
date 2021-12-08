@@ -15,18 +15,26 @@
       background-color: #EEE;
       border-color: #333;
     }
+  }
 
-    &.correct {
+  &__answer--correct {
+    background-color: #036727;
+    color: #FFF;
+    border-color: #036727;
+    &:hover {
       background-color: #036727;
-      color: #FFF;
       border-color: #036727;
-    }
-
-    &.wrong {
-      background-color: #952525;
-      color: #FFF;
-      border-color: #952525;
     }
   }
 
+  &__answer--wrong {
+    background-color: #952525;
+    color: #FFF;
+    border-color: #952525;
+
+    &:hover {
+      background-color: #952525;
+      border-color: #952525;
+    }
+  }
 }
