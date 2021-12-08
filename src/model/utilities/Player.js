@@ -1,4 +1,4 @@
-const Player = () => {
+const player = () => {
   const returnedPlayer = {
     askQuestion(onQuestionAsked, randomQuestion) {
       onQuestionAsked(randomQuestion);
@@ -11,4 +11,4 @@ const Player = () => {
   return returnedPlayer;
 };
 
-export default Player;
+export default player;

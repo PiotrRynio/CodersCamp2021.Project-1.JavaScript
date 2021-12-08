@@ -1,27 +1,29 @@
-import Player from './Player';
+import player from './Player';
 
 describe('Player', () => {
-  const player = Player();
-  const mockCallback = jest.fn();
+  const testPlayer = player();
   const testQuestion = {
     answers: ["Declan's men and his cook.", 'Los Pollos driver', 'No-Doze', 'Max Arciniega'],
     correctAnswer: 'NoDoze',
     questionObject: 'Beaten to death.',
   };
 
-  it('callback powinien zostac wywołany raz jesli zadamy graczowi pytanie', () => {
-    player.askQuestion(mockCallback, testQuestion);
+  it('callback should be called once if we ask the player a question', () => {
+    const mockCallback = jest.fn();
+    testPlayer.askQuestion(mockCallback, testQuestion);
 
     expect(mockCallback.mock.calls.length).toBe(1);
   });
 
-  it('callback powinien zostac wywolany jesli gracz odpowie', () => {
-    player.answer(mockCallback, testQuestion);
-
-    expect(mockCallback.mock.calls.length).toBe(2);
+  it('callback should be called if the player answers', () => {
+    const mockCallback = jest.fn();
+    testPlayer.answer(mockCallback, testQuestion);
+    expect(mockCallback.mock.calls.length).toBe(1);
   });
 
-  it('callback powinien zostac wywoalny z testQuestion jako argument', () => {
+  it('callback should be called with testQuestion as an argument', () => {
+    const mockCallback = jest.fn();
+    testPlayer.answer(mockCallback, testQuestion);
     expect(mockCallback.mock.calls[0][0]).toBe(testQuestion);
   });
 });
