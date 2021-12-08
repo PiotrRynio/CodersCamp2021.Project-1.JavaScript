@@ -4,7 +4,7 @@ describe('Player', () => {
   const testPlayer = player();
   const testQuestion = {
     answers: ["Declan's men and his cook.", 'Los Pollos driver', 'No-Doze', 'Max Arciniega'],
-    correctAnswer: 'NoDoze',
+    correctAnswer: 'No-Doze',
     questionObject: 'Beaten to death.',
   };
 
@@ -15,7 +15,7 @@ describe('Player', () => {
     expect(mockCallback.mock.calls.length).toBe(1);
   });
 
-  it('callback should be called if the player answers', () => {
+  it('callback should be called once if the player answers', () => {
     const mockCallback = jest.fn();
     testPlayer.answer(mockCallback, testQuestion);
     expect(mockCallback.mock.calls.length).toBe(1);
