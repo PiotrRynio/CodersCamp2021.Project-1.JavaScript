@@ -1,4 +1,5 @@
 import AnswerSection from '../components/AnswersSection/AnswersSection';
+import MainImage from '../components/MainImage';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -10,6 +11,8 @@ const MainSection = () => {
   };
 
   mainSection.append(AnswerSection({ answers, correctAnswer: 'Walter White' }, handler));
+  mainSection.appendChild(MainImage());
+
   return mainSection;
 };
 export default MainSection;
