@@ -1,33 +1,28 @@
-import Answer from '../Answer/Answer';
+import AnswerButton from '../Answer/Answer';
+import isAnswerCorrect from '../../model/isAnswerCorrect';
 
 const AnswerSection = ({ answers, correctAnswer }, onButtonClick) => {
   const answersSection = document.createElement('section');
   answersSection.classList.add('answersSection');
 
-  const answersButtons = answers.map((answer) => Answer(answer));
-  const [correctButton] = answersButtons.filter((answersButton) => answersButton.textContent === correctAnswer);
-
-  const showCorrect = () => {
-    correctButton.classList.add('answersSection__answer--correct');
+  const handleAnswerButtonClick = ({ target }) => {
+    const isCorrect = isAnswerCorrect(correctAnswer, target.textContent);
+    // if (!isCorrect) {
+    //   target.setWrong();
+    // }
+    // showCorrect();
+    // onButtonClick(isCorrect, target.textContent);
+    // removeListeners();
   };
 
-  const removeListeners = () => {
-    answersButtons.forEach((button) => button.removeEventListener('click', checkAnswer));
-  };
+  const answersButtons = answers.map((answerText) => AnswerButton(answerText, handleAnswerButtonClick));
+  const [correctAnswerButton] = answersButtons.filter((answerButton) =>
+    isAnswerCorrect(correctAnswer, answerButton.textContent)
+  );
 
-  const checkAnswer = ({ target }) => {
-    const isCorrect = target.textContent === correctAnswer;
-    if (!isCorrect) {
-      target.classList.add('answersSection__answer--wrong');
-    }
-    showCorrect();
-    onButtonClick(isCorrect, target.textContent);
-    removeListeners();
-  };
-
-  answersButtons.forEach((button) => {
-    button.addEventListener('click', checkAnswer);
-  });
+  // showCorrect = () => {
+  //   answer;
+  // };
 
   answersSection.append(...answersButtons);
 

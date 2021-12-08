@@ -1,4 +1,4 @@
-const Answer = (text, handleOnClick) => {
+const AnswerButton = (text, onButtonClick) => {
   const answer = document.createElement('button');
   answer.classList.add('answersSection__answer');
   answer.textContent = text;
@@ -15,9 +15,9 @@ const Answer = (text, handleOnClick) => {
     answer.removeEventListener('click');
   };
 
-  answer.addEventListener('click', handleOnClick);
+  answer.addEventListener('click', onButtonClick);
 
   return answer;
 };
 
-export default Answer;
+export default AnswerButton;
