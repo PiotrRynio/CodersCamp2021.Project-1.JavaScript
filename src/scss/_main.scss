@@ -2,9 +2,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  background-image: url(../../public/images/background-image.png);
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url(/images/background-image.png);
   background-size: cover;
+  background-repeat: no-repeat;
   font-family: $font-family-primary;
   font-size: 10px;
 }
