@@ -6,7 +6,7 @@ describe('NewGameButton', () => {
     renderComponent(NewGameButton());
 
     const testedButton = document.querySelector('.newGameButton');
-    const testedButtonFirstLetter = document.querySelector('.newGameButton__first-letter');
+    const testedButtonFirstLetter = document.querySelector('.newGameButton__firstLetter');
     const testedButtonRestOfText = document.querySelector('.newGameButton__restOfText');
 
     expect(testedButton).toBeInTheDocument();

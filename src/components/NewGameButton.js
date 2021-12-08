@@ -6,7 +6,7 @@ const NewGameButton = (onButtonClick) => {
   const restOfText = document.createElement('span');
 
   button.classList.add('newGameButton');
-  firstLetter.classList.add('newGameButton__first-letter');
+  firstLetter.classList.add('newGameButton__firstLetter');
   restOfText.classList.add('newGameButton__restOfText');
 
   firstLetter.textContent = text.charAt(0);
