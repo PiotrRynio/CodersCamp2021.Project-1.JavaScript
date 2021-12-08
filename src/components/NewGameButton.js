@@ -3,18 +3,17 @@ const NewGameButton = (onButtonClick) => {
 
   const button = document.createElement('button');
   const firstLetter = document.createElement('firstletter');
-  const elementNum = document.createElement('span');
+  const restOfText = document.createElement('span');
 
   button.classList.add('newGameButton');
   firstLetter.classList.add('newGameButton__first-letter');
-  elementNum.classList.add('elementNum');
+  restOfText.classList.add('newGameButton__restOfText');
 
-  button.textContent = text.substring(1, 8);
   firstLetter.textContent = text.charAt(0);
-  elementNum.textContent = '7';
+  restOfText.textContent = text.substring(1, 8);
 
   button.appendChild(firstLetter);
-  firstLetter.appendChild(elementNum);
+  button.appendChild(restOfText);
 
   button.addEventListener('click', onButtonClick);
 

@@ -1,6 +1,5 @@
 .newGameButton {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   padding-right: 50px;
@@ -20,6 +19,7 @@
     background: rgba(255, 255, 255, 0.35);
     filter: saturate(1.25);
   }
+
   &__first-letter {
     position: relative;
     padding: 10px 15px;
