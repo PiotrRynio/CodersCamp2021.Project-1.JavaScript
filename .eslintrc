@@ -1,18 +1,22 @@
 {
-  "extends": ["eslint:recommended", "airbnb-base", "plugin:prettier/recommended"],
+  "extends": ["eslint:recommended", "airbnb-base", "plugin:prettier/recommended", "prettier"],
   "env": {
     "es6": true,
     "browser": true,
     "node": true,
     "jest": true
   },
+  "plugins": [
+    "prettier"
+  ],
   "parserOptions": {
     "sourceType": "module"
   },
   "rules": {
     "import/prefer-default-export": 0,
     "no-restricted-syntax": "off",
-    "no-param-reassign": [2, { "props": false }]
+    "no-param-reassign": [2, { "props": false }],
+    "prettier/prettier": "warn"
   },
   "overrides": [
     {
