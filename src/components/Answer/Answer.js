@@ -1,4 +1,4 @@
-const AnswerButton = (text, onButtonClick) => {
+const AnswerButton = (text) => {
   const answer = document.createElement('button');
   answer.classList.add('answersSection__answer');
   answer.textContent = text;
@@ -11,11 +11,9 @@ const AnswerButton = (text, onButtonClick) => {
     answer.classList.add('answersSection__answer--wrong');
   };
 
-  answer.removeClickEvent = () => {
-    answer.removeEventListener('click');
+  answer.addClickEvent = (onButtonClick) => {
+    answer.addEventListener('click', onButtonClick);
   };
-
-  answer.addEventListener('click', onButtonClick);
 
   return answer;
 };

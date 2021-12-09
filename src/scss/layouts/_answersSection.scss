@@ -7,34 +7,34 @@
   &__answer {
     font-size: 1.7rem;
     border: 1px solid #444;
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 15px;
     padding: 15px;
 
     &:hover {
-      background-color: #EEE;
+      background-color: #eee;
       border-color: #333;
-    }
-  }
-
-  &__answer--correct {
-    background-color: #036727;
-    color: #FFF;
-    border-color: #036727;
-    &:hover {
-      background-color: #036727;
-      border-color: #036727;
     }
   }
 
   &__answer--wrong {
     background-color: #952525;
-    color: #FFF;
+    color: #fff;
     border-color: #952525;
 
     &:hover {
       background-color: #952525;
       border-color: #952525;
+    }
+  }
+
+  &__answer--correct {
+    background-color: #036727;
+    color: #fff;
+    border-color: #036727;
+    &:hover {
+      background-color: #036727;
+      border-color: #036727;
     }
   }
 }
