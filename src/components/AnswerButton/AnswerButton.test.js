@@ -34,7 +34,7 @@ describe('Answer button', () => {
     const mockCallback = jest.fn();
     answerButton.addClickEvent(mockCallback);
     userEvent.click(answerButton);
-    expect(mockCallback).toHaveBeenCalled(1);
+    expect(mockCallback).toHaveBeenCalledTimes(1);
   });
 
   it('should change text and remove modifier classes after set new answer', () => {
