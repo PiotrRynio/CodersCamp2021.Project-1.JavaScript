@@ -36,4 +36,11 @@ describe('Answer button', () => {
     userEvent.click(answerButton);
     expect(mockCallback.mock.calls).toHaveLength(1);
   });
+
+  it('should change text and remove modifier classes', () => {
+    answerButton.setNewAnswer('New Answer Text');
+    expect(answerButton.classList).not.toContain('answersSection__answer--wrong');
+    expect(answerButton.classList).not.toContain('answersSection__answer--correct');
+    expect(screen.getByText('New Answer Text')).toBeTruthy();
+  });
 });
