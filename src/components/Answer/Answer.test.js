@@ -31,12 +31,9 @@ describe('Answer button', () => {
   });
 
   it('should add a function that will be executed after click event', () => {
-    const testFunction = ({ target }) => {
-      target.textContent += ' clicked';
-    };
-    answerButton.addClickEvent(testFunction);
+    const mockCallback = jest.fn();
+    answerButton.addClickEvent(mockCallback);
     userEvent.click(answerButton);
-    expect(answerButton.textContent).toBe('Test Answer clicked');
-    expect(screen.getByText('Test Answer clicked')).toBeTruthy();
+    expect(mockCallback.mock.calls).toHaveLength(1);
   });
 });
