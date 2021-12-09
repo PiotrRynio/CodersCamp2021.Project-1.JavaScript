@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import { renderComponent } from '../../testsUtilities/renderComponent';
-import AnswerButton from './Answer';
+import AnswerButton from './AnswerButton';
 
 describe('Answer button', () => {
   renderComponent(AnswerButton('Test Answer'));
@@ -37,7 +37,7 @@ describe('Answer button', () => {
     expect(mockCallback.mock.calls).toHaveLength(1);
   });
 
-  it('should change text and remove modifier classes', () => {
+  it('should change text and remove modifier classes after set new answer', () => {
     answerButton.setNewAnswer('New Answer Text');
     expect(answerButton.classList).not.toContain('answersSection__answer--wrong');
     expect(answerButton.classList).not.toContain('answersSection__answer--correct');

@@ -1,5 +1,3 @@
-import AnswerSection from '../AnswersSection/AnswersSection';
-
 const AnswerButton = (text) => {
   const answer = document.createElement('button');
   answer.classList.add('answersSection__answer');

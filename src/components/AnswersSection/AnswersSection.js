@@ -1,17 +1,22 @@
-import AnswerButton from '../Answer/Answer';
+import AnswerButton from '../AnswerButton/AnswerButton';
 import isAnswerCorrect from '../../model/isAnswerCorrect';
 
-const AnswerSection = ({ answers, correctAnswer }, onButtonClick) => {
+const AnswerSection = (questionAnswers, onButtonClick) => {
   const answersSection = document.createElement('section');
   answersSection.classList.add('answersSection');
 
+  let { correctAnswer, answers } = questionAnswers;
+
   const answersButtons = answers.map((answerText) => AnswerButton(answerText));
-  const [correctAnswerButton] = answersButtons.filter((answerButton) =>
-    isAnswerCorrect(correctAnswer, answerButton.textContent),
-  );
+  const correctAnswerButton = () => {
+    const [button] = answersButtons.filter((answerButton) => {
+      return isAnswerCorrect(correctAnswer, answerButton.textContent);
+    });
+    return button;
+  };
 
   const isButtonClicked = () => {
-    return correctAnswerButton.classList.contains('answersSection__answer--correct');
+    return correctAnswerButton().classList.contains('answersSection__answer--correct');
   };
 
   const handleAnswerButtonClick = ({ target }) => {
@@ -20,13 +25,21 @@ const AnswerSection = ({ answers, correctAnswer }, onButtonClick) => {
     }
     const isCorrect = isAnswerCorrect(correctAnswer, target.textContent);
     target.setWrong();
-    correctAnswerButton.setCorrect();
+    correctAnswerButton().setCorrect();
     onButtonClick(isCorrect, target.textContent);
   };
 
   answersButtons.forEach((button) => {
     button.addClickEvent(handleAnswerButtonClick);
   });
+
+  answersSection.setNewQuestionAnswers = (newQuestionAnswers) => {
+    answers = newQuestionAnswers.answers;
+    correctAnswer = newQuestionAnswers.correctAnswer;
+    answers.forEach((answerText, index) => {
+      answersButtons[index].setNewAnswer(answerText);
+    });
+  };
 
   answersSection.append(...answersButtons);
 
