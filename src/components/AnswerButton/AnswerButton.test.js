@@ -17,30 +17,30 @@ describe('Answer button', () => {
   });
 
   it('should have class "answersSection__answer"', () => {
-    expect(answerButton.classList).toContain('answersSection__answer');
+    expect(answerButton).toHaveClass('answersSection__answer');
   });
 
   it('should contains class "answersSection__answer--correct" after set it correct', () => {
     answerButton.setCorrect();
-    expect(answerButton.classList).toContain('answersSection__answer--correct');
+    expect(answerButton).toHaveClass('answersSection__answer--correct');
   });
 
   it('should contains class "answersSection__answer--wrong" after set it wrong', () => {
     answerButton.setWrong();
-    expect(answerButton.classList).toContain('answersSection__answer--wrong');
+    expect(answerButton).toHaveClass('answersSection__answer--wrong');
   });
 
   it('should add a function that will be executed after click event', () => {
     const mockCallback = jest.fn();
     answerButton.addClickEvent(mockCallback);
     userEvent.click(answerButton);
-    expect(mockCallback.mock.calls).toHaveLength(1);
+    expect(mockCallback).toHaveBeenCalled(1);
   });
 
   it('should change text and remove modifier classes after set new answer', () => {
     answerButton.setNewAnswer('New Answer Text');
-    expect(answerButton.classList).not.toContain('answersSection__answer--wrong');
-    expect(answerButton.classList).not.toContain('answersSection__answer--correct');
+    expect(answerButton).not.toHaveClass('answersSection__answer--wrong');
+    expect(answerButton).not.toHaveClass('answersSection__answer--correct');
     expect(screen.getByText('New Answer Text')).toBeTruthy();
   });
 });
