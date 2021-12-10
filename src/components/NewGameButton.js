@@ -2,7 +2,7 @@ const NewGameButton = (onButtonClick) => {
   const text = 'New Game';
 
   const button = document.createElement('button');
-  const firstLetter = document.createElement('firstletter');
+  const firstLetter = document.createElement('span');
   const restOfText = document.createElement('span');
 
   button.classList.add('newGameButton');
