@@ -4,9 +4,7 @@ const ModeMenu = (onButtonClick) => {
     const section = document.createElement('div');
     section.classList.add('modeMenu');
 
-    ['Characters', 'Quotes', 'Deaths'].map((buttonName)=>{
-      let newButton = ModeMenuButton(buttonName,onButtonClick);
-      section.appendChild(newButton)});
+    section.append(['Characters', 'Quotes', 'Deaths'].map( buttonName => ModeMenuButton(buttonName, onButtonClick)));
       
     return section;
   };
