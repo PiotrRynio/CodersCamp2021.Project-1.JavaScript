@@ -1,0 +1,19 @@
+.modalPopup {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: 0.2s ease-in-out;
+  height: 600px;
+  width: 700px;
+  min-height: 500px;
+  background-color: #fff;
+  border: 1px solid red;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.modalPopup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
