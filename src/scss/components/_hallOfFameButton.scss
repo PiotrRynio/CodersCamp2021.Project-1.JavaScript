@@ -1,7 +1,7 @@
 .menuButton {
   display: flex;
   flex-direction: row;
-  
+
   justify-content: center;
   align-items: center;
   padding-right: 50px;
@@ -15,11 +15,11 @@
   font-size: 2rem;
   letter-spacing: 0.1rem;
   cursor: pointer;
-  transition: filter ease-in-out 0.2s;
+  transition: filter ease-in-out 0.2s, background-color ease-in-out 0.2s;
 
   &:hover {
     background: rgba(255, 255, 255, 0.35);
-    filter: saturate(1.5);
+    filter: saturate(1.25);
   }
 
   &__text::first-letter {

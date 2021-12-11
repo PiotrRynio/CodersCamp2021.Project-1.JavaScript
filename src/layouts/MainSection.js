@@ -1,5 +1,6 @@
 import NewGameButton from '../components/NewGameButton';
 import MainImage from '../components/MainImage';
+import MenuButton from '../components/HallOfFameButton';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -9,6 +10,7 @@ const MainSection = () => {
     console.log('The game has started');
   };
   mainSection.append(NewGameButton(startGame));
+  mainSection.append(MenuButton('Hall of Fame'));
   mainSection.appendChild(MainImage());
 
   return mainSection;

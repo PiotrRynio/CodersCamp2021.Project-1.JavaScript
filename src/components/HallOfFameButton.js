@@ -1,19 +1,16 @@
-const MenuButton = (innerText) => {
+const MenuButton = () => {
+  const textInsideButton = 'Hall of Fame';
 
-    //const text = "Hall of Fame"
+  const button = document.createElement('button');
+  button.classList.add('menuButton');
 
-    const button = document.createElement('button');
-    button.classList.add('menuButton');
+  const innerTextButton = document.createElement('span');
+  innerTextButton.classList.add('menuButton__text');
+  innerTextButton.innerText = textInsideButton;
 
-    const firstLetter = document.createElement('span');
-    firstLetter.classList.add('menuButton__text');
-    firstLetter.innerText = innerText;
-    
-    button.appendChild(firstLetter);
+  button.appendChild(innerTextButton);
 
-    //button.addEventListener("click", onButtonClick);
-
-    return button;
-}
+  return button;
+};
 
 export default MenuButton;
