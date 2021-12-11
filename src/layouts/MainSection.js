@@ -10,7 +10,7 @@ const MainSection = () => {
     console.log('The game has started');
   };
   mainSection.append(NewGameButton(startGame));
-  mainSection.append(MenuButton('Hall of Fame'));
+  mainSection.append(MenuButton());
   mainSection.appendChild(MainImage());
 
   return mainSection;
