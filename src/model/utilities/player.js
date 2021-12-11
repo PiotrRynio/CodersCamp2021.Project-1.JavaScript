@@ -1,7 +1,7 @@
 const player = () => {
   const returnedPlayer = {
-    askQuestion(onQuestionAsked, questionAndAnswers) {
-      onQuestionAsked(questionAndAnswers);
+    askQuestion(onQuestionAsked, randomQuestion) {
+      onQuestionAsked(randomQuestion);
     },
     answer(onQuestionAnswered, choosenAnswer) {
       onQuestionAnswered(choosenAnswer);
