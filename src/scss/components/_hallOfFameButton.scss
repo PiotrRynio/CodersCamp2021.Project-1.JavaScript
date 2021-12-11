@@ -1,9 +1,7 @@
-
 .menuButton {
   display: flex;
   flex-direction: row;
   
-  display: flex;
   justify-content: center;
   align-items: center;
   padding-right: 50px;
@@ -16,6 +14,7 @@
   font-weight: bold;
   font-size: 2rem;
   letter-spacing: 0.1rem;
+  cursor: pointer;
   transition: filter ease-in-out 0.2s;
 
   &:hover {
@@ -24,18 +23,14 @@
   }
 
   &__text::first-letter {
-    width: 121px;
-    height: 133px;
-  
-    font-style: normal;
-    font-weight: 600;
-    font-size: 77px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    color: #ffffff;
-  
-    background: linear-gradient(140.39deg, #14473b 0%, #016a25 100%);
+    position: relative;
+    padding: 10px 15px;
+    margin-right: 2px;
+    background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
+    border: 2px solid #063612;
   }
 }
