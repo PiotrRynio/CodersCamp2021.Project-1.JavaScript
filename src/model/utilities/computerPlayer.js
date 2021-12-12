@@ -1,5 +1,8 @@
-const computerPlayer = (playerToExtend) => {
-  const returnedPlayer = playerToExtend;
+import randomValueFromArray from './randomValueFromArray';
+import player from './Player';
+
+const computerPlayer = () => {
+  const returnedPlayer = player();
   returnedPlayer.questionAndAnswersToAnswer = {};
 
   returnedPlayer.askQuestion = (showQuestionToPlayer, questionAndAnswers, handlePlayerAnswered) => {
@@ -13,10 +16,9 @@ const computerPlayer = (playerToExtend) => {
     }, 1000);
   };
   returnedPlayer.answer = () => {
-    const randomIndex = Math.floor(
-      Math.random() * returnedPlayer.questionAndAnswersToAnswer.answers.length,
+    returnedPlayer.randomAnswer = randomValueFromArray(
+      returnedPlayer.questionAndAnswersToAnswer.answers,
     );
-    returnedPlayer.randomAnswer = returnedPlayer.questionAndAnswersToAnswer.answers[randomIndex];
   };
   return returnedPlayer;
 };

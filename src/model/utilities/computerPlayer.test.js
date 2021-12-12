@@ -16,9 +16,9 @@ describe('Computer Player', () => {
       testQuestion,
       mockCallbackToHandleAnswer,
     );
-    expect(mockCallbackToShowQuestion.mock.calls).toHaveLength(1);
+    expect(mockCallbackToShowQuestion).toHaveBeenCalledTimes(1);
     await new Promise((res) => setTimeout(res, 1000));
-    expect(mockCallbackToHandleAnswer.mock.calls).toHaveLength(1);
+    expect(mockCallbackToHandleAnswer).toHaveBeenCalledTimes(1);
   });
 
   it('properly saving question parameters', () => {
