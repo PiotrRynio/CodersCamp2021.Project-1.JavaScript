@@ -3,6 +3,12 @@
 @import 'vars';
 @import 'main';
 
+// * COMPONENTS
+@import 'src/scss/components/testButton';
+@import 'components/newGameButton';
+@import 'components/buttonhalloffame';
+@import 'src/scss/components/logo';
+
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
 @import 'src/scss/layouts/mainWrapper';

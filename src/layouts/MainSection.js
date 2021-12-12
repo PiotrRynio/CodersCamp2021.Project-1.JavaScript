@@ -1,4 +1,5 @@
 import AnswerSection from '../components/AnswersSection/AnswersSection';
+import NewGameButton from '../components/NewGameButton';
 import MainImage from '../components/MainImage';
 
 const MainSection = () => {
@@ -11,8 +12,13 @@ const MainSection = () => {
   };
 
   mainSection.append(AnswerSection({ answers, correctAnswer: 'Walter White' }, handler));
+  const startGame = () => {
+    console.log('The game has started');
+  };
+  mainSection.append(NewGameButton(startGame));
   mainSection.appendChild(MainImage());
 
   return mainSection;
 };
+
 export default MainSection;
