@@ -8,6 +8,8 @@
 @import 'components/newGameButton';
 @import 'components/hallOfFameButton';
 @import 'src/scss/components/logo';
+@import 'components/menuButton';
+@import 'components/_mainImage';
 
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
@@ -15,9 +17,3 @@
 @import 'src/scss/layouts/logoSection';
 @import 'src/scss/layouts/chooseGameSection';
 @import 'src/scss/layouts/mainSection';
-
-// * COMPONENTS
-@import 'components/_testButton';
-@import 'components/_logo';
-@import 'components/_mainImage';
-@import 'components/_hallOfFameButton';
