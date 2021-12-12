@@ -3,20 +3,21 @@ import NewGameButton from '../components/NewGameButton';
 import MainImage from '../components/MainImage';
 
 const MainSection = () => {
-  const mainSection = document.createElement('div');
+  const mainSection = document.createElement('section');
   mainSection.classList.add('mainSection');
 
-  const answers = ['Walter White', 'Jesse Pinkman', 'Hank Shrader', 'Saul Goodman'];
-  const handler = (isCorrect, answer) => {
-    console.log(answer, isCorrect);
-  };
+  const menuSection = document.createElement('section');
+  const contentSection = document.createElement('div');
 
-  mainSection.append(AnswerSection({ answers, correctAnswer: 'Walter White' }, handler));
   const startGame = () => {
     console.log('The game has started');
   };
-  mainSection.append(NewGameButton(startGame));
-  mainSection.appendChild(MainImage());
+
+  menuSection.append(NewGameButton(startGame));
+  //TODO: Add Rules/HallOfFame button
+
+  mainSection.append(menuSection);
+  mainSection.append(contentSection);
 
   return mainSection;
 };
