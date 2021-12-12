@@ -1,4 +1,3 @@
-import { render } from 'sass';
 import { renderComponent } from '../testsUtilities/renderComponent';
 import MenuButton from './HallOfFameButton';
 
