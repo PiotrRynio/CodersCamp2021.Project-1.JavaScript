@@ -1,6 +1,7 @@
 import AnswerSection from '../components/AnswersSection/AnswersSection';
 import NewGameButton from '../components/NewGameButton';
 import MainImage from '../components/MainImage';
+import Timer from '../components/Timer';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -17,6 +18,7 @@ const MainSection = () => {
   };
   mainSection.append(NewGameButton(startGame));
   mainSection.appendChild(MainImage());
+  mainSection.appendChild(Timer());
 
   return mainSection;
 };
