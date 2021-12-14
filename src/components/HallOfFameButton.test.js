@@ -10,6 +10,6 @@ describe('Menu button test', () => {
 
     expect(testButton).toBeInTheDocument();
     expect(testButtonInnerText).toBeInTheDocument();
-    expect(testButtonInnerText.innerText).toBe('Hall of Fame');
+    expect(testButtonInnerText.textContent).toBe('Hall of Fame');
   });
 });
