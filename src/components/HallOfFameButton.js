@@ -6,7 +6,7 @@ const MenuButton = () => {
 
   const innerTextButton = document.createElement('span');
   innerTextButton.classList.add('menuButton__text');
-  innerTextButton.innerText = textInsideButton;
+  innerTextButton.textContent = textInsideButton;
 
   button.appendChild(innerTextButton);
 
