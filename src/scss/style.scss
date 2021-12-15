@@ -7,8 +7,9 @@
 @import 'src/scss/components/modeMenu';
 @import 'src/scss/components/testButton';
 @import 'components/newGameButton';
-@import 'components/buttonhalloffame';
+@import 'components/hallOfFameButton';
 @import 'src/scss/components/logo';
+@import 'components/mainImage';
 
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
@@ -17,8 +18,3 @@
 @import 'src/scss/layouts/chooseGameSection';
 @import 'src/scss/layouts/mainSection';
 
-// * COMPONENTS
-@import 'components/_testButton';
-@import 'components/_logo';
-@import 'components/_mainImage';
-@import 'components/_buttonhalloffame';
