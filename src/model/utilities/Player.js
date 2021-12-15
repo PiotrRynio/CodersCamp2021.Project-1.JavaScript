@@ -1,10 +1,11 @@
 const player = () => {
   const returnedPlayer = {
-    askQuestion(onQuestionAsked, randomQuestion) {
-      onQuestionAsked(randomQuestion);
+    askQuestion(showQuestionToPlayer, questionAndAnswers) {
+      showQuestionToPlayer(questionAndAnswers);
     },
-    answer(onQuestionAnswered, choosenAnswer) {
-      onQuestionAnswered(choosenAnswer);
+
+    answer(answerQuestion, choosenAnswer) {
+      answerQuestion(choosenAnswer);
     },
   };
 
