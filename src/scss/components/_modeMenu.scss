@@ -2,9 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
   background: rgba(255, 255, 255, 0.7);
-  width: 711px;
-  height: 119px;
   border-radius: 20px 20px 0px 0px;
 
   &__button {
@@ -14,7 +13,7 @@
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
-    font-size: 42px;
+    font-size: 2rem;
     height: 100px;
   }
 

@@ -1,6 +1,5 @@
-import AnswerSection from '../components/AnswersSection/AnswersSection';
 import NewGameButton from '../components/NewGameButton';
-import MainImage from '../components/MainImage';
+import RulesSection from '../components/RulesSection/RulesSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('section');
@@ -9,6 +8,7 @@ const MainSection = () => {
   const menuSection = document.createElement('section');
   menuSection.classList.add('menuSection');
   const contentSection = document.createElement('div');
+  contentSection.classList.add('contentSection');
 
   const startGame = () => {
     console.log('The game has started');
@@ -30,6 +30,17 @@ const MainSection = () => {
 
   menuSection.append(NewGameButton(startGame), rulesRankButton);
   //TODO: Add Rules/HallOfFame button
+
+  const r = {
+    Characters: {
+      category: 'Characters',
+      question: 'Who is this character?',
+      rules:
+        'You have one minute to answer fifteen question. During the game on each question you need to select who from Breaking Bad is showed on the photo from available options.',
+    },
+  };
+
+  contentSection.append(RulesSection(r.Characters));
 
   mainSection.append(menuSection);
   mainSection.append(contentSection);
