@@ -1,14 +1,14 @@
 const TestButton = () => {
   const testButton = document.createElement('button');
   testButton.classList.add('testButton');
-  testButton.innerText = 'test button';
+  testButton.textContent = 'test button';
 
   testButton.changeText = () => {
-    testButton.innerText = 'test button changed';
+    testButton.textContent = 'test button changed';
   };
 
   const handleButtonClick = () => {
-    testButton.innerText = 'test button clicked';
+    testButton.textContent = 'test button clicked';
   };
 
   testButton.addEventListener('click', () => handleButtonClick());
