@@ -13,9 +13,13 @@ const RulesSection = (rulesObject) => {
     return `You have one minute to answer fifteen questions. During the game on each question you need to select ${whatToSelect} The correct answer will be shown to you after giving the answer. If you want to go to the next question then click again.`;
   };
 
-  category.textContent = rulesObject.category;
-  question.textContent = rulesObject.question;
-  rules.textContent = allRules(rulesObject.rules);
+  rulesSection.changeRules = (newRulesObject) => {
+    category.textContent = newRulesObject.category;
+    question.textContent = newRulesObject.question;
+    rules.textContent = allRules(newRulesObject.specialRule);
+  };
+
+  rulesSection.changeRules(rulesObject);
 
   rulesSection.append(category, question, rules);
 

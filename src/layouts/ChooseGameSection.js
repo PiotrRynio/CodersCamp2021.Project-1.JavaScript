@@ -1,12 +1,15 @@
 import ModeMenu from '../components/ModeMenu';
+import rules from '../model/rules';
 
 const ChooseGameSection = () => {
   const chooseGame = document.createElement('section');
   chooseGame.classList.add('chooseGameSection');
 
-  chooseGame.choosedMode = 'Characters';
+  let choosedMode = 'Characters';
   function handleModeMenuButtonClick(newCategoryName) {
-    chooseGame.choosedMode = newCategoryName;
+    choosedMode = newCategoryName;
+    const rulesSection = document.querySelector('.rulesSection');
+    rulesSection.changeRules(rules[choosedMode]);
   }
 
   chooseGame.appendChild(ModeMenu(handleModeMenuButtonClick));

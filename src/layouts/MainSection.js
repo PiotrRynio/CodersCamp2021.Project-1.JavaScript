@@ -1,5 +1,6 @@
 import NewGameButton from '../components/NewGameButton';
 import RulesSection from '../components/RulesSection/RulesSection';
+import rules from '../model/rules';
 
 const MainSection = () => {
   const mainSection = document.createElement('section');
@@ -31,25 +32,7 @@ const MainSection = () => {
   menuSection.append(NewGameButton(startGame), rulesRankButton);
   //TODO: Add Rules/HallOfFame button
 
-  const r = {
-    Characters: {
-      category: 'Characters',
-      question: 'Who is this character?',
-      rules: 'who from Breaking Bad is shown on the photo.',
-    },
-    Quotes: {
-      category: 'Quotes',
-      question: 'Who said this quote?',
-      rules: "who from Breaking Bad said quote's words.",
-    },
-    Deaths: {
-      category: 'Deaths',
-      question: 'Who died this way?',
-      rules: 'who from Breaking Bad died in described way.',
-    },
-  };
-
-  contentSection.append(RulesSection(r.Characters));
+  contentSection.append(RulesSection(rules.Characters));
 
   mainSection.append(menuSection);
   mainSection.append(contentSection);
