@@ -1,4 +1,4 @@
-.newGameButton {
+.menuButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@
     filter: saturate(1.25);
   }
 
-  &__firstLetter {
+  &__text::first-letter {
     position: relative;
     padding: 10px 15px;
     margin-right: 2px;
