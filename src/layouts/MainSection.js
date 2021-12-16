@@ -35,8 +35,17 @@ const MainSection = () => {
     Characters: {
       category: 'Characters',
       question: 'Who is this character?',
-      rules:
-        'You have one minute to answer fifteen question. During the game on each question you need to select who from Breaking Bad is showed on the photo from available options.',
+      rules: 'who from Breaking Bad is shown on the photo.',
+    },
+    Quotes: {
+      category: 'Quotes',
+      question: 'Who said this quote?',
+      rules: "who from Breaking Bad said quote's words.",
+    },
+    Deaths: {
+      category: 'Deaths',
+      question: 'Who died this way?',
+      rules: 'who from Breaking Bad died in described way.',
     },
   };
 
