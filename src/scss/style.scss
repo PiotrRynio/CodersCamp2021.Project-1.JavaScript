@@ -6,10 +6,9 @@
 // * COMPONENTS
 @import 'src/scss/components/modeMenu';
 @import 'src/scss/components/testButton';
-@import 'components/newGameButton';
-@import 'components/hallOfFameButton';
 @import 'src/scss/components/logo';
 @import 'components/mainImage';
+@import 'components/menuButton';
 
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
@@ -17,4 +16,3 @@
 @import 'src/scss/layouts/logoSection';
 @import 'src/scss/layouts/chooseGameSection';
 @import 'src/scss/layouts/mainSection';
-

@@ -1,7 +1,5 @@
 .menuButton {
   display: flex;
-  flex-direction: row;
-
   justify-content: center;
   align-items: center;
   padding-right: 50px;
@@ -10,7 +8,7 @@
   -moz-border-radius-bottomright: 40px;
   border-bottom-right-radius: 40px;
   background: rgba(255, 255, 255, 0.25);
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 2rem;
   letter-spacing: 0.1rem;

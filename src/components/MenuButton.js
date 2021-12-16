@@ -1,6 +1,4 @@
-const MenuButton = () => {
-  const textInsideButton = 'Hall of Fame';
-
+const MenuButton = (textInsideButton, onButtonClick) => {
   const button = document.createElement('button');
   button.classList.add('menuButton');
 
@@ -9,6 +7,8 @@ const MenuButton = () => {
   innerTextButton.textContent = textInsideButton;
 
   button.appendChild(innerTextButton);
+
+  button.addEventListener('click', onButtonClick);
 
   return button;
 };
