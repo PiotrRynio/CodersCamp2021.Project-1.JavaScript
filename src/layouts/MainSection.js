@@ -1,6 +1,7 @@
 import AnswerSection from '../components/AnswersSection/AnswersSection';
 import MainImage from '../components/MainImage';
 import MenuButton from '../components/MenuButton';
+import Timer from '../components/Timer';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');

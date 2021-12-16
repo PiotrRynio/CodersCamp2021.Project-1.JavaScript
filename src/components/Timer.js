@@ -9,6 +9,7 @@ const Timer = () => {
   const updateTime = () => {
     timeLeft = timeLeft - 1;
     timeLeft > 0 ? (timerElement.innerText = timeLeft) : (timerElement.innerHTML = 0 && gameOver());
+    console.log(timeLeft);
   };
 
   const gameOver = () => {
