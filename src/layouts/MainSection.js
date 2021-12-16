@@ -1,5 +1,4 @@
 import AnswerSection from '../components/AnswersSection/AnswersSection';
-import NewGameButton from '../components/NewGameButton';
 import MainImage from '../components/MainImage';
 import MenuButton from '../components/MenuButton';
 
@@ -13,11 +12,11 @@ const MainSection = () => {
   };
 
   mainSection.append(AnswerSection({ answers, correctAnswer: 'Walter White' }, handler));
-  const startGame = () => {
-    console.log('The game has started');
+  const menuButtonClicked = () => {
+    console.log('Menu button clicked');
   };
-  mainSection.append(NewGameButton(startGame));
-  mainSection.append(MenuButton('Hall of Fame', startGame));
+  mainSection.append(MenuButton('New Game', menuButtonClicked));
+  mainSection.append(MenuButton('Hall of Fame', menuButtonClicked));
   mainSection.appendChild(MainImage());
 
   return mainSection;

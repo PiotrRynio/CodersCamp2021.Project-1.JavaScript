@@ -1,7 +1,5 @@
 .menuButton {
   display: flex;
-  flex-direction: row;
-
   justify-content: center;
   align-items: center;
   padding-right: 50px;
@@ -10,14 +8,19 @@
   -moz-border-radius-bottomright: 40px;
   border-bottom-right-radius: 40px;
   background: rgba(255, 255, 255, 0.25);
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 2rem;
   letter-spacing: 0.1rem;
   cursor: pointer;
   transition: filter ease-in-out 0.2s, background-color ease-in-out 0.2s;
 
-  &::first-letter {
+  &:hover {
+    background: rgba(255, 255, 255, 0.35);
+    filter: saturate(1.25);
+  }
+
+  &__text::first-letter {
     position: relative;
     padding: 10px 15px;
     margin-right: 2px;
@@ -27,10 +30,5 @@
     background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
     box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
     border: 2px solid #063612;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.35);
-    filter: saturate(1.25);
   }
 }
