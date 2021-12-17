@@ -1,4 +1,5 @@
 import NewGameButton from '../components/NewGameButton';
+import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
 import rules from '../model/rules';
 
@@ -32,7 +33,8 @@ const MainSection = () => {
   menuSection.append(NewGameButton(startGame), rulesRankButton);
   //TODO: Add Rules/HallOfFame button
 
-  contentSection.append(RulesSection(rules.Characters));
+  //contentSection.append(RulesSection(rules.Characters));
+  contentSection.append(RankSection());
 
   mainSection.append(menuSection);
   mainSection.append(contentSection);

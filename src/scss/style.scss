@@ -9,6 +9,7 @@
 @import 'components/newGameButton';
 @import 'components/buttonhalloffame';
 @import 'src/scss/components/logo';
+@import 'src/scss/components/rankRecord';
 
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
@@ -19,6 +20,7 @@
 
 // * COMPONENTS
 @import 'src/scss/components/rulesSection';
+@import 'src/scss/components/rankSection';
 @import 'components/_testButton';
 @import 'components/_logo';
 @import 'components/_mainImage';
