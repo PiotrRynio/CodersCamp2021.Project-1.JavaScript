@@ -13,7 +13,10 @@ const RankSection = (categoryName) => {
   ranks.classList.add('rankSection__ranks');
 
   const scores = getScores(categoryName);
-  const rankRecords = scores.map((playerScore, index) => RankRecord(index, playerScore));
+  const rankRecords = scores
+    .sort((thisPlayer, nextPlayer) => (thisPlayer.score > nextPlayer.score ? -1 : 1))
+    .slice(0, scores.length > 20 ? 20 : scores.length)
+    .map((playerScore, index) => RankRecord(index + 1, playerScore));
 
   ranks.append(...rankRecords);
 

@@ -2,8 +2,6 @@ const RankRecord = (number, playerScore) => {
   const rankRecord = document.createElement('div');
   rankRecord.classList.add('rankRecord');
 
-  console.log(playerScore);
-
   const name = document.createElement('span');
   rankRecord.classList.add('rankRecord__name');
   const score = document.createElement('span');
