@@ -1,7 +1,7 @@
-import NewGameButton from '../components/NewGameButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
 import rules from '../model/rules';
+import MenuButton from '../components/MenuButton';
 
 const MainSection = () => {
   const mainSection = document.createElement('section');
@@ -16,21 +16,19 @@ const MainSection = () => {
     console.log('The game has started');
   };
 
-  const rulesRankChange = (e) => {
-    console.log(e);
-    if (e.target.textContent === 'Rules')
-      e.target.innerHTML =
-        '<span class="newGameButton__firstLetter">H</span><span class="newGameButton__restOfText">all Of Fame</span>';
-    else if (e.target.textContent === 'Hall Of Fame')
-      e.target.innerHTML =
-        '<span class="newGameButton__firstLetter">R</span><span class="newGameButton__restOfText">ules</span>';
+  const showRank = () => {
+    console.log('Rank');
   };
 
-  const rulesRankButton = NewGameButton(rulesRankChange);
-  rulesRankButton.innerHTML =
-    '<span class="newGameButton__firstLetter">H</span><span class="newGameButton__restOfText">all Of Fame</span>';
+  const showRules = () => {
+    console.log('rules');
+  };
 
-  menuSection.append(NewGameButton(startGame), rulesRankButton);
+  const rankButton = MenuButton('Rank', showRank);
+  const rulesButton = MenuButton('Rules', showRules);
+  const newGameButton = MenuButton('New Game', startGame);
+
+  menuSection.append(newGameButton, rankButton);
   //TODO: Add Rules/HallOfFame button
 
   //contentSection.append(RulesSection(rules.Characters));
