@@ -10,6 +10,7 @@
 @import 'components/hallOfFameButton';
 @import 'src/scss/components/logo';
 @import 'components/mainImage';
+@import './components/modalButton';
 
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
@@ -18,4 +19,3 @@
 @import 'src/scss/layouts/chooseGameSection';
 @import 'src/scss/layouts/mainSection';
 @import './layouts/modalPopup';
-
