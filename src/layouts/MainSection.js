@@ -1,5 +1,6 @@
 import NewGameButton from '../components/NewGameButton';
 import MainImage from '../components/MainImage';
+import EndOfGame from '../components/EndOfGame';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
