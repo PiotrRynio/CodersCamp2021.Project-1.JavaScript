@@ -37,20 +37,25 @@ const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
   acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
   acceptShowResultsButton.innerText = 'Accept and show results';
 
-  const handleAcceptEndButton = (name, score) => {
-    acceptEndButton.innerText = `${name}, ${score}`;
-    //console.log(saveScore('Character', 'test_name', 10));
+  const handleSaveScore = (name, score) => {
+    saveScore('Character', name, score); // TODO Handle other types of game
   };
 
-  const handleAcceptShowResultsButton = (name, score) => {
+  const handleButtonAcceptAndEnd = (name, score) => {
+    acceptEndButton.innerText = `${name}, ${score}`;
+    handleSaveScore(name, score);
+  };
+
+  const handleButtonAcceptAndShowResults = (name, score) => {
     acceptShowResultsButton.innerText = `${name}, ${score}`;
+    handleSaveScore(name, score);
   };
 
   acceptEndButton.addEventListener('click', () =>
-    handleAcceptEndButton(input.value, getPoints(playerType.Player)),
+    handleButtonAcceptAndEnd(input.value, getPoints(playerType.Player)),
   );
   acceptShowResultsButton.addEventListener('click', () =>
-    handleAcceptShowResultsButton(input.value, getPoints(playerType.Computer)),
+    handleButtonAcceptAndShowResults(input.value, getPoints(playerType.Computer)),
   );
 
   //document.querySelector('.modalPopup').appendChild(input); // ModalPopup is not imported yet
