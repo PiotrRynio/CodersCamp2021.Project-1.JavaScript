@@ -1,11 +1,11 @@
 import ModeMenuButton from './ModeMenuButton';
 
-const ModeMenu = (onButtonClick) => {
+const ModeMenu = (handleChangeMode) => {
   const section = document.createElement('div');
   section.classList.add('modeMenu');
 
   const categoriesButtons = ['Characters', 'Quotes', 'Deaths'].map((buttonName) =>
-    ModeMenuButton(buttonName, onButtonClick),
+    ModeMenuButton(buttonName, handleChangeMode),
   );
   section.append(...categoriesButtons);
 

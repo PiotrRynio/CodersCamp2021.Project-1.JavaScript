@@ -1,7 +1,7 @@
 import randomNumbers from './utilities/randomNumbers';
 import randomValueFromArray from './utilities/randomValueFromArray';
 
-const question = async (type, askedQuestion) => {
+const question = async (type, askedQuestionBefore) => {
   const data = await fetchData(type);
   let answersIndexes;
   let correctAnswerIndex;
@@ -11,7 +11,7 @@ const question = async (type, askedQuestion) => {
     correctAnswerIndex = randomValueFromArray(answersIndexes);
     const filtredAnswers = data.filter((_, index) => answersIndexes.includes(index));
     areAnswersDifferent = areAllDifferent(filtredAnswers);
-  } while (!areAnswersDifferent || askedQuestion.includes(correctAnswerIndex));
+  } while (!areAnswersDifferent || askedQuestionBefore.includes(correctAnswerIndex));
 
   return {
     answers: data.filter((_, index) => answersIndexes.includes(index)).map(({ answer }) => answer),

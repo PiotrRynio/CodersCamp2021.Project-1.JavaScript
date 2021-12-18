@@ -3,39 +3,58 @@ import player from './utilities/Player';
 import question from './questionGenerator';
 import { saveScore } from './saveScore';
 
-const Game = (name, gameType) => {
+const Game = (handleGameEnd, handleShowQuestion) => {
   const returnedGame = {
-    type: gameType,
     questionIndex: 0,
     currentQuestion: {},
-    playerName: name,
-    currentScore: 0,
+    questionHistory: [],
+    playerName: '',
+    score: 0,
     Player: player(),
   };
+  const displayQuestion = () => {
+    console.log(returnedGame.currentQuestion);
+    handleShowQuestion(returnedGame.currentQuestion);
+  };
+  const measureGameTime = () => {
+    console.log(returnedGame.secondsLeft);
+    returnedGame.secondsLeft -= 1;
+    if (returnedGame.secondsLeft < 0) returnedGame.endGame('Timeout');
+  };
+
+  const generateQuestion = () => {
+    if (returnedGame.questionIndex !== 0 && Object.keys(returnedGame.currentQuestion).length !== 0)
+      returnedGame.questionHistory.push(returnedGame.currentQuestion);
+
+    returnedGame.questionIndex += 1;
+    question(returnedGame.gameMode.toLowerCase(), [])
+      .then((questionObject) => {
+        returnedGame.currentQuestion = questionObject;
+      })
+      .then(() => displayQuestion());
+  };
+
   returnedGame.startGame = () => {
-    (returnedGame.secondsLeft = 60), setInterval(returnedGame.measureTime, 1000);
+    console.log('The game has started');
+    console.log(`Choosed game mode: ${returnedGame.gameMode}`);
+    returnedGame.secondsLeft = 5;
+    returnedGame.interval = setInterval(measureGameTime, 1000);
     generateQuestion();
   };
 
-  returnedGame.generateQuestion = () => {
-    questionIndex++;
-    Game.currentQuestion = question();
-    displayQuestion();
+  returnedGame.onAnswerCheck = (userAnswer) => {
+    if (isAnswerIsCorrect(userAnswer, returnedGame.currentQuestion.correctAnswer))
+      returnedGame.score += 1;
+
+    (returnedGame.questionIndex === 15 ? returnedGame.endGame : returnedGame.generateQuestion)();
   };
 
-  returnedGame.displayQuestion = () => {
-    shuffleQuestion();
+  returnedGame.endGame = (reasonToEnd) => {
+    console.log('Game ends');
+    clearInterval(returnedGame.interval);
+    saveScore(returnedGame.type, returnedGame.playerName, returnedGame.score);
+    handleGameEnd(reasonToEnd);
   };
-
-  returnedGame.onAnswerCheck = () => {
-    questionIndex === 15 ? endGame() : generateQuestion();
-  };
-
-  returnedGame.endGame = () => {
-    saveScore(Game.type, Game.playerName, game.score);
-  };
-
-  returnedGame.measureTime = () => secondsLeft--;
 
   return returnedGame;
 };
