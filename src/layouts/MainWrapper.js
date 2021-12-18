@@ -14,8 +14,14 @@ const Wrapper = () => {
   wrapper.appendChild(upperSection);
   wrapper.appendChild(lowerSection);
 
+  const mainSection = MainSection();
+
+  const func = (category) => {
+    mainSection.setNewCategory(category);
+  };
+
   upperSection.appendChild(LogoSection());
-  upperSection.appendChild(ChooseGameSection());
+  upperSection.appendChild(ChooseGameSection(func));
   lowerSection.appendChild(MainSection());
   return wrapper;
 };

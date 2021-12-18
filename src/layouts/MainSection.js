@@ -24,15 +24,15 @@ const MainSection = () => {
     console.log('rules');
   };
 
-  const rankButton = MenuButton('Rank', showRank);
+  const rankButton = MenuButton('Ranking', showRank);
   const rulesButton = MenuButton('Rules', showRules);
   const newGameButton = MenuButton('New Game', startGame);
 
   menuSection.append(newGameButton, rankButton);
   //TODO: Add Rules/HallOfFame button
 
-  //contentSection.append(RulesSection(rules.Characters));
-  contentSection.append(RankSection());
+  contentSection.append(RulesSection(rules.Characters));
+  //contentSection.append(RankSection());
 
   mainSection.append(menuSection);
   mainSection.append(contentSection);
