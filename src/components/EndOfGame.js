@@ -3,25 +3,60 @@ import { saveScore, getScores } from '../model/saveScore';
 const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
   const endOfGameModalContent = document.createElement('b');
 
-  const playerPointsPercentage =
-    (answersListPlayer.filter((answer) => answer.isCorrect).length / answersListPlayer.length) *
-    100;
+  const playerType = {
+    Player: answersListPlayer,
+    Computer: answersListComputer,
+  };
 
-  const computerPointsPercentage =
-    (answersListComputer.filter((answer) => answer.isCorrect).length / answersListComputer.length) *
-    100;
+  const getPoints = (playerType) => {
+    return playerType.filter((answer) => answer.isCorrect).length;
+  };
 
-  console.log(saveScore('Character', 'test_name', 10));
-  console.log(getScores('Character'));
+  const getPointsInPercentage = (playerType) => {
+    return (getPoints(playerType) / playerType.length) * 100;
+  };
 
   endOfGameModalContent.showResults = () => {
-    const message = `Czystość Twoich wyników wynosi ${playerPointsPercentage}%. 
+    const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(playerType.Player)}%. 
     Zająłeś XX miejsce w rankingu. 
-    Konkurencja uzyskała ${computerPointsPercentage}%. 
+    Konkurencja uzyskała ${getPointsInPercentage(playerType.Computer)}%. 
     Jak się nazywasz?`;
     return message;
   };
   console.log(endOfGameModalContent.showResults());
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.classList.add('nameInput');
+
+  const acceptEndButton = document.createElement('button');
+  acceptEndButton.classList.add('endOfGameButton', 'acceptEndButton');
+  acceptEndButton.innerText = 'Accept';
+
+  const acceptShowResultsButton = document.createElement('button');
+  acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
+  acceptShowResultsButton.innerText = 'Accept and show results';
+
+  const handleAcceptEndButton = (name, score) => {
+    acceptEndButton.innerText = `${name}, ${score}`;
+    //console.log(saveScore('Character', 'test_name', 10));
+  };
+
+  const handleAcceptShowResultsButton = (name, score) => {
+    acceptShowResultsButton.innerText = `${name}, ${score}`;
+  };
+
+  acceptEndButton.addEventListener('click', () =>
+    handleAcceptEndButton(input.value, getPoints(playerType.Player)),
+  );
+  acceptShowResultsButton.addEventListener('click', () =>
+    handleAcceptShowResultsButton(input.value, getPoints(playerType.Computer)),
+  );
+
+  //document.querySelector('.modalPopup').appendChild(input); // ModalPopup is not imported yet
+  document.querySelector('#app').appendChild(input);
+  document.querySelector('#app').appendChild(acceptEndButton);
+  document.querySelector('#app').appendChild(acceptShowResultsButton);
 };
 
 const answer1 = {
@@ -36,17 +71,17 @@ const answer2 = {
 
 const answer3 = {
   answer: 'Elton',
-  isCorrect: false,
+  isCorrect: true,
 };
 
 const answer4 = {
   answer: 'Elvis',
-  isCorrect: false,
+  isCorrect: true,
 };
 
 const answersListPlayer = [answer1, answer2];
 const answersListComputer = [answer3, answer4];
 
-const modalContent = EndOfGameModalContent(answersListPlayer, answersListComputer);
+EndOfGameModalContent(answersListPlayer, answersListComputer);
 
 export default EndOfGameModalContent;
