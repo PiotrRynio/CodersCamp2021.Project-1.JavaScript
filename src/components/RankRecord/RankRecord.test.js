@@ -13,8 +13,7 @@ describe('RankRecord', () => {
 
     // then
     expect(testRankRecord).toBeInTheDocument();
-    // answers.forEach((answer) => {
-    //   expect(screen.getByText(answer)).toBeTruthy();
-    // });
+    expect(screen.getByText('3. John Doe')).toBeTruthy();
+    expect(screen.getByText('100')).toBeTruthy();
   });
 });
