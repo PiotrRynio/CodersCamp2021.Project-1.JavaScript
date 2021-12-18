@@ -1,15 +1,28 @@
 const Timer = () => {
   const timerElement = document.createElement('div');
-  timerElement.textContent = '60';
   timerElement.classList.add('timer');
+
+  const numberSection = document.createElement('div');
+  numberSection.textContent = '60';
+  numberSection.classList.add('timer__number');
+
+  timerElement.appendChild(numberSection);
+
+  const textSection = document.createElement('div');
+  textSection.textContent = 'Ti';
+  textSection.classList.add('timer__text');
+
+  timerElement.appendChild(textSection);
 
   let timerInterval;
   let timeLeft = 60;
 
   const updateTime = () => {
     timeLeft = timeLeft - 1;
-    timeLeft > 0 ? (timerElement.innerText = timeLeft) : (timerElement.innerHTML = 0 && gameOver());
-    console.log(timeLeft);
+    timeLeft > 0
+      ? (numberSection.innerText = timeLeft)
+      : (numberSection.innerHTML = 0 && gameOver());
+    //console.log(timeLeft);
   };
 
   const gameOver = () => {
