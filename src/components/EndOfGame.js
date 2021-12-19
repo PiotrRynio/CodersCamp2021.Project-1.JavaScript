@@ -22,14 +22,21 @@ const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
 
   const getPlaceFromHistoryRank = (gameType, points) => {
     const scores = getScores(gameType);
-    const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length + 1;
+    console.log(scores);
+    if (scores === null) {
+      return 0;
+    }
+    const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length;
+    console.log(scoresBetterThanCurrent);
     return scoresBetterThanCurrent;
   };
 
   endOfGameModalContent.showResults = () => {
     const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(playerType.Player)}%. 
-    Zająłeś ${getPlaceFromHistoryRank(gameType.Character)} miejsce w rankingu. 
-    Konkurencja uzyskała ${getPointsInPercentage(playerType.Computer)}%. 
+    Zająłeś ${
+      getPlaceFromHistoryRank(gameType.Character, getPoints(playerType.Player)) + 1
+    } miejsce w rankingu. 
+    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(playerType.Computer)}%. 
     Jak się nazywasz?`;
     return message;
   };
@@ -49,10 +56,10 @@ const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
 
   const handleSaveScore = (gameType, name, score) => {
     if (name.length === 0) {
-      alert('Name can not be empty. Please enter your name.');
+      alert('Nie możesz ciągle działać pod przykrywką. Podaj swój pseudonim!');
       return false;
     }
-    console.log(gameType, name, score);
+    console.log('Score saved:', gameType, name, score);
     return saveScore(gameType, name, score);
   };
 
@@ -99,12 +106,12 @@ const answer3 = {
 
 const answer4 = {
   answer: 'Elvis',
-  isCorrect: true,
+  isCorrect: false,
 };
 
 const answer5 = {
   answer: 'Travis',
-  isCorrect: true,
+  isCorrect: false,
 };
 
 const answersListPlayer = [answer1, answer2, answer3, answer4, answer5];
