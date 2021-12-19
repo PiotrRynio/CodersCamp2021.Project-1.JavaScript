@@ -9,27 +9,77 @@ const Timer = () => {
   timerElement.appendChild(numberSection);
 
   const textSection = document.createElement('div');
-  textSection.textContent = 'Ti';
+  textSection.textContent = 'Nd';
   textSection.classList.add('timer__text');
 
   timerElement.appendChild(textSection);
 
-  let timerInterval;
-  let timeLeft = 60;
+  const chemicalElements = [
+    'H',
+    'He',
+    'Li',
+    'Be',
+    'B',
+    'C',
+    'N',
+    'O',
+    'F',
+    'Ne',
+    'Na',
+    'Mg',
+    'Al',
+    'Si',
+    'P',
+    'S',
+    'Cl',
+    'Ar',
+    'K',
+    'Ca',
+    'Sc',
+    'Ti',
+    'V',
+    'Cr',
+    'Mn',
+    'Fe',
+    'Co',
+    'Ni',
+    'Cu',
+    'Zn',
+    'Ga',
+    'Ge',
+    'As',
+    'Se',
+    'Br',
+    'Kr',
+    'Rb',
+    'Sr',
+    'Y',
+    'Zr',
+    'Nb',
+    'Mo',
+    'Tc',
+    'Ru',
+    'Rh',
+    'Pd',
+    'Ag',
+    'Cd',
+    'In',
+    'Sn',
+    'Sb',
+    'Te',
+    'I',
+    'Xe',
+    'Cs',
+    'Ba',
+    'La',
+    'Ce',
+    'Pr',
+  ];
 
-  const updateTime = () => {
-    timeLeft = timeLeft - 1;
-    timeLeft > 0
-      ? (numberSection.innerText = timeLeft)
-      : (numberSection.innerHTML = 0 && gameOver());
-    //console.log(timeLeft);
+  timerElement.updateTime = (secondsLeftInGame) => {
+    numberSection.textContent = secondsLeftInGame;
+    textSection.textContent = chemicalElements[secondsLeftInGame - 1];
   };
-
-  const gameOver = () => {
-    clearInterval(timerInterval);
-  };
-
-  timerInterval = setInterval(updateTime, 1000);
 
   return timerElement;
 };
