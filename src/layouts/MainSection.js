@@ -1,6 +1,7 @@
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
+import { GAME_MODE } from '../model/constants';
 
 const MainSection = () => {
   const mainSection = document.createElement('section');
@@ -11,8 +12,8 @@ const MainSection = () => {
   const contentSection = document.createElement('div');
   contentSection.classList.add('contentSection');
 
-  const rankSection = RankSection('Characters');
-  const rulesSection = RulesSection('Characters');
+  const rankSection = RankSection(GAME_MODE.CHARACTERS);
+  const rulesSection = RulesSection(GAME_MODE.CHARACTERS);
 
   const startGame = () => {
     mainSection.removeChild(menuSection);
@@ -39,6 +40,7 @@ const MainSection = () => {
 
   mainSection.changeMode = (newGameMode) => {
     rulesSection.changeRules(newGameMode);
+    rankSection.changeRanks(newGameMode);
   };
 
   menuSection.append(newGameButton, rankButton);
