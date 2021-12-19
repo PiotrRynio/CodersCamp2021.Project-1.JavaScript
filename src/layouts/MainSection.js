@@ -2,6 +2,7 @@ import AnswerSection from '../components/AnswersSection/AnswersSection';
 import MainImage from '../components/MainImage';
 import MenuButton from '../components/MenuButton';
 import Timer from '../components/Timer';
+import RankSection from '../components/RankSection/RankSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -20,6 +21,8 @@ const MainSection = () => {
   mainSection.append(MenuButton('Hall of Fame', menuButtonClicked));
   mainSection.appendChild(MainImage());
   mainSection.appendChild(Timer());
+
+  mainSection.append(RankSection('Characters'));
 
   return mainSection;
 };
