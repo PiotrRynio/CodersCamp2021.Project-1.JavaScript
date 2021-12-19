@@ -17,7 +17,7 @@ describe('RankSection', () => {
       { name: 'Player3', score: 20 },
     ];
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
-    const category = GAME_MODE.CHARACTER;
+    const category = GAME_MODE.CHARACTERS;
 
     // when
     const testRanking = renderComponent(RankSection(category));
