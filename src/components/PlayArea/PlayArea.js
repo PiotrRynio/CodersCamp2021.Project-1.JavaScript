@@ -1,15 +1,31 @@
 import AnswerSection from '../AnswersSection/AnswersSection';
 import MainImage from '../MainImage';
+import TextQuestion from '../TextQuestion/TextQuestion';
 
-const PlayArea = () => {
-  const playArea = document.createElement('div');
-  playArea.classList.add('playArea');
-  const answers = ['Walter White', 'Jesse Pinkman', 'Hank Shrader', 'Saul Goodman'];
-  playArea.appendChild(MainImage());
-  const handler = (isCorrect, answer) => {
-    console.log(answer, isCorrect);
+const PlayArea = (category, onButtonClick) => {
+  const playArea = {};
+  playArea.div = document.createElement('div');
+  playArea.div.classList.add('playArea');
+
+  const textQuestion = TextQuestion('Test question text');
+  playArea.div.appendChild(textQuestion);
+
+  playArea.showQuestionAndAnswer = (question) => {
+    playArea.removePreviousAnswers();
+
+    const answerSection = AnswerSection(
+      { answers: question.answers, correctAnswer: question.correctAnswer },
+      onButtonClick,
+    );
+    playArea.div.appendChild(answerSection);
   };
-  playArea.append(AnswerSection({ answers, correctAnswer: 'Walter White' }, handler));
+  playArea.removePreviousAnswers = () => {
+    if (document.querySelector('.answersSection')) {
+      playArea.div.removeChild(document.querySelector('.answersSection'));
+    }
+  };
+
+  playArea.div.appendChild(MainImage());
 
   return playArea;
 };

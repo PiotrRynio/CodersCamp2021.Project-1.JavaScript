@@ -1,0 +1,39 @@
+.timer {
+  position: relative;
+  display: grid;
+  direction: column;
+  grid-template-columns: 20%, 60%, 20%;
+  grid-template-rows: 20%, 60%, 20%;
+
+  height: 110px;
+  width: 110px;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  padding: 5px 15px;
+  margin-right: 2px;
+  background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
+  border: 2px solid #063612;
+
+  &__number {
+    position: absolute;
+    align-self: start;
+    justify-self: end;
+    padding: 0 5px;
+    grid-column: 3/4;
+    grid-row: 1/2;
+    font-size: 1.5rem;
+  }
+
+  &__text {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: center;
+    justify-self: start;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+}
