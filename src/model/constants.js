@@ -17,7 +17,7 @@ export const RULES = {
 };
 
 export const GAME_MODE = {
-  CHARACTER: 'Character',
+  CHARACTER: 'Characters',
   DEATHS: 'Deaths',
   QUOTES: 'Quotes',
 };
