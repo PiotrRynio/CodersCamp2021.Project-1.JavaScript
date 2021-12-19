@@ -1,4 +1,4 @@
-const RankRecord = (number, playerScore) => {
+const RankRecord = (rankingPlace, playerScore) => {
   const rankRecord = document.createElement('div');
   rankRecord.classList.add('rankRecord');
 
@@ -7,7 +7,7 @@ const RankRecord = (number, playerScore) => {
   const score = document.createElement('span');
   rankRecord.classList.add('rankRecord__score');
 
-  name.textContent = `${number}. ${playerScore.name}`;
+  name.textContent = `${rankingPlace}. ${playerScore.name}`;
   score.textContent = `${playerScore.score}`;
 
   rankRecord.append(name, score);
