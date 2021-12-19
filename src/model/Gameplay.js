@@ -1,7 +1,4 @@
-import isAnswerIsCorrect from './isAnswerCorrect';
-import player from './utilities/Player';
 import question from './questionGenerator';
-import { saveScore } from './saveScore';
 
 const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
@@ -11,20 +8,18 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     gameMode: '',
     playerName: '',
     score: 0,
-    secondsLeft: Number,
-    Player: player(),
+    secondsLeft: 60,
   };
 
   const measureGameTime = () => {
-    console.log(returnedGame.secondsLeft);
     returnedGame.secondsLeft -= 1;
-
     if (returnedGame.secondsLeft < 0) {
-      returnedGame.endGame('Timeout');
+      returnedGame.endGame();
     } else {
       handleUpdateTime(returnedGame.secondsLeft);
     }
   };
+
   const generateQuestion = () => {
     if (returnedGame.questionIndex !== 0 && Object.keys(returnedGame.currentQuestion).length !== 0)
       returnedGame.questionHistory.push(returnedGame.currentQuestion);
@@ -38,27 +33,22 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   };
 
   returnedGame.startGame = () => {
-    console.log('The game has started');
-    console.log(`Choosed game mode: ${returnedGame.gameMode}`);
     returnedGame.secondsLeft = 5;
     handleUpdateTime(returnedGame.secondsLeft);
     returnedGame.interval = setInterval(measureGameTime, 1000);
     generateQuestion();
   };
 
-  returnedGame.onAnswerCheck = (userAnswer) => {
-    if (isAnswerIsCorrect(userAnswer, returnedGame.currentQuestion.correctAnswer))
-      returnedGame.score += 1;
-    console.log(returnedGame.score);
-    (returnedGame.questionIndex === 15 ? returnedGame.endGame('15 Questions') : generateQuestion)();
+  returnedGame.onAnswerCheck = (isCorrect) => {
+    if (isCorrect) returnedGame.score += 1;
+    (returnedGame.questionIndex === 15 ? returnedGame.endGame() : generateQuestion)();
   };
 
-  returnedGame.endGame = (reasonToEnd) => {
+  returnedGame.endGame = () => {
     clearInterval(returnedGame.interval);
-    handleEndOfGame(reasonToEnd);
+    handleEndOfGame();
   };
 
   return returnedGame;
 };
-
 export default Game;

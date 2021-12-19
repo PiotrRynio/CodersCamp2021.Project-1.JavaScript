@@ -10,23 +10,21 @@ const MainSection = () => {
   const timer = Timer();
   mainSection.appendChild(timer);
 
-  const handleUserAnswer = (isCorrect, answer) => {
-    console.log(`User answer ${answer}, is correct: ${isCorrect}`);
-    mainSection.game.onAnswerCheck(answer);
+  const handleUserAnswer = (isCorrect) => {
+    mainSection.game.onAnswerCheck(isCorrect);
   };
 
   const playArea = PlayArea('', handleUserAnswer);
 
-  const handleEndOfGame = (reasonOfEnd) => {
-    console.log(`Game end because of ${reasonOfEnd}`);
-    console.log(`User scores: ${mainSection.game.score} / ${mainSection.game.questionIndex}`);
+  const handleEndOfGame = () => {
     mainSection.removeChild(playArea.div);
     mainSection.appendChild(newGameButton);
   };
+
   const handleShowQuestion = (currentQuestionObject) => {
-    console.log('currentQuestionObject.answers', currentQuestionObject.answers);
     playArea.showQuestionAndAnswer(currentQuestionObject);
   };
+
   const handleUpdateTime = (secondsToLeft) => {
     timer.updateTime(secondsToLeft);
   };
@@ -36,6 +34,7 @@ const MainSection = () => {
   mainSection.changeMode = (mode) => {
     mainSection.game.gameMode = mode;
   };
+
   const startGame = () => {
     mainSection.appendChild(playArea.div);
     mainSection.removeChild(newGameButton);
