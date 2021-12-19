@@ -15,3 +15,9 @@ export const RULES = {
     specialRule: 'who from Breaking Bad died in described way.',
   },
 };
+
+export const GAME_MODE = {
+  CHARACTER: 'Character',
+  DEATHS: 'Deaths',
+  QUOTES: 'Quotes',
+};

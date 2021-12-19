@@ -1,6 +1,7 @@
 import AnswerSection from '../components/AnswersSection/AnswersSection';
 import MainImage from '../components/MainImage';
 import MenuButton from '../components/MenuButton';
+import RankSection from '../components/RankSection/RankSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -18,6 +19,8 @@ const MainSection = () => {
   mainSection.append(MenuButton('New Game', menuButtonClicked));
   mainSection.append(MenuButton('Hall of Fame', menuButtonClicked));
   mainSection.appendChild(MainImage());
+
+  mainSection.append(RankSection('Characters'));
 
   return mainSection;
 };
