@@ -3,6 +3,7 @@ import RulesSection from '../components/RulesSection/RulesSection';
 import rules from '../model/rules';
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
+import RulesSection from '../components/RulesSection/RulesSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('section');
@@ -39,6 +40,7 @@ const MainSection = () => {
   mainSection.append(contentSection);
 
   mainSection.append(RankSection('Characters'));
+  mainSection.append(RulesSection('Characters'));
 
   return mainSection;
 };
