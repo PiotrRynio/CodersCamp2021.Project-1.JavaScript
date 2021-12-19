@@ -1,7 +1,6 @@
 import { screen } from '@testing-library/dom';
 import { renderComponent } from '../../testsUtilities/renderComponent';
 import RulesSection from './RulesSection';
-import * as scores from '../../model/saveScore';
 import { GAME_MODE, RULES } from '../../model/constants';
 
 describe('RankSection', () => {
