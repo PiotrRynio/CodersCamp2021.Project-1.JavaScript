@@ -15,14 +15,13 @@ const Wrapper = () => {
   wrapper.appendChild(lowerSection);
 
   const mainSection = MainSection();
-
-  const func = (category) => {
-    mainSection.setNewCategory(category);
+  const handleChangeMode = (mode) => {
+    mainSection.changeMode(mode);
   };
 
   upperSection.appendChild(LogoSection());
-  upperSection.appendChild(ChooseGameSection(func));
-  lowerSection.appendChild(MainSection());
+  upperSection.appendChild(ChooseGameSection(handleChangeMode));
+  lowerSection.appendChild(mainSection);
   return wrapper;
 };
 

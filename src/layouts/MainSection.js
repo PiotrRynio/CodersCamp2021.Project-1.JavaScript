@@ -1,6 +1,3 @@
-import RankSection from '../components/RankSection/RankSection';
-import RulesSection from '../components/RulesSection/RulesSection';
-import rules from '../model/rules';
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
@@ -14,33 +11,41 @@ const MainSection = () => {
   const contentSection = document.createElement('div');
   contentSection.classList.add('contentSection');
 
+  const rankSection = RankSection('Characters');
+  const rulesSection = RulesSection('Characters');
+
   const startGame = () => {
-    console.log('The game has started');
+    mainSection.removeChild(menuSection);
+    mainSection.removeChild(contentSection);
   };
 
   const showRank = () => {
-    console.log('Rank');
+    contentSection.removeChild(rulesSection);
+    contentSection.appendChild(rankSection);
+    menuSection.removeChild(rankButton);
+    menuSection.appendChild(rulesButton);
   };
 
   const showRules = () => {
-    console.log('rules');
+    contentSection.removeChild(rankSection);
+    contentSection.appendChild(rulesSection);
+    menuSection.removeChild(rulesButton);
+    menuSection.appendChild(rankButton);
   };
 
   const rankButton = MenuButton('Ranking', showRank);
   const rulesButton = MenuButton('Rules', showRules);
   const newGameButton = MenuButton('New Game', startGame);
 
-  menuSection.append(newGameButton, rankButton);
-  //TODO: Add Rules/HallOfFame button
+  mainSection.changeMode = (newGameMode) => {
+    rulesSection.changeRules(newGameMode);
+  };
 
-  contentSection.append(RulesSection(rules.Characters));
-  //contentSection.append(RankSection());
+  menuSection.append(newGameButton, rankButton);
+  contentSection.append(rulesSection);
 
   mainSection.append(menuSection);
   mainSection.append(contentSection);
-
-  mainSection.append(RankSection('Characters'));
-  mainSection.append(RulesSection('Characters'));
 
   return mainSection;
 };
