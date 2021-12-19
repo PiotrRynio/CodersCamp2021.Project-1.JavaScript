@@ -2,7 +2,7 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  padding-right: 50px;
+  padding: 11px 0;
   border: none;
   -webkit-border-bottom-right-radius: 40px;
   -moz-border-radius-bottomright: 40px;
@@ -21,7 +21,6 @@
   }
 
   &__text::first-letter {
-    position: relative;
     padding: 10px 15px;
     margin-right: 2px;
     background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
