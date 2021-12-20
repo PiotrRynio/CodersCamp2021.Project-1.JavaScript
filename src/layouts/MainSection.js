@@ -1,8 +1,9 @@
-import AnswerSection from '../components/AnswersSection/AnswersSection';
-import MainImage from '../components/MainImage';
-import MenuButton from '../components/MenuButton';
-import RankSection from '../components/RankSection/RankSection';
-import RulesSection from '../components/RulesSection/RulesSection';
+// import AnswerSection from '../components/AnswersSection/AnswersSection';
+// import MainImage from '../components/MainImage';
+// import MenuButton from '../components/MenuButton';
+// import RankSection from '../components/RankSection/RankSection';
+// import RulesSection from '../components/RulesSection/RulesSection';
+import GameSection from '../components/GameSection/GameSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -23,6 +24,19 @@ const MainSection = () => {
 
   mainSection.append(RankSection('Characters'));
   mainSection.append(RulesSection('Characters'));
+
+  const testQuestion = {
+    answers: ["Declan's men and his cook.", 'Los Pollos driver', 'No-Doze', 'Max Arciniega'],
+    questionObject:
+      'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
+    correctAnswer: 'Los Pollos driver',
+  };
+
+  const gameSection = GameSection('Characters', menuButtonClicked);
+
+  mainSection.append(gameSection);
+
+  gameSection.changeQuestion(testQuestion);
 
   return mainSection;
 };
