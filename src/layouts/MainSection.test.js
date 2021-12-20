@@ -75,4 +75,25 @@ describe('MainSection', () => {
     expect(screen.getByText('Ranking: Characters')).toBeTruthy();
     expect(screen.getByText('Rules')).toBeTruthy();
   });
+
+  it('should display ranking Deaths on "Ranking" button click and after change category', () => {
+    // given
+    const testScores = [
+      { name: 'Player1', score: 10 },
+      { name: 'Player2', score: 30 },
+      { name: 'Player3', score: 20 },
+    ];
+    jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
+    const testMainSection = renderComponent(MainSection());
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(menuButtons[1]);
+    testMainSection.changeMode(GAME_MODE.DEATHS);
+    const ranks = testMainSection.querySelectorAll('.rankRecord');
+
+    // then
+    expect(ranks).toHaveLength(3);
+    expect(screen.getByText('Ranking: Deaths')).toBeTruthy();
+  });
 });
