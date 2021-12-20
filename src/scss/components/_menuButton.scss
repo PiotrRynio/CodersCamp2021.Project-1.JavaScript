@@ -1,8 +1,8 @@
-.newGameButton {
+.menuButton {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  padding-right: 50px;
+  padding: 11px 0;
   border: none;
   -webkit-border-bottom-right-radius: 40px;
   -moz-border-radius-bottomright: 40px;
@@ -20,8 +20,7 @@
     filter: saturate(1.25);
   }
 
-  &__firstLetter {
-    position: relative;
+  &__text::first-letter {
     padding: 10px 15px;
     margin-right: 2px;
     background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);

@@ -7,10 +7,13 @@
 @import 'src/scss/components/modeMenu';
 @import 'src/scss/components/gameSection';
 @import 'src/scss/components/testButton';
-@import 'components/newGameButton';
-@import 'components/buttonhalloffame';
 @import 'src/scss/components/logo';
 @import 'components/timer';
+@import 'src/scss/components/rankRecord';
+@import 'src/scss/components/mainImage';
+@import 'src/scss/components/menuButton';
+@import 'src/scss/components/rulesSection';
+@import 'src/scss/components/rankSection';
 
 // * LAYOUTS
 @import 'src/scss/layouts/answersSection';
@@ -18,10 +21,3 @@
 @import 'src/scss/layouts/logoSection';
 @import 'src/scss/layouts/chooseGameSection';
 @import 'src/scss/layouts/mainSection';
-@import 'src/scss/layouts/playArea';
-
-// * COMPONENTS
-@import 'components/_testButton';
-@import 'components/_logo';
-@import 'components/_mainImage';
-@import 'components/_buttonhalloffame';

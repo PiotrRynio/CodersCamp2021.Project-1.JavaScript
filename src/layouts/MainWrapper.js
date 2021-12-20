@@ -21,9 +21,7 @@ const Wrapper = () => {
 
   upperSection.appendChild(LogoSection());
   upperSection.appendChild(ChooseGameSection(handleChangeMode));
-
   lowerSection.appendChild(mainSection);
-
   return wrapper;
 };
 
