@@ -18,9 +18,9 @@ This app has been created by a group of 6 people during CodersCamp course.
 Our motivation was to learn how to work as a group on a project and improve our skills in HTML, SCSS and JavaScript.
 The purpose of this application is to learn the possibilites and boundaries of the mentioned above languages.
 
-- API URL: [An API of XXX](XXX)
+- API URL: [An API of Breaking Bad](https://breakingbadapi.com/documentation)
 - Demo on Netlify: [LINK](https://breaking-bad-quiz-game.netlify.app)
-- Repo url: [LINK](XXX)
+- Repo url: [LINK](https://github.com/PiotrRynio/CodersCamp2021.Project.JavaScript.git)
 
 ## Our Crew
 
@@ -32,12 +32,6 @@ Mentor: [Piotr Rynio](https://github.com/PiotrRynio)
 - [Bartosz Dombrow](https://github.com/BartoszDombrow)
 - [Kuba Jarosz](https://github.com/kubajaro)
 - [Jarosław Kaczor](https://github.com/jaroslawkaczor)
-
-## Main functionalities:
-
-1. Tournament organisation
-2. XXX
-3. ...XXX
 
 ## Technologies used
 
