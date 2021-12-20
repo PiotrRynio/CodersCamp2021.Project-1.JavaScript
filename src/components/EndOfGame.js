@@ -57,12 +57,12 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const handleButtonAcceptAndEnd = (name, score) => {
-    handleSaveScore(gameType, name, score);
+    handleSaveScore(name, score);
     // TODO call "close modal"
   };
 
   const handleButtonAcceptAndShowResults = (name, score) => {
-    handleSaveScore(gameType, name, score);
+    handleSaveScore(name, score);
     // TODO call "lista odpowiedzi"
   };
 
