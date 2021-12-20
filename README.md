@@ -14,7 +14,7 @@
 ## General Information
 
 This is a quiz type game made using the popular Breaking Bad series universe API with multiple levels of difficulties, ranking scoreboard and randomized questions created with HTML, SCSS and JavaScript. Project build for Coders Camp 2021/2022.
-This app has been created by a group of 6 people for a free coding program called CodersCamp.
+This app has been created by a group of 6 people during CodersCamp course.
 Our motivation was to learn how to work as a group on a project and improve our skills in HTML, SCSS and JavaScript.
 The purpose of this application is to learn the possibilites and boundaries of the mentioned above languages.
 
