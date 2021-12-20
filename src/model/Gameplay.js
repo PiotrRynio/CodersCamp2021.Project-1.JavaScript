@@ -1,12 +1,13 @@
 import question from './questionGenerator';
+import player from './utilities/Player';
 
-const Game = (player, handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
+const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
     questionIndex: 0,
     currentQuestion: {},
     questionHistory: [],
     gameMode: '',
-    gamePlayer: player,
+    gamePlayer: player(),
     playerName: '',
     score: 0,
     secondsLeft: 60,
@@ -28,7 +29,7 @@ const Game = (player, handleEndOfGame, handleShowQuestion, handleUpdateTime) => 
         returnedGame.currentQuestion = questionObject;
       })
       .then(() =>
-        returnedGame.player.askQuestion(handleShowQuestion, returnedGame.currentQuestion),
+        returnedGame.gamePlayer.askQuestion(handleShowQuestion, returnedGame.currentQuestion),
       );
   };
 

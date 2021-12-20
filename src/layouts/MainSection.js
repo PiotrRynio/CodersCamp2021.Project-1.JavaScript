@@ -1,5 +1,3 @@
-import NewGameButton from '../components/NewGameButton';
-import PlayArea from '../components/PlayArea/PlayArea';
 import Gameplay from '../model/Gameplay';
 import Timer from '../components/Timer';
 import GameSection from '../components/GameSection/GameSection';
@@ -20,7 +18,6 @@ const MainSection = () => {
   };
 
   const handleEndOfGame = () => {
-    mainSection.removeChild(playArea.div);
     mainSection.appendChild(newGameButton);
   };
 
@@ -34,8 +31,6 @@ const MainSection = () => {
 
   mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
 
-  const newGameButton = NewGameButton(startGame);
-  mainSection.append(newGameButton);
   const menuSection = document.createElement('section');
   menuSection.classList.add('menuSection');
   const contentSection = document.createElement('div');
@@ -49,7 +44,7 @@ const MainSection = () => {
     mainSection.removeChild(contentSection);
     mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
     mainSection.game.startGame();
-    mainSection.append(gameSection);
+    mainSection.append(mainSection.gameSection);
   };
 
   const showRank = () => {
@@ -73,7 +68,7 @@ const MainSection = () => {
   mainSection.changeMode = (newGameMode) => {
     rulesSection.changeRules(newGameMode);
     rankSection.changeRanks(newGameMode);
-    mainSection.game.gameMode = mode;
+    mainSection.game.gameMode = newGameMode;
   };
 
   menuSection.append(newGameButton, rankButton);
