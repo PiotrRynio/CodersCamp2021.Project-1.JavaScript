@@ -1,11 +1,12 @@
 import question from './questionGenerator';
 
-const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
+const Game = (player, handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
     questionIndex: 0,
     currentQuestion: {},
     questionHistory: [],
     gameMode: '',
+    gamePlayer: player,
     playerName: '',
     score: 0,
     secondsLeft: 60,
@@ -21,15 +22,14 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   };
 
   const generateQuestion = () => {
-    if (returnedGame.questionIndex !== 0 && Object.keys(returnedGame.currentQuestion).length !== 0)
-      returnedGame.questionHistory.push(returnedGame.currentQuestion);
-
     returnedGame.questionIndex += 1;
     question(returnedGame.gameMode.toLowerCase(), returnedGame.questionHistory)
       .then((questionObject) => {
         returnedGame.currentQuestion = questionObject;
       })
-      .then(() => handleShowQuestion(returnedGame.currentQuestion));
+      .then(() =>
+        returnedGame.player.askQuestion(handleShowQuestion, returnedGame.currentQuestion),
+      );
   };
 
   returnedGame.startGame = () => {

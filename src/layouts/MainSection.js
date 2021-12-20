@@ -2,6 +2,7 @@ import NewGameButton from '../components/NewGameButton';
 import PlayArea from '../components/PlayArea/PlayArea';
 import Gameplay from '../model/Gameplay';
 import Timer from '../components/Timer';
+import GameSection from '../components/GameSection/GameSection';
 
 const MainSection = () => {
   const mainSection = document.createElement('div');
@@ -22,7 +23,7 @@ const MainSection = () => {
   };
 
   const handleShowQuestion = (currentQuestionObject) => {
-    playArea.showQuestionAndAnswer(currentQuestionObject);
+    mainSection.gameSection.changeQuestion(currentQuestionObject);
   };
 
   const handleUpdateTime = (secondsToLeft) => {
@@ -36,7 +37,8 @@ const MainSection = () => {
   };
 
   const startGame = () => {
-    mainSection.appendChild(playArea.div);
+    mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
+    mainSection.append(gameSection);
     mainSection.removeChild(newGameButton);
     mainSection.game.startGame();
   };
