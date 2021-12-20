@@ -1,49 +1,42 @@
 import { saveScore, getScores } from '../model/saveScore';
 
-const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
-  const endOfGameModalContent = document.createElement('P');
+const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
+  const endOfGameModalContent = document.createElement('div');
 
-  const playerType = {
-    Player: answersListPlayer,
-    Computer: answersListComputer,
-  };
-
-  const gameType = {
-    Character: 'Character',
-  };
-
-  const getPoints = (playerType) => {
-    return playerType.filter((answer) => answer.isCorrect).length;
+  const getPoints = (player) => {
+    return player.filter((answer) => answer.isCorrect).length;
   };
 
   const getPointsInPercentage = (playerType) => {
     return (getPoints(playerType) / playerType.length) * 100;
   };
 
-  const getPlaceFromHistoryRank = (gameType, points) => {
+  const getPlaceFromHistoryRank = (points) => {
     const scores = getScores(gameType);
     console.log(scores);
+    // To remove after pull
     if (scores === null) {
       return 0;
     }
+    //
     const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length;
     console.log(scoresBetterThanCurrent);
     return scoresBetterThanCurrent;
   };
 
-  endOfGameModalContent.showResults = () => {
-    const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(playerType.Player)}%. 
-    Zająłeś ${
-      getPlaceFromHistoryRank(gameType.Character, getPoints(playerType.Player)) + 1
-    } miejsce w rankingu. 
-    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(playerType.Computer)}%. 
+  const showResults = () => {
+    const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(answersListPlayer)}%. 
+    Zająłeś ${getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1} miejsce w rankingu. 
+    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%. 
     Jak się nazywasz?`;
     return message;
   };
-  const textNode = document.createTextNode(endOfGameModalContent.showResults());
+  const text = document.createElement('p');
+  text.textContent = showResults();
 
   const input = document.createElement('input');
   input.type = 'text';
+  input.placeholder = 'Wpisz swoje imię...';
   input.classList.add('nameInput');
 
   const acceptEndButton = document.createElement('button');
@@ -54,7 +47,7 @@ const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
   acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
   acceptShowResultsButton.innerText = 'Accept and show results';
 
-  const handleSaveScore = (gameType, name, score) => {
+  const handleSaveScore = (name, score) => {
     if (name.length === 0) {
       alert('Nie możesz ciągle działać pod przykrywką. Podaj swój pseudonim!');
       return false;
@@ -63,60 +56,26 @@ const EndOfGameModalContent = (answersListPlayer, answersListComputer) => {
     return saveScore(gameType, name, score);
   };
 
-  const handleButtonAcceptAndEnd = (gameType, name, score) => {
+  const handleButtonAcceptAndEnd = (name, score) => {
     handleSaveScore(gameType, name, score);
+    // TODO call "close modal"
   };
 
-  const handleButtonAcceptAndShowResults = (gameType, name, score) => {
+  const handleButtonAcceptAndShowResults = (name, score) => {
     handleSaveScore(gameType, name, score);
+    // TODO call "lista odpowiedzi"
   };
 
   acceptEndButton.addEventListener('click', () =>
-    handleButtonAcceptAndEnd(gameType.Character, input.value, getPoints(playerType.Player)),
+    handleButtonAcceptAndEnd(input.value, getPoints(answersListPlayer)),
   );
   acceptShowResultsButton.addEventListener('click', () =>
-    handleButtonAcceptAndShowResults(
-      gameType.Character,
-      input.value,
-      getPoints(playerType.Computer),
-    ),
+    handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
   );
 
-  //document.querySelector('.modalPopup').appendChild(input); // ModalPopup is not imported yet
-  document.querySelector('#app').appendChild(textNode);
-  document.querySelector('#app').appendChild(input);
-  document.querySelector('#app').appendChild(acceptEndButton);
-  document.querySelector('#app').appendChild(acceptShowResultsButton);
+  endOfGameModalContent.append(text, input, acceptEndButton, acceptShowResultsButton);
+
+  return endOfGameModalContent;
 };
-
-const answer1 = {
-  answer: 'Walter',
-  isCorrect: true,
-};
-
-const answer2 = {
-  answer: 'John',
-  isCorrect: false,
-};
-
-const answer3 = {
-  answer: 'Elton',
-  isCorrect: true,
-};
-
-const answer4 = {
-  answer: 'Elvis',
-  isCorrect: false,
-};
-
-const answer5 = {
-  answer: 'Travis',
-  isCorrect: false,
-};
-
-const answersListPlayer = [answer1, answer2, answer3, answer4, answer5];
-const answersListComputer = [answer3, answer4];
-
-EndOfGameModalContent(answersListPlayer, answersListComputer);
 
 export default EndOfGameModalContent;
