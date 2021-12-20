@@ -28,7 +28,7 @@ const MainSection = () => {
     const menuButtonClicked = () => {
       console.log('tekst');
     };
-    const gameSection = GameSection('Quotes', menuButtonClicked);
+    const gameSection = GameSection('Characters', menuButtonClicked);
 
     mainSection.append(gameSection);
 
