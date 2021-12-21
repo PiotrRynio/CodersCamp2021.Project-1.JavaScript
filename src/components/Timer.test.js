@@ -7,12 +7,8 @@ describe('Timer', () => {
   it('shows rendered component', () => {
     renderComponent(Timer());
     const testTimer = document.querySelector('.timer');
-    const testTimerNumberSection = document.querySelector('.timer__number');
-    const testTimerTextSection = document.querySelector('.timer__text');
 
     expect(testTimer).toBeInTheDocument();
-    expect(testTimerNumberSection).toBeInTheDocument();
-    expect(testTimerTextSection).toBeInTheDocument();
     expect(screen.getByText('60')).toBeTruthy();
     expect(screen.getByText('Nd')).toBeTruthy();
   });
