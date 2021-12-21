@@ -6,7 +6,7 @@ import * as scores from '../model/saveScore';
 import { GAME_MODE } from '../model/constants';
 
 describe('MainSection', () => {
-  afterAll(() => {
+  afterEach(() => {
     jest.spyOn(scores, 'getScores').mockRestore();
   });
 
@@ -95,5 +95,28 @@ describe('MainSection', () => {
     // then
     expect(ranks).toHaveLength(3);
     expect(screen.getByText('Ranking: Deaths')).toBeTruthy();
+  });
+
+  it('should display Quotes rules on "Rules" button click and after change category', () => {
+    // given
+    const testScores = [
+      { name: 'Player1', score: 10 },
+      { name: 'Player2', score: 30 },
+      { name: 'Player3', score: 20 },
+    ];
+    jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
+    const testMainSection = renderComponent(MainSection());
+    testMainSection.changeMode(GAME_MODE.QUOTES);
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    userEvent.click(menuButtons[1]);
+    const newMenuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(newMenuButtons[1]);
+
+    // then
+    expect(screen.getByText('Rules: Quotes')).toBeTruthy();
+    expect(screen.getByText('Ranking')).toBeTruthy();
+    expect(screen.getByText('New Game')).toBeTruthy();
   });
 });
