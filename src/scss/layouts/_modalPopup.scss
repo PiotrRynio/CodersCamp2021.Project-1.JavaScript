@@ -1,9 +1,8 @@
 .modalPopup {
-  display: block;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(0);
   transition: 0.2s ease-in-out;
   height: 600px;
   width: 700px;
@@ -12,8 +11,23 @@
   border: 1px solid red;
   border-radius: 10px;
   z-index: 10;
+
+  &--active {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
-.modalPopup.active {
-  transform: translate(-50%, -50%) scale(1);
+.overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  &--active {
+    opacity: 1;
+  }
 }

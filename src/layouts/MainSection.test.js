@@ -1,0 +1,99 @@
+import { screen } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
+import { renderComponent } from '../testsUtilities/renderComponent';
+import MainSection from './MainSection';
+import * as scores from '../model/saveScore';
+import { GAME_MODE } from '../model/constants';
+
+describe('MainSection', () => {
+  afterAll(() => {
+    jest.spyOn(scores, 'getScores').mockRestore();
+  });
+
+  it('should display MainSection with Rules and Two Buttons', () => {
+    // given
+
+    // when
+    const testMainSection = renderComponent(MainSection());
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // then
+    expect(testMainSection).toBeInTheDocument();
+    expect(menuButtons).toHaveLength(2);
+    expect(screen.getByText('Rules: Characters')).toBeTruthy();
+    expect(screen.getByText('Ranking')).toBeTruthy();
+    expect(screen.getByText('New Game')).toBeTruthy();
+  });
+
+  it('should hide menu buttons and content on "New Game" button click', () => {
+    // given
+    const testMainSection = renderComponent(MainSection());
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(menuButtons[0]);
+    const menuSection = testMainSection.querySelector('.menuSection');
+    const contentSection = testMainSection.querySelector('.contentSection');
+
+    // then
+    expect(testMainSection).toBeInTheDocument();
+    expect(menuSection).toBeFalsy();
+    expect(contentSection).toBeFalsy();
+  });
+
+  it('should change category to new on changeMode function', () => {
+    // given
+    const testMainSection = renderComponent(MainSection());
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    testMainSection.changeMode(GAME_MODE.DEATHS);
+
+    // then
+    expect(testMainSection).toBeInTheDocument();
+    expect(menuButtons).toHaveLength(2);
+    expect(screen.getByText('Rules: Deaths')).toBeTruthy();
+  });
+
+  it('should display ranking on "Ranking" button click', () => {
+    // given
+    const testScores = [
+      { name: 'Player1', score: 10 },
+      { name: 'Player2', score: 30 },
+      { name: 'Player3', score: 20 },
+    ];
+    jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
+    const testMainSection = renderComponent(MainSection());
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(menuButtons[1]);
+    const ranks = testMainSection.querySelectorAll('.rankRecord');
+
+    // then
+    expect(ranks).toHaveLength(3);
+    expect(screen.getByText('Ranking: Characters')).toBeTruthy();
+    expect(screen.getByText('Rules')).toBeTruthy();
+  });
+
+  it('should display ranking Deaths on "Ranking" button click and after change category', () => {
+    // given
+    const testScores = [
+      { name: 'Player1', score: 10 },
+      { name: 'Player2', score: 30 },
+      { name: 'Player3', score: 20 },
+    ];
+    jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
+    const testMainSection = renderComponent(MainSection());
+    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(menuButtons[1]);
+    testMainSection.changeMode(GAME_MODE.DEATHS);
+    const ranks = testMainSection.querySelectorAll('.rankRecord');
+
+    // then
+    expect(ranks).toHaveLength(3);
+    expect(screen.getByText('Ranking: Deaths')).toBeTruthy();
+  });
+});
