@@ -7,18 +7,24 @@ const RankSection = (categoryName) => {
 
   const category = document.createElement('h2');
   category.classList.add('rankSection__category');
-  category.textContent = `Ranking: ${categoryName}`;
 
   const ranks = document.createElement('div');
   ranks.classList.add('rankSection__ranks');
 
-  const scores = getScores(categoryName);
-  const rankRecords = scores
-    .sort((thisPlayer, nextPlayer) => (thisPlayer.score > nextPlayer.score ? -1 : 1))
-    .slice(0, scores.length > 20 ? 20 : scores.length)
-    .map((playerScore, index) => RankRecord(index + 1, playerScore));
+  rankSection.changeRanks = (newCategoryName) => {
+    category.textContent = `Ranking: ${newCategoryName}`;
 
-  ranks.append(...rankRecords);
+    const scores = getScores(newCategoryName);
+    const rankRecords = scores
+      .sort((thisPlayer, nextPlayer) => (thisPlayer.score > nextPlayer.score ? -1 : 1))
+      .slice(0, scores.length > 20 ? 20 : scores.length)
+      .map((playerScore, index) => RankRecord(index + 1, playerScore));
+
+    ranks.innerHTML = '';
+    ranks.append(...rankRecords);
+  };
+
+  rankSection.changeRanks(categoryName);
 
   rankSection.append(category, ranks);
 
