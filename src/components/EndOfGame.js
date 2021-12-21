@@ -18,13 +18,8 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
 
   const getPlaceFromHistoryRank = (points) => {
     const scores = getScores(gameType);
-    console.log(scores);
-    // To remove after pull
-    if (scores === null) {
-      return 0;
-    }
-    //
     const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length;
+    console.log(scores);
     console.log(scoresBetterThanCurrent);
     return scoresBetterThanCurrent;
   };
@@ -43,7 +38,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
 
   const input = document.createElement('input');
   input.type = 'text';
-  input.placeholder = 'Enter your name...';
+  input.placeholder = 'Type your name here...';
   input.classList.add('nameInput');
 
   const acceptEndButton = document.createElement('button');
