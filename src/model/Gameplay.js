@@ -3,14 +3,12 @@ import player from './utilities/Player';
 
 const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
-    questionIndex: 0,
     currentQuestion: {},
     questionHistory: [],
-    gameMode: '',
+    gameMode: 'Characters',
     gamePlayer: player(),
     playerName: '',
     score: 0,
-    secondsLeft: 60,
   };
 
   const measureGameTime = () => {
@@ -20,6 +18,10 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     } else {
       handleUpdateTime(returnedGame.secondsLeft);
     }
+  };
+
+  returnedGame.startTiming = () => {
+    returnedGame.interval = setInterval(measureGameTime, 1000);
   };
 
   const generateQuestion = () => {
@@ -34,15 +36,16 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   };
 
   returnedGame.startGame = () => {
-    returnedGame.secondsLeft = 5;
+    returnedGame.questionIndex = 0;
+    returnedGame.score = 0;
+    returnedGame.secondsLeft = 60;
     handleUpdateTime(returnedGame.secondsLeft);
-    returnedGame.interval = setInterval(measureGameTime, 1000);
     generateQuestion();
   };
 
   returnedGame.onAnswerCheck = (isCorrect) => {
     if (isCorrect) returnedGame.score += 1;
-    (returnedGame.questionIndex === 15 ? returnedGame.endGame() : generateQuestion)();
+    (returnedGame.questionIndex === 15 ? returnedGame.endGame : generateQuestion)();
   };
 
   returnedGame.endGame = () => {

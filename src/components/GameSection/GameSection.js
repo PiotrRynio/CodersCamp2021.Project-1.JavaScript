@@ -2,10 +2,12 @@ import AnswerSection from '../AnswersSection/AnswersSection';
 import MainImage from '../MainImage';
 import TextQuestion from '../TextQuestion/TextQuestion';
 import { GAME_MODE, RULES } from '../../model/constants';
+import Timer from '../Timer';
 
 const GameSection = (category, handleUserAnswer) => {
   const gameSection = document.createElement('div');
   gameSection.classList.add('gameSection');
+  gameSection.timer = Timer();
 
   const question = {
     answers: ['', '', '', ''],
@@ -35,7 +37,7 @@ const GameSection = (category, handleUserAnswer) => {
     answerSection.setNewQuestionAnswers(newQuestion);
   };
 
-  gameSection.append(categoryQuestion, questionObject, answerSection);
+  gameSection.append(categoryQuestion, questionObject, answerSection, gameSection.timer);
 
   return gameSection;
 };

@@ -12,7 +12,7 @@ const question = async (type, askedQuestionBefore) => {
     const filtredAnswers = data.filter((_, index) => answersIndexes.includes(index));
     areAnswersDifferent = areAllDifferent(filtredAnswers);
   } while (!areAnswersDifferent || askedQuestionBefore.includes(correctAnswerIndex));
-
+  askedQuestionBefore.push(correctAnswerIndex);
   return {
     answers: data.filter((_, index) => answersIndexes.includes(index)).map(({ answer }) => answer),
     correctAnswer: data[correctAnswerIndex].answer,

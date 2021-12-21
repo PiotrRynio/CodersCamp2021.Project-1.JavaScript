@@ -15,10 +15,15 @@
     font-weight: 600;
     font-size: 2rem;
     height: 100px;
+    cursor: pointer;
   }
 
-  &__button:focus {
+  &__button:hover {
     text-decoration: underline;
     color: #000;
+  }
+
+  .active {
+    text-decoration: underline;
   }
 }

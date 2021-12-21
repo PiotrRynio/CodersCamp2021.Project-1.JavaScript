@@ -1,5 +1,4 @@
 import Gameplay from '../model/Gameplay';
-import Timer from '../components/Timer';
 import GameSection from '../components/GameSection/GameSection';
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
@@ -9,28 +8,6 @@ import { GAME_MODE } from '../model/constants';
 const MainSection = () => {
   const mainSection = document.createElement('section');
   mainSection.classList.add('mainSection');
-
-  const timer = Timer();
-  mainSection.appendChild(timer);
-
-  const handleUserAnswer = (isCorrect) => {
-    mainSection.game.onAnswerCheck(isCorrect);
-  };
-
-  const handleEndOfGame = () => {
-    mainSection.appendChild(newGameButton);
-  };
-
-  const handleShowQuestion = (currentQuestionObject) => {
-    mainSection.gameSection.changeQuestion(currentQuestionObject);
-  };
-
-  const handleUpdateTime = (secondsToLeft) => {
-    timer.updateTime(secondsToLeft);
-  };
-
-  mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
-
   const menuSection = document.createElement('section');
   menuSection.classList.add('menuSection');
   const contentSection = document.createElement('div');
@@ -44,7 +21,6 @@ const MainSection = () => {
     mainSection.removeChild(contentSection);
     mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
     mainSection.game.startGame();
-    mainSection.append(mainSection.gameSection);
   };
 
   const showRank = () => {
@@ -64,6 +40,10 @@ const MainSection = () => {
   const rankButton = MenuButton('Ranking', showRank);
   const rulesButton = MenuButton('Rules', showRules);
   const newGameButton = MenuButton('New Game', startGame);
+  menuSection.append(newGameButton, rankButton);
+  contentSection.append(rulesSection);
+  mainSection.append(menuSection);
+  mainSection.append(contentSection);
 
   mainSection.changeMode = (newGameMode) => {
     rulesSection.changeRules(newGameMode);
@@ -71,11 +51,29 @@ const MainSection = () => {
     mainSection.game.gameMode = newGameMode;
   };
 
-  menuSection.append(newGameButton, rankButton);
-  contentSection.append(rulesSection);
+  const handleUserAnswer = (isCorrect) => {
+    mainSection.game.gamePlayer.answer(mainSection.game.onAnswerCheck, isCorrect);
+  };
 
-  mainSection.append(menuSection);
-  mainSection.append(contentSection);
+  const handleEndOfGame = () => {
+    mainSection.removeChild(mainSection.gameSection);
+    mainSection.appendChild(menuSection);
+    mainSection.appendChild(contentSection);
+  };
+
+  const handleShowQuestion = (currentQuestionObject) => {
+    if (mainSection.getElementsByClassName('gameSection').length === 0) {
+      mainSection.append(mainSection.gameSection);
+      mainSection.game.startTiming();
+    }
+    mainSection.gameSection.changeQuestion(currentQuestionObject);
+  };
+
+  const handleUpdateTime = (secondsToLeft) => {
+    mainSection.gameSection.timer.updateTime(secondsToLeft);
+  };
+
+  mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
 
   return mainSection;
 };
