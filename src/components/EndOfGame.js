@@ -2,6 +2,11 @@ import { saveScore, getScores } from '../model/saveScore';
 
 const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
   const endOfGameModalContent = document.createElement('div');
+  endOfGameModalContent.classList.add('endOfGameModalContent');
+
+  const gameOver = document.createElement('p');
+  gameOver.classList.add('gameOver');
+  gameOver.textContent = 'Game Over!';
 
   const getPoints = (player) => {
     return player.filter((answer) => answer.isCorrect).length;
@@ -27,16 +32,18 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   const showResults = () => {
     const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(answersListPlayer)}%. 
     Zająłeś ${getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1} miejsce w rankingu. 
-    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%. 
+    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%.
     Jak się nazywasz?`;
     return message;
   };
-  const text = document.createElement('p');
-  text.textContent = showResults();
+
+  const gameStats = document.createElement('p');
+  gameStats.classList.add('gameStats');
+  gameStats.textContent = showResults();
 
   const input = document.createElement('input');
   input.type = 'text';
-  input.placeholder = 'Wpisz swoje imię...';
+  input.placeholder = 'Enter your name...';
   input.classList.add('nameInput');
 
   const acceptEndButton = document.createElement('button');
@@ -73,7 +80,13 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
     handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
   );
 
-  endOfGameModalContent.append(text, input, acceptEndButton, acceptShowResultsButton);
+  endOfGameModalContent.append(
+    gameOver,
+    gameStats,
+    input,
+    acceptEndButton,
+    acceptShowResultsButton,
+  );
 
   return endOfGameModalContent;
 };

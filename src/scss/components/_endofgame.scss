@@ -1,9 +1,54 @@
+.endOfGameModalContent {
+  display: grid;
+  //grid-gap: 10px;
+  grid-template-columns: 2;
+  grid-template-rows: 4;
+  align-content: space-around;
+  justify-content: space-between;
+}
+
+.gameOver {
+  grid-column: span 2;
+  grid-row: 1;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: lighter;
+  text-align: center;
+
+}
+
+.gameStats {
+  grid-column: span 2;
+  grid-row: 2;
+  padding: 120px;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.nameInput {
+  grid-column: span 2;
+  grid-row: 3;
+  margin: 0 200px;
+  height: 35px;
+}
+
 .endOfGameButton {
   width: 120px;
-  height: 60px;
+  height: 30px;
   background: rgba(9, 129, 19, 0.712);
+  color: white;
+  font-weight: 700;
+}
+
+.acceptEndButton {
+  grid-column: 1;
+  grid-row: 4;
+  justify-self: end;
+  width: 100px;
 }
 
 .acceptShowResultsButton {
-  width: 220px;
+  grid-column: 2;
+  grid-row: 4;
+  width: 200px;
 }
