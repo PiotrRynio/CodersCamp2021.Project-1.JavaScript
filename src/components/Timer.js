@@ -1,4 +1,4 @@
-import { CHEMICAL_ELEMENTS } from '../model/constants';
+import { CHEMICAL_ELEMENTS } from '../model/chemicalElementsSymbols';
 
 const Timer = () => {
   const timerElement = document.createElement('div');
