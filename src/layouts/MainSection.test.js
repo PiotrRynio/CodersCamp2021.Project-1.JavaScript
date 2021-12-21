@@ -28,10 +28,10 @@ describe('MainSection', () => {
   it('should hide menu buttons and content on "New Game" button click', () => {
     // given
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
 
     // when
-    userEvent.click(menuButtons[0]);
+    userEvent.click(newGameButton);
     const menuSection = testMainSection.querySelector('.menuSection');
     const contentSection = testMainSection.querySelector('.contentSection');
 
@@ -85,10 +85,10 @@ describe('MainSection', () => {
     ];
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const [, rankingButton] = testMainSection.querySelectorAll('.menuButton');
 
     // when
-    userEvent.click(menuButtons[1]);
+    userEvent.click(rankingButton);
     testMainSection.changeMode(GAME_MODE.DEATHS);
     const ranks = testMainSection.querySelectorAll('.rankRecord');
 
@@ -107,12 +107,12 @@ describe('MainSection', () => {
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
     const testMainSection = renderComponent(MainSection());
     testMainSection.changeMode(GAME_MODE.QUOTES);
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
-    userEvent.click(menuButtons[1]);
-    const newMenuButtons = testMainSection.querySelectorAll('.menuButton');
+    const [, RankingButton] = testMainSection.querySelectorAll('.menuButton');
+    userEvent.click(RankingButton);
+    const [, RulesButton] = testMainSection.querySelectorAll('.menuButton');
 
     // when
-    userEvent.click(newMenuButtons[1]);
+    userEvent.click(RulesButton);
 
     // then
     expect(screen.getByText('Rules: Quotes')).toBeTruthy();
