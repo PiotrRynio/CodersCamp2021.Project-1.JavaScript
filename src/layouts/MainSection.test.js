@@ -6,7 +6,7 @@ import * as scores from '../model/saveScore';
 import { GAME_MODE } from '../model/constants';
 
 describe('MainSection', () => {
-  afterAll(() => {
+  afterEach(() => {
     jest.spyOn(scores, 'getScores').mockRestore();
   });
 
@@ -28,10 +28,10 @@ describe('MainSection', () => {
   it('should hide menu buttons and content on "New Game" button click', () => {
     // given
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
 
     // when
-    userEvent.click(menuButtons[0]);
+    userEvent.click(newGameButton);
     const menuSection = testMainSection.querySelector('.menuSection');
     const contentSection = testMainSection.querySelector('.contentSection');
 
@@ -85,15 +85,38 @@ describe('MainSection', () => {
     ];
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const [, rankingButton] = testMainSection.querySelectorAll('.menuButton');
 
     // when
-    userEvent.click(menuButtons[1]);
+    userEvent.click(rankingButton);
     testMainSection.changeMode(GAME_MODE.DEATHS);
     const ranks = testMainSection.querySelectorAll('.rankRecord');
 
     // then
     expect(ranks).toHaveLength(3);
     expect(screen.getByText('Ranking: Deaths')).toBeTruthy();
+  });
+
+  it('should display Quotes rules on "Rules" button click and after change category', () => {
+    // given
+    const testScores = [
+      { name: 'Player1', score: 10 },
+      { name: 'Player2', score: 30 },
+      { name: 'Player3', score: 20 },
+    ];
+    jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
+    const testMainSection = renderComponent(MainSection());
+    testMainSection.changeMode(GAME_MODE.QUOTES);
+    const [, RankingButton] = testMainSection.querySelectorAll('.menuButton');
+    userEvent.click(RankingButton);
+    const [, RulesButton] = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(RulesButton);
+
+    // then
+    expect(screen.getByText('Rules: Quotes')).toBeTruthy();
+    expect(screen.getByText('Ranking')).toBeTruthy();
+    expect(screen.getByText('New Game')).toBeTruthy();
   });
 });
