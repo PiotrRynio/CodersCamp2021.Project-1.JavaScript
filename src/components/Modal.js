@@ -10,7 +10,7 @@ const Modal = (componentToShow) => {
     overlay.classList.add('overlay--active');
   };
 
-  overlay.hideModal = () => {
+  componentToShow.hideModal = () => {
     modalPopup.classList.remove('modalPopup--active');
     overlay.classList.remove('overlay--active');
   };

@@ -55,12 +55,14 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
       return false;
     }
     console.log('Score saved:', gameType, name, score);
-    return saveScore(gameType, name, score);
+    saveScore(gameType, name, score);
+    return true;
   };
 
   const handleButtonAcceptAndEnd = (name, score) => {
-    handleSaveScore(name, score);
-    // TODO call "close modal"
+    if (handleSaveScore(name, score)) {
+      endOfGameModalContent.hideModal();
+    }
   };
 
   const handleButtonAcceptAndShowResults = (name, score) => {
