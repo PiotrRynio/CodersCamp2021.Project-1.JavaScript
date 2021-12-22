@@ -4,12 +4,15 @@
 
 ## Table of contents
 
-- [General Info](#general-information)
-- [Our Crew](#our-crew)
-- [Technologies Used](#technologies-used)
-- [Screenshots](#screenshots)
-- [Running the project](#running-the-project)
-- [Project Status](#project-status)
+- [Breaking Bad Quiz](#breaking-bad-quiz)
+  - [Table of contents](#table-of-contents)
+  - [General Information](#general-information)
+  - [Our Crew](#our-crew)
+  - [Technologies used](#technologies-used)
+  - [Screenshots](#screenshots)
+  - [Running the project](#running-the-project)
+          - [From the repo:](#from-the-repo)
+  - [Project Status](#project-status)
 
 ## General Information
 
@@ -19,6 +22,7 @@ Our motivation was to learn how to work as a group on a project and improve our 
 The purpose of this application is to learn the possibilites and boundaries of the mentioned above languages.
 
 - API URL: [An API of Breaking Bad](https://breakingbadapi.com/documentation)
+- Figma project: [Figma](https://www.figma.com/file/veHEbh07ejU9z4oIZpS9q7/Breaking-Bad-Quiz-App?node-id=5%3A421)
 - Demo on Netlify: [LINK](https://breaking-bad-quiz-game.netlify.app)
 - Repo url: [LINK](https://github.com/PiotrRynio/CodersCamp2021.Project.JavaScript.git)
 

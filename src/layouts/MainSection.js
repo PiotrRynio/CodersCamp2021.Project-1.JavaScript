@@ -3,7 +3,6 @@ import GameSection from '../components/GameSection/GameSection';
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
-import Timer from '../components/Timer';
 import { GAME_MODE } from '../model/constants';
 import Modal from '../components/Modal/Modal';
 import EndOfGameModalContent from '../components/ModalContents/EndOfGameModalContent';
@@ -60,6 +59,7 @@ const MainSection = () => {
     mainSection.appendChild(menuSection);
     mainSection.appendChild(contentSection);
 
+    // -----------------------------------
     //TODO: REMOVE THIS!
     const answer1 = {
       answer: 'Walter',
@@ -90,6 +90,7 @@ const MainSection = () => {
     const answersListComputer = [answer3, answer4];
 
     //do tego wywalić
+    // -----------------------------------
 
     const modalContent = EndOfGameModalContent(
       mainSection.game.gameMode,
