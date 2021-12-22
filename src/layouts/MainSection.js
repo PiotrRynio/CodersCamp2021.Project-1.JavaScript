@@ -1,4 +1,3 @@
-import GameSection from '../components/GameSection/GameSection';
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
@@ -19,20 +18,6 @@ const MainSection = () => {
   const startGame = () => {
     mainSection.removeChild(menuSection);
     mainSection.removeChild(contentSection);
-    const testQuestion = {
-      answers: ["Declan's men and his cook.", 'Los Pollos driver', 'No-Doze', 'Max Arciniega'],
-      questionObject:
-        'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
-      correctAnswer: 'Los Pollos driver',
-    };
-    const menuButtonClicked = () => {
-      console.log('tekst');
-    };
-    const gameSection = GameSection('Characters', menuButtonClicked);
-
-    mainSection.append(gameSection);
-
-    gameSection.changeQuestion(testQuestion);
   };
 
   const showRank = () => {
