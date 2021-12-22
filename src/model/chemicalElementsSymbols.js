@@ -1,4 +1,4 @@
-export const CHEMICAL_ELEMENTS = [
+export const chemicalElementsSymbols = [
   'H',
   'He',
   'Li',
@@ -58,4 +58,5 @@ export const CHEMICAL_ELEMENTS = [
   'La',
   'Ce',
   'Pr',
+  'Nd',
 ];
