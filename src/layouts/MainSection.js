@@ -1,6 +1,7 @@
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
+import Timer from '../components/Timer';
 import { GAME_MODE } from '../model/constants';
 
 const MainSection = () => {
