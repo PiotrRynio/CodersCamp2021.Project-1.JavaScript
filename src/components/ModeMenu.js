@@ -7,6 +7,11 @@ const ModeMenu = (onButtonClick) => {
   const categoriesButtons = ['Characters', 'Quotes', 'Deaths'].map((buttonName) =>
     ModeMenuButton(buttonName, onButtonClick),
   );
+  section.removeActive = () => {
+    categoriesButtons.forEach((button) => button.classList.remove('modeMenu__button--active'));
+  };
+  categoriesButtons[0].classList.add('modeMenu__button--active');
+
   section.append(...categoriesButtons);
 
   return section;

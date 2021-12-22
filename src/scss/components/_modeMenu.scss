@@ -17,7 +17,7 @@
     height: 100px;
   }
 
-  &__button:focus {
+  &__button--active {
     text-decoration: underline;
     color: #000;
   }
