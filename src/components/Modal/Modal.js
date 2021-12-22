@@ -6,10 +6,10 @@ const Modal = (componentToShow, parentComponent) => {
   modalOverlay.append(modal);
 
   const closeModal = () => {
-    parentComponent.removeChild(componentToShown);
+    parentComponent.removeChild(modalOverlay);
   };
 
-  componentToShow.setOnModalCloseFunction(closeModal);
+  componentToShow.setOnModalClose(closeModal);
 
   modal.append(componentToShow);
   return modalOverlay;

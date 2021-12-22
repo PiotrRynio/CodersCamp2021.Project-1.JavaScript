@@ -5,6 +5,8 @@ import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
 import Timer from '../components/Timer';
 import { GAME_MODE } from '../model/constants';
+import Modal from '../components/Modal/Modal';
+import EndOfGameModalContent from '../components/ModalContents/EndOfGameModalContent';
 
 const MainSection = () => {
   const mainSection = document.createElement('section');
@@ -57,6 +59,45 @@ const MainSection = () => {
     mainSection.removeChild(mainSection.gameSection);
     mainSection.appendChild(menuSection);
     mainSection.appendChild(contentSection);
+
+    //TODO: REMOVE THIS!
+    const answer1 = {
+      answer: 'Walter',
+      isCorrect: true,
+    };
+
+    const answer2 = {
+      answer: 'John',
+      isCorrect: false,
+    };
+
+    const answer3 = {
+      answer: 'Elton',
+      isCorrect: true,
+    };
+
+    const answer4 = {
+      answer: 'Elvis',
+      isCorrect: false,
+    };
+
+    const answer5 = {
+      answer: 'Travis',
+      isCorrect: false,
+    };
+
+    const answersListPlayer = [answer1, answer2, answer3, answer4, answer5];
+    const answersListComputer = [answer3, answer4];
+
+    //do tego wywalić
+
+    const modalContent = EndOfGameModalContent(
+      mainSection.game.gameMode,
+      answersListPlayer,
+      answersListComputer,
+    );
+    const modal = Modal(modalContent, mainSection);
+    mainSection.appendChild(modal);
   };
 
   const handleShowQuestion = (currentQuestionObject) => {

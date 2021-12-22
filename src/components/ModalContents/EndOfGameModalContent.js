@@ -1,89 +1,95 @@
-// import { saveScore, getScores } from '../model/saveScore';
+import { saveScore, getScores } from '../../model/saveScore';
 
-// const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
-//   const endOfGameModalContent = document.createElement('div');
-//   endOfGameModalContent.classList.add('endOfGameModalContent');
+const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
+  const endOfGameModalContent = document.createElement('div');
+  endOfGameModalContent.classList.add('endOfGameModalContent');
 
-//   const gameOver = document.createElement('p');
-//   gameOver.classList.add('gameOver'); // TODO change to BEM ('endOfGameModalContent__gameOver')
-//   gameOver.textContent = 'Game Over!';
+  endOfGameModalContent.onCloseButtonClick = () => {};
 
-//   const getPoints = (player) => {
-//     return player.filter((answer) => answer.isCorrect).length;
-//   };
+  endOfGameModalContent.setOnModalClose = (closeModal) => {
+    endOfGameModalContent.onCloseButtonClick = closeModal;
+  };
 
-//   const getPointsInPercentage = (player) => {
-//     return (getPoints(player) / player.length) * 100;
-//   };
+  const gameOver = document.createElement('p');
+  gameOver.classList.add('gameOver'); // TODO change to BEM ('endOfGameModalContent__gameOver')
+  gameOver.textContent = 'Game Over!';
 
-//   const getPlaceFromHistoryRank = (points) => {
-//     const scores = getScores(gameType);
-//     const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length;
-//     console.log(scores);
-//     console.log(scoresBetterThanCurrent);
-//     return scoresBetterThanCurrent;
-//   };
+  const getPoints = (player) => {
+    return player.filter((answer) => answer.isCorrect).length;
+  };
 
-//   const showResults = () => {
-//     const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(answersListPlayer)}%.
-//     Zająłeś ${getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1} miejsce w rankingu.
-//     Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%.
-//     Jak się nazywasz?`;
-//     return message;
-//   };
+  const getPointsInPercentage = (player) => {
+    return (getPoints(player) / player.length) * 100;
+  };
 
-//   const gameStats = document.createElement('p');
-//   gameStats.classList.add('gameStats');
-//   gameStats.textContent = showResults();
+  const getPlaceFromHistoryRank = (points) => {
+    const scores = getScores(gameType);
+    const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length;
+    console.log(scores);
+    console.log(scoresBetterThanCurrent);
+    return scoresBetterThanCurrent;
+  };
 
-//   const form = document.createElement('div');
-//   form.classList.add('form');
+  const showResults = () => {
+    const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(answersListPlayer)}%.
+    Zająłeś ${getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1} miejsce w rankingu.
+    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%.
+    Jak się nazywasz?`;
+    return message;
+  };
 
-//   const input = document.createElement('input');
-//   input.type = 'text';
-//   input.placeholder = 'Type your name here...';
-//   input.classList.add('nameInput');
+  const gameStats = document.createElement('p');
+  gameStats.classList.add('gameStats');
+  gameStats.textContent = showResults();
 
-//   const acceptEndButton = document.createElement('button');
-//   acceptEndButton.classList.add('endOfGameButton', 'acceptEndButton');
-//   acceptEndButton.innerText = 'Accept';
+  const form = document.createElement('div');
+  form.classList.add('form');
 
-//   const acceptShowResultsButton = document.createElement('button');
-//   acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
-//   acceptShowResultsButton.innerText = 'Accept and show results';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Type your name here...';
+  input.classList.add('nameInput');
 
-//   const handleSaveScore = (name, score) => {
-//     if (name.length === 0) {
-//       alert('Nie możesz ciągle działać pod przykrywką. Podaj swój pseudonim!');
-//       return false;
-//     }
-//     console.log('Score saved:', gameType, name, score);
-//     saveScore(gameType, name, score);
-//     return true;
-//   };
+  const acceptEndButton = document.createElement('button');
+  acceptEndButton.classList.add('endOfGameButton', 'acceptEndButton');
+  acceptEndButton.innerText = 'Accept';
 
-//   const handleButtonAcceptAndEnd = (name, score) => {
-//     if (handleSaveScore(name, score)) {
-//       endOfGameModalContent.hideModal();
-//     }
-//   };
+  const acceptShowResultsButton = document.createElement('button');
+  acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
+  acceptShowResultsButton.innerText = 'Accept and show results';
 
-//   const handleButtonAcceptAndShowResults = (name, score) => {
-//     handleSaveScore(name, score);
-//     // TODO call "lista odpowiedzi"
-//   };
+  const handleSaveScore = (name, score) => {
+    if (name.length === 0) {
+      alert('Nie możesz ciągle działać pod przykrywką. Podaj swój pseudonim!');
+      return false;
+    }
+    console.log('Score saved:', gameType, name, score);
+    saveScore(gameType, name, score);
+    return true;
+  };
 
-//   acceptEndButton.addEventListener('click', () =>
-//     handleButtonAcceptAndEnd(input.value, getPoints(answersListPlayer)),
-//   );
-//   acceptShowResultsButton.addEventListener('click', () =>
-//     handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
-//   );
+  const handleButtonAcceptAndEnd = (name, score) => {
+    if (handleSaveScore(name, score)) {
+      endOfGameModalContent.onCloseButtonClick();
+    }
+  };
 
-//   form.append(input, acceptEndButton, acceptShowResultsButton);
-//   endOfGameModalContent.append(gameOver, gameStats, form);
+  const handleButtonAcceptAndShowResults = (name, score) => {
+    handleSaveScore(name, score);
+    // TODO call "lista odpowiedzi"
+  };
 
-//   return endOfGameModalContent;
-// };
+  acceptEndButton.addEventListener('click', () =>
+    handleButtonAcceptAndEnd(input.value, getPoints(answersListPlayer)),
+  );
+  acceptShowResultsButton.addEventListener('click', () =>
+    handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
+  );
 
-// export default EndOfGameModalContent;
+  form.append(input, acceptEndButton, acceptShowResultsButton);
+  endOfGameModalContent.append(gameOver, gameStats, form);
+
+  return endOfGameModalContent;
+};
+
+export default EndOfGameModalContent;
