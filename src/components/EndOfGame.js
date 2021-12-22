@@ -5,7 +5,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   endOfGameModalContent.classList.add('endOfGameModalContent');
 
   const gameOver = document.createElement('p');
-  gameOver.classList.add('gameOver');
+  gameOver.classList.add('gameOver'); // TODO change to BEM ('endOfGameModalContent__gameOver')
   gameOver.textContent = 'Game Over!';
 
   const getPoints = (player) => {
@@ -35,6 +35,9 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   const gameStats = document.createElement('p');
   gameStats.classList.add('gameStats');
   gameStats.textContent = showResults();
+
+  const form = document.createElement('div');
+  form.classList.add('form');
 
   const input = document.createElement('input');
   input.type = 'text';
@@ -77,13 +80,8 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
     handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
   );
 
-  endOfGameModalContent.append(
-    gameOver,
-    gameStats,
-    input,
-    acceptEndButton,
-    acceptShowResultsButton,
-  );
+  form.append(input, acceptEndButton, acceptShowResultsButton);
+  endOfGameModalContent.append(gameOver, gameStats, form);
 
   return endOfGameModalContent;
 };

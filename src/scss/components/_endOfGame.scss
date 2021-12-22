@@ -1,65 +1,62 @@
 .endOfGameModalContent {
-  display: grid;
-  grid-template-columns: 2;
-  grid-template-rows: 4;
-  align-content: space-around;
-  justify-content: space-between;
-  background-image: url('../static/EndOfGameWallpaper.jpg');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 100%;
+  border-radius: 10px;
+
+  background-image: url('../static/EndOfGameWallpaper.jpg'); // TODO move jpg to public 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.gameOver {
-  grid-column: span 2;
-  grid-row: 1;
-  padding: 20px;
+.gameOver { // TODO change all to BEM style like: &__gameOver
   font-size: 50px;
   font-weight: lighter;
   text-align: center;
 }
 
 .gameStats {
-  grid-column: span 2;
-  grid-row: 2;
-  padding: 60px 230px 200px;
+  width: 300px;
   font-size: 20px;
   text-align: justify;
 }
 
+.form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 35px 35px;
+  align-content: space-around;
+  justify-content: space-between;
+}
+
 .nameInput {
   grid-column: span 2;
-  grid-row: 3;
-  margin: 0 200px;
-  height: 35px;
+  grid-row: 1;
+  width: 300px;
 }
 
 .endOfGameButton {
-  width: 120px;
-  height: 30px;
-  background: #067421;
   color: white;
-  border: 1px solid #063612;
-  font-weight: 700;
-  // background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  // background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  // background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  // background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  // box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
-  // border: 2px solid #063612;
+  background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+  box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
+  border: 2px solid #063612;
 }
 
 .acceptEndButton {
   grid-column: 1;
-  grid-row: 4;
-  justify-self: end;
-  width: 99px;
+  grid-row: 2;
   border-bottom-left-radius: 15px;
 }
 
 .acceptShowResultsButton {
   grid-column: 2;
-  grid-row: 4;
-  width: 199px;
+  grid-row: 2;
   border-bottom-right-radius: 15px;
 }
