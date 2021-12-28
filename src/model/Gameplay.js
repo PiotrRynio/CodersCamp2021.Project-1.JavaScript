@@ -45,8 +45,8 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   returnedGame.onAnswerCheck = (isCorrect) => {
     if (isCorrect) returnedGame.score += 1;
-    (returnedGame.questionIndex === 1 ? returnedGame.endGame : generateQuestion)();
-  }; //change back to 15
+    (returnedGame.questionIndex === 15 ? returnedGame.endGame : generateQuestion)();
+  };
 
   returnedGame.endGame = () => {
     clearInterval(returnedGame.interval);
