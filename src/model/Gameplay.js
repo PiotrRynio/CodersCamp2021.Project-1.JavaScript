@@ -9,6 +9,7 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     gamePlayer: player(),
     playerName: '',
     score: 0,
+    questionIndex: 0,
   };
 
   const measureGameTime = () => {
