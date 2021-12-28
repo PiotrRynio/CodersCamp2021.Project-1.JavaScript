@@ -12,7 +12,7 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     questionIndex: 0,
   };
 
-  const measureGameTime = () => {
+  returnedGame.measureGameTime = () => {
     returnedGame.secondsLeft -= 1;
     if (returnedGame.secondsLeft < 0) {
       returnedGame.endGame();
@@ -22,10 +22,10 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   };
 
   returnedGame.startTiming = () => {
-    returnedGame.interval = setInterval(measureGameTime, 1000);
+    returnedGame.interval = setInterval(returnedGame.measureGameTime, 1000);
   };
 
-  const generateQuestion = () => {
+  returnedGame.generateQuestion = () => {
     returnedGame.questionIndex += 1;
     question(returnedGame.gameMode.toLowerCase(), returnedGame.questionHistory)
       .then((questionObject) => {
@@ -41,16 +41,17 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     returnedGame.score = 0;
     returnedGame.secondsLeft = 60;
     handleUpdateTime(returnedGame.secondsLeft);
-    generateQuestion();
+    returnedGame();
   };
 
   returnedGame.onAnswerCheck = (isCorrect) => {
     if (isCorrect) returnedGame.score += 1;
-    (returnedGame.questionIndex === 15 ? returnedGame.endGame : generateQuestion)();
+    (returnedGame.questionIndex === 15 ? returnedGame.endGame : returnedGame.generateQuestion)();
   };
 
   returnedGame.endGame = () => {
     clearInterval(returnedGame.interval);
+    returnedGame.interval = false;
     handleEndOfGame();
   };
 

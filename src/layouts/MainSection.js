@@ -1,4 +1,4 @@
-import Gameplay from '../model/gameplay';
+import Gameplay from '../model/Gameplay';
 import GameSection from '../components/GameSection/GameSection';
 import MenuButton from '../components/MenuButton';
 import RankSection from '../components/RankSection/RankSection';
