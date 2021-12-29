@@ -12,7 +12,7 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     questionIndex: 0,
   };
 
-  returnedGame.measureGameTime = () => {
+  const measureGameTime = () => {
     returnedGame.secondsLeft -= 1;
     if (returnedGame.secondsLeft < 0) {
       returnedGame.endGame();
@@ -22,7 +22,7 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   };
 
   returnedGame.startTiming = () => {
-    returnedGame.interval = setInterval(returnedGame.measureGameTime, 1000);
+    returnedGame.interval = setInterval(measureGameTime, 1000);
   };
 
   returnedGame.generateQuestion = () => {
