@@ -25,28 +25,25 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     returnedGame.interval = setInterval(measureGameTime, 1000);
   };
 
-  returnedGame.generateQuestion = () => {
+  const generateQuestion = () => {
     returnedGame.questionIndex += 1;
-    question(returnedGame.gameMode.toLowerCase(), returnedGame.questionHistory)
-      .then((questionObject) => {
+    question(returnedGame.gameMode.toLowerCase(), returnedGame.questionHistory).then(
+      (questionObject) => {
         returnedGame.currentQuestion = questionObject;
-      })
-      .then(() =>
-        returnedGame.gamePlayer.askQuestion(handleShowQuestion, returnedGame.currentQuestion),
-      );
+        returnedGame.gamePlayer.askQuestion(handleShowQuestion, questionObject);
+      },
+    );
   };
 
   returnedGame.startGame = () => {
-    returnedGame.questionIndex = 0;
-    returnedGame.score = 0;
     returnedGame.secondsLeft = 60;
     handleUpdateTime(returnedGame.secondsLeft);
-    returnedGame();
+    generateQuestion();
   };
 
   returnedGame.onAnswerCheck = (isCorrect) => {
     if (isCorrect) returnedGame.score += 1;
-    (returnedGame.questionIndex === 15 ? returnedGame.endGame : returnedGame.generateQuestion)();
+    (returnedGame.questionIndex === 15 ? returnedGame.endGame : generateQuestion)();
   };
 
   returnedGame.endGame = () => {

@@ -1,4 +1,5 @@
 import Gameplay from './Gameplay';
+import * as question from './questionGenerator';
 
 describe('gameplay', () => {
   afterEach(() => {
@@ -7,8 +8,8 @@ describe('gameplay', () => {
   });
 
   it('should properly return game object', () => {
+    // given
     const gameplayObject = Gameplay();
-    expect(typeof gameplayObject).toBe('object');
     const expectedToReceiveKeys = [
       'currentQuestion',
       'questionHistory',
@@ -21,32 +22,34 @@ describe('gameplay', () => {
       'startGame',
       'startTiming',
       'questionIndex',
-      'measureGameTime',
-    ].sort();
-    const receivedGameKeys = Object.keys(gameplayObject).sort();
-    expect(JSON.stringify(receivedGameKeys) === JSON.stringify(expectedToReceiveKeys)).toBe(true);
+    ];
+    // when
+    const receivedGameKeys = Object.keys(gameplayObject);
+    // then
+    expectedToReceiveKeys.forEach((key) => {
+      expect(receivedGameKeys).toContain(key);
+    });
+    expect(typeof gameplayObject).toBe('object');
   });
 
   it('should call endGame after 15 question', () => {
-    const mockEndGameHandler = jest.fn();
     // given
+    const mockEndGameHandler = jest.fn();
     const gameplay = Gameplay(mockEndGameHandler);
     gameplay.questionIndex = 15;
     // when
-    expect(mockEndGameHandler).toHaveBeenCalledTimes(0);
     gameplay.onAnswerCheck(false);
     // then
     expect(mockEndGameHandler).toHaveBeenCalledTimes(1);
   });
 
   it('should call endGame after timed out', () => {
-    const mockCallbackEndGameHandler = jest.fn();
     // given
+    const mockCallbackEndGameHandler = jest.fn();
     const gameplay = Gameplay(mockCallbackEndGameHandler);
     gameplay.secondsLeft = 0;
     jest.useFakeTimers();
     // when
-    expect(mockCallbackEndGameHandler).not.toHaveBeenCalled();
     gameplay.startTiming();
     jest.runAllTimers();
     // then
@@ -54,30 +57,41 @@ describe('gameplay', () => {
   });
 
   it('should properly set and clear interval', () => {
+    // given
     const mockEndGameHandler = jest.fn();
     jest.useFakeTimers();
     jest.spyOn(global, 'setInterval');
-    // given
     const gameplay = Gameplay(mockEndGameHandler);
     // when
     gameplay.startTiming();
+    gameplay.endGame();
     // then
     expect(setInterval).toHaveBeenCalledTimes(1);
     expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
-
-    // given
-    // when
-    gameplay.endGame();
-    // then
     expect(gameplay.interval).toBe(false);
   });
 
   it('should show question after was received', async () => {
+    // given
     const mockEndGameHandler = jest.fn();
     const mockAskQuesionHandler = jest.fn();
-    const gameplay = Gameplay(mockEndGameHandler, mockAskQuesionHandler);
-    expect(mockAskQuesionHandler).not.toHaveBeenCalled();
-    await gameplay.generateQuestion();
+    const mockHandleUpdateTime = jest.fn();
+    const gameplay = Gameplay(mockEndGameHandler, mockAskQuesionHandler, mockHandleUpdateTime);
+    const expectedQuestion = {
+      correctAnswer: 'A',
+      answers: ['A', 'B', 'C', 'D'],
+      questionObject: 'image',
+    };
+    const expectedQuestionPromise = new Promise((resolve) => {
+      resolve(expectedQuestion);
+    });
+
+    jest.spyOn(question, 'default').mockReturnValue(expectedQuestionPromise);
+    // when
+    await gameplay.startGame();
+    // then
+    await expect(gameplay.currentQuestion).toBe(expectedQuestion);
+    expect(gameplay.questionIndex).toBe(1);
     expect(mockAskQuesionHandler).toHaveBeenCalledTimes(1);
   });
 });

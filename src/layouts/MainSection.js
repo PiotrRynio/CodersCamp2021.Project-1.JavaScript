@@ -17,9 +17,11 @@ const MainSection = () => {
   contentSection.classList.add('contentSection');
   const rankSection = RankSection(GAME_MODE.CHARACTERS);
   const rulesSection = RulesSection(GAME_MODE.CHARACTERS);
+
   const startGame = () => {
     mainSection.removeChild(menuSection);
     mainSection.removeChild(contentSection);
+    mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
     mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
     mainSection.game.startGame();
   };
@@ -115,7 +117,6 @@ const MainSection = () => {
   menuSection.append(newGameButton, rankButton);
   contentSection.append(rulesSection);
 
-  mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
   mainSection.append(menuSection);
   mainSection.append(contentSection);
 
