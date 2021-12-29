@@ -52,8 +52,8 @@ const MainSection = () => {
     mainSection.game.gameMode = newGameMode;
   };
 
-  const handleUserAnswer = (isCorrect) => {
-    mainSection.game.gamePlayer.answer(mainSection.game.onAnswerCheck, isCorrect);
+  const handleUserAnswer = (isCorrect, answer) => {
+    mainSection.game.gamePlayer.answer(mainSection.game.onAnswerCheck, { isCorrect, answer });
   };
 
   const handleEndOfGame = () => {
@@ -96,7 +96,7 @@ const MainSection = () => {
 
     const modalContent = EndOfGameModalContent(
       mainSection.game.gameMode,
-      answersListPlayer,
+      mainSection.game.playerAnswers,
       answersListComputer,
     );
     const modal = Modal(modalContent, mainSection);

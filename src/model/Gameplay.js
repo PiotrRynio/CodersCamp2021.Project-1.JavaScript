@@ -8,7 +8,7 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     gameMode: 'Characters',
     gamePlayer: player(),
     playerName: '',
-    score: 0,
+    playerAnswers: [],
     questionIndex: 0,
   };
 
@@ -41,9 +41,13 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     generateQuestion();
   };
 
-  returnedGame.onAnswerCheck = (isCorrect) => {
-    if (isCorrect) returnedGame.score += 1;
-    (returnedGame.questionIndex === 15 ? returnedGame.endGame : generateQuestion)();
+  returnedGame.onAnswerCheck = (answer) => {
+    returnedGame.playerAnswers.push(answer);
+    if (returnedGame.questionIndex === 15) {
+      returnedGame.endGame();
+    } else {
+      generateQuestion();
+    }
   };
 
   returnedGame.endGame = () => {
