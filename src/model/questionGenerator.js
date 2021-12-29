@@ -62,7 +62,7 @@ const questionGenerator = async (category) => {
     do {
       answersIndexes = randomNumbers(0, data.length - 1, 4);
       correctAnswerIndex = randomValueFromArray(answersIndexes);
-      const filtredAnswers = data.filter((_, index) => answersIndexes.includes(index));
+      const filtredAnswers = answersIndexes.map((index) => data[index]);
       areAnswersDifferent = areAllDifferent(filtredAnswers);
     } while (!areAnswersDifferent || askedQuestionIndexes.includes(correctAnswerIndex));
     askedQuestionIndexes.push(correctAnswerIndex);
