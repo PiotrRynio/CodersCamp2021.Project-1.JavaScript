@@ -1,15 +1,18 @@
 import question from './questionGenerator';
 import player from './utilities/Player';
+import computerPlayer from './utilities/computerPlayer';
 
-const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
+const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
     currentQuestion: {},
     questionHistory: [],
     gameMode: 'Characters',
-    gamePlayer: player(),
-    playerName: '',
-    playerAnswers: [],
-    questionIndex: 0,
+    humanPlayer: player(),
+    computerPlayer: computerPlayer(),
+  };
+
+  returnedGame.onHumanAnswer = (answer) => {
+    returnedGame.onAnswerCheck(answer, returnedGame.humanPlayer);
   };
 
   const measureGameTime = () => {
@@ -25,12 +28,17 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     returnedGame.interval = setInterval(measureGameTime, 1000);
   };
 
-  const generateQuestion = () => {
-    returnedGame.questionIndex += 1;
+  const generateQuestion = (askedPlayer) => {
+    askedPlayer.currentQuestionIndex += 1;
     question(returnedGame.gameMode.toLowerCase(), returnedGame.questionHistory).then(
       (questionObject) => {
         returnedGame.currentQuestion = questionObject;
-        returnedGame.gamePlayer.askQuestion(handleShowQuestion, questionObject);
+
+        if (askedPlayer.type === 'HUMAN') {
+          askedPlayer.askQuestion(handleShowQuestion, questionObject);
+        } else if (askedPlayer.type === 'COMPUTER') {
+          askedPlayer.askQuestion(() => {}, questionObject, returnedGame.onAnswerCheck);
+        }
       },
     );
   };
@@ -38,15 +46,19 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   returnedGame.startGame = () => {
     returnedGame.secondsLeft = 60;
     handleUpdateTime(returnedGame.secondsLeft);
-    generateQuestion();
+    generateQuestion(returnedGame.computerPlayer);
+    generateQuestion(returnedGame.humanPlayer);
   };
 
-  returnedGame.onAnswerCheck = (answer) => {
-    returnedGame.playerAnswers.push(answer);
-    if (returnedGame.questionIndex === 15) {
+  returnedGame.onAnswerCheck = (answer, answeredPlayer) => {
+    answeredPlayer.answers.push(answer);
+    console.log(answeredPlayer);
+    const isLastQuestion = answeredPlayer.currentQuestionIndex === 15;
+    if (answeredPlayer.type === 'HUMAN' && isLastQuestion) {
       returnedGame.endGame();
+    } else if (answeredPlayer.type === 'COMPUTER' && isLastQuestion) {
     } else {
-      generateQuestion();
+      generateQuestion(answeredPlayer);
     }
   };
 
@@ -54,8 +66,10 @@ const Game = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     clearInterval(returnedGame.interval);
     returnedGame.interval = false;
     handleEndOfGame();
+    console.log('koniec gry');
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
   };
 
   return returnedGame;
 };
-export default Game;
+export default Gameplay;

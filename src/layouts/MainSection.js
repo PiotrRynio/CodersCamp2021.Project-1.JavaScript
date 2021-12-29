@@ -49,11 +49,12 @@ const MainSection = () => {
   mainSection.changeMode = (newGameMode) => {
     rulesSection.changeRules(newGameMode);
     rankSection.changeRanks(newGameMode);
+    console.log(newGameMode);
     mainSection.game.gameMode = newGameMode;
   };
 
   const handleUserAnswer = (isCorrect, answer) => {
-    mainSection.game.gamePlayer.answer(mainSection.game.onAnswerCheck, { isCorrect, answer });
+    mainSection.game.onHumanAnswer(answer);
   };
 
   const handleEndOfGame = () => {
@@ -96,7 +97,7 @@ const MainSection = () => {
 
     const modalContent = EndOfGameModalContent(
       mainSection.game.gameMode,
-      mainSection.game.playerAnswers,
+      mainSection.game.humanPlayer.answers,
       answersListComputer,
     );
     const modal = Modal(modalContent, mainSection);
