@@ -1,9 +1,11 @@
 import Gameplay from './Gameplay';
+import fetch from '../testsUtilities/fetch';
 
 describe('gameplay', () => {
   afterEach(() => {
     jest.clearAllTimers();
     jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   it('should properly return game object', () => {
@@ -68,5 +70,24 @@ describe('gameplay', () => {
     expect(setInterval).toHaveBeenCalledTimes(1);
     expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
     expect(gameplay.interval).toBe(false);
+  });
+
+  it('should run onAnswerCheck onHumanAnswer', async () => {
+    // given
+    const mockEndGameHandler = jest.fn();
+    const mockShowQuestion = jest.fn();
+    const mockUpdateTime = jest.fn();
+    const gameplay = Gameplay(mockEndGameHandler, mockShowQuestion, mockUpdateTime);
+    const answer = { answer: 'test', isCorrect: false };
+    jest.spyOn(gameplay, 'onAnswerCheck');
+    global.fetch = fetch;
+
+    // when
+    await gameplay.startGame();
+    gameplay.onHumanAnswer(answer);
+
+    // then
+    expect(gameplay.onAnswerCheck).toHaveBeenCalledTimes(1);
+    expect(mockUpdateTime).toHaveBeenCalledTimes(1);
   });
 });
