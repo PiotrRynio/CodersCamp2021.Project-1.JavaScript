@@ -22,16 +22,16 @@ const deathTypeData = (data) => {
   }));
 };
 
-async function fetchData(type) {
-  const response = await fetch(`https://breakingbadapi.com/api/${type}`);
+async function fetchData(category) {
+  const response = await fetch(`https://breakingbadapi.com/api/${category}`);
   const data = await response.json();
-  if (type === 'characters') {
+  if (category === 'characters') {
     return charactersTypeData(data);
   }
-  if (type === 'quotes') {
+  if (category === 'quotes') {
     return quoteTypeData(data);
   }
-  if (type === 'deaths') {
+  if (category === 'deaths') {
     return deathTypeData(data);
   }
   return 'Wrong type';
@@ -49,7 +49,8 @@ const areAllDifferent = (filtredAnswers) => {
 };
 
 const questionGenerator = async (category) => {
-  const data = await fetchData(category);
+  const generator = {};
+  const data = await fetchData(category.toLowerCase());
 
   const askedQuestionIndexes = [];
   const askedQuestions = [];
@@ -75,7 +76,7 @@ const questionGenerator = async (category) => {
     });
   };
 
-  questionGenerator.getQuestion = (playerName) => {
+  generator.getQuestion = (playerName) => {
     playersIndexes[playerName] =
       typeof playersIndexes[playerName] === 'undefined' ? 0 : playersIndexes[playerName] + 1;
     if (askedQuestions.length === playersIndexes[playerName]) {
@@ -83,6 +84,8 @@ const questionGenerator = async (category) => {
     }
     return askedQuestions[playersIndexes[playerName]];
   };
+
+  return generator;
 };
 
 export default questionGenerator;

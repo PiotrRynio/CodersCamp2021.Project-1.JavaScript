@@ -54,7 +54,7 @@ const MainSection = () => {
   };
 
   const handleUserAnswer = (isCorrect, answer) => {
-    mainSection.game.onHumanAnswer(answer);
+    mainSection.game.onHumanAnswer({ isCorrect, answer });
   };
 
   const handleEndOfGame = () => {
@@ -62,43 +62,10 @@ const MainSection = () => {
     mainSection.appendChild(menuSection);
     mainSection.appendChild(contentSection);
 
-    // -----------------------------------
-    //TODO: REMOVE THIS!
-    const answer1 = {
-      answer: 'Walter',
-      isCorrect: true,
-    };
-
-    const answer2 = {
-      answer: 'John',
-      isCorrect: false,
-    };
-
-    const answer3 = {
-      answer: 'Elton',
-      isCorrect: true,
-    };
-
-    const answer4 = {
-      answer: 'Elvis',
-      isCorrect: false,
-    };
-
-    const answer5 = {
-      answer: 'Travis',
-      isCorrect: false,
-    };
-
-    const answersListPlayer = [answer1, answer2, answer3, answer4, answer5];
-    const answersListComputer = [answer3, answer4];
-
-    //do tego wywalić
-    // -----------------------------------
-
     const modalContent = EndOfGameModalContent(
       mainSection.game.gameMode,
       mainSection.game.humanPlayer.answers,
-      answersListComputer,
+      mainSection.game.computerPlayer.answers,
     );
     const modal = Modal(modalContent, mainSection);
     mainSection.appendChild(modal);
