@@ -18,10 +18,13 @@ const MainSection = () => {
   const rankSection = RankSection(GAME_MODE.CHARACTERS);
   const rulesSection = RulesSection(GAME_MODE.CHARACTERS);
 
+  let gameMode = 'Characters';
+
   const startGame = () => {
     mainSection.removeChild(menuSection);
     mainSection.removeChild(contentSection);
     mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
+    mainSection.game.gameMode = gameMode;
     mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
     mainSection.game.startGame();
   };
@@ -49,8 +52,7 @@ const MainSection = () => {
   mainSection.changeMode = (newGameMode) => {
     rulesSection.changeRules(newGameMode);
     rankSection.changeRanks(newGameMode);
-    console.log(newGameMode);
-    mainSection.game.gameMode = newGameMode;
+    gameMode = newGameMode;
   };
 
   const handleUserAnswer = (isCorrect, answer) => {
