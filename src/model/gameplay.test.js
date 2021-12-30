@@ -1,5 +1,4 @@
 import Gameplay from './Gameplay';
-import * as question from './questionGenerator';
 
 describe('gameplay', () => {
   afterEach(() => {
