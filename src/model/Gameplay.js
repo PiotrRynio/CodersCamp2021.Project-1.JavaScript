@@ -1,4 +1,4 @@
-import question from './questionGenerator';
+import questionGenerator from './questionGenerator';
 import player from './utilities/Player';
 import computerPlayer from './utilities/computerPlayer';
 
@@ -9,6 +9,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     gameMode: 'Characters',
     humanPlayer: player(),
     computerPlayer: computerPlayer(),
+    questionGenerator: {},
   };
 
   returnedGame.onHumanAnswer = (answer) => {
@@ -30,29 +31,29 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   const generateQuestion = (askedPlayer) => {
     askedPlayer.currentQuestionIndex += 1;
-    question(returnedGame.gameMode.toLowerCase(), returnedGame.questionHistory).then(
-      (questionObject) => {
-        returnedGame.currentQuestion = questionObject;
 
-        if (askedPlayer.type === 'HUMAN') {
-          askedPlayer.askQuestion(handleShowQuestion, questionObject);
-        } else if (askedPlayer.type === 'COMPUTER') {
-          askedPlayer.askQuestion(() => {}, questionObject, returnedGame.onAnswerCheck);
-        }
-      },
-    );
+    const question = returnedGame.questionGenerator.getQuestion(askedPlayer.name);
+    returnedGame.currentQuestion = question;
+
+    if (askedPlayer.type === 'HUMAN') {
+      askedPlayer.askQuestion(handleShowQuestion, question);
+    } else if (askedPlayer.type === 'COMPUTER') {
+      askedPlayer.askQuestion(() => {}, question, returnedGame.onAnswerCheck);
+    }
   };
 
   returnedGame.startGame = () => {
-    returnedGame.secondsLeft = 60;
-    handleUpdateTime(returnedGame.secondsLeft);
-    generateQuestion(returnedGame.computerPlayer);
-    generateQuestion(returnedGame.humanPlayer);
+    questionGenerator(returnedGame.gameMode).then((generator) => {
+      returnedGame.questionGenerator = generator;
+      returnedGame.secondsLeft = 60;
+      handleUpdateTime(returnedGame.secondsLeft);
+      generateQuestion(returnedGame.computerPlayer);
+      generateQuestion(returnedGame.humanPlayer);
+    });
   };
 
   returnedGame.onAnswerCheck = (answer, answeredPlayer) => {
     answeredPlayer.answers.push(answer);
-    console.log(answeredPlayer);
     const isLastQuestion = answeredPlayer.currentQuestionIndex === 15;
     if (answeredPlayer.type === 'HUMAN' && isLastQuestion) {
       returnedGame.endGame();
