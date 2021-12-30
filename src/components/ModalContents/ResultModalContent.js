@@ -1,15 +1,32 @@
 const ResultModalContent = (playerAnswers, computerAnswers) => {
   const resultModalContent = document.createElement('div');
+  resultModalContent.classList.add('resultModalContent');
+
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('closeButton');
+  closeButton.textContent = 'Close';
+
+  resultModalContent.setOnModalClose = (modalClose) => {
+    closeButton.onclick = modalClose;
+  };
 
   const resultTable = document.createElement('table');
+  resultTable.classList.add('table');
+
   const resultTableHeader = document.createElement('tr');
+  resultTableHeader.classList.add('table__header');
+
   const resultTableHeaderQuestionNumber = document.createElement('th');
+  resultTableHeaderQuestionNumber.classList.add('table__header__number');
   resultTableHeaderQuestionNumber.textContent = 'No';
+
   const resultTableHeaderPlayer = document.createElement('th');
   resultTableHeaderPlayer.textContent = 'Player';
+
   const resultTableHeaderComputer = document.createElement('th');
-  resultTableHeaderPlayer.textContent = 'Computer';
-  resultTableHeaderPlayer.append(
+  resultTableHeaderComputer.textContent = 'Computer';
+
+  resultTableHeader.append(
     resultTableHeaderQuestionNumber,
     resultTableHeaderPlayer,
     resultTableHeaderComputer,
@@ -29,18 +46,20 @@ const ResultModalContent = (playerAnswers, computerAnswers) => {
     playerCell.textContent = playerAnswers[answerIndex]
       ? playerAnswers[answerIndex].answer
       : 'No answer';
-    playerCell.classList.add(playerAnswers[answerIndex].isCorrect ? 'correct' : 'wrong');
+    playerCell.classList.add(
+      playerAnswers[answerIndex] && playerAnswers[answerIndex].isCorrect ? 'correct' : 'wrong',
+    );
     const computerCell = document.createElement('td');
     computerCell.textContent = computerAnswers[answerIndex]
       ? computerAnswers[answerIndex].answer
       : 'No answer';
-    computerCell.classList.add(computerAnswers[answerIndex].isCorrect ? 'correct' : 'wrong');
+    computerCell.classList.add(
+      computerAnswers[answerIndex] && computerAnswers[answerIndex].isCorrect ? 'correct' : 'wrong',
+    );
 
     row.append(questionNumber, playerCell, computerCell);
     resultTable.append(row);
   }
-
-  const closeButton = document.createElement('button');
 
   resultModalContent.append(resultTable, closeButton);
 
