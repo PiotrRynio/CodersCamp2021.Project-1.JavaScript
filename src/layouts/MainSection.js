@@ -17,9 +17,11 @@ const MainSection = () => {
   contentSection.classList.add('contentSection');
   const rankSection = RankSection(GAME_MODE.CHARACTERS);
   const rulesSection = RulesSection(GAME_MODE.CHARACTERS);
+
   const startGame = () => {
     mainSection.removeChild(menuSection);
     mainSection.removeChild(contentSection);
+    mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
     mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
     mainSection.game.startGame();
   };
@@ -47,11 +49,12 @@ const MainSection = () => {
   mainSection.changeMode = (newGameMode) => {
     rulesSection.changeRules(newGameMode);
     rankSection.changeRanks(newGameMode);
+    console.log(newGameMode);
     mainSection.game.gameMode = newGameMode;
   };
 
-  const handleUserAnswer = (isCorrect) => {
-    mainSection.game.gamePlayer.answer(mainSection.game.onAnswerCheck, isCorrect);
+  const handleUserAnswer = (isCorrect, answer) => {
+    mainSection.game.onHumanAnswer(answer);
   };
 
   const handleEndOfGame = () => {
@@ -94,7 +97,7 @@ const MainSection = () => {
 
     const modalContent = EndOfGameModalContent(
       mainSection.game.gameMode,
-      answersListPlayer,
+      mainSection.game.humanPlayer.answers,
       answersListComputer,
     );
     const modal = Modal(modalContent, mainSection);
@@ -115,7 +118,6 @@ const MainSection = () => {
   menuSection.append(newGameButton, rankButton);
   contentSection.append(rulesSection);
 
-  mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
   mainSection.append(menuSection);
   mainSection.append(contentSection);
 
