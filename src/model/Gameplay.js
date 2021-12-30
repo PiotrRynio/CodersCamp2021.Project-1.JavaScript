@@ -1,7 +1,6 @@
 import questionGenerator from './questionGenerator';
 import player from './utilities/Player';
 import computerPlayer from './utilities/computerPlayer';
-import fetch from '../testsUtilities/fetch';
 
 const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
@@ -45,7 +44,6 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   returnedGame.startGame = async () => {
     returnedGame.questionGenerator = await questionGenerator(returnedGame.gameMode);
-    console.log('test');
     returnedGame.secondsLeft = 60;
     handleUpdateTime(returnedGame.secondsLeft);
     generateQuestion(returnedGame.computerPlayer);

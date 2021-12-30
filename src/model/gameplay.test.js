@@ -75,7 +75,9 @@ describe('gameplay', () => {
   it('should run onAnswerCheck onHumanAnswer', async () => {
     // given
     const mockEndGameHandler = jest.fn();
-    const mockShowQuestion = jest.fn();
+    const mockShowQuestion = jest.fn(() => {
+      gameplay.startTiming();
+    });
     const mockUpdateTime = jest.fn();
     const gameplay = Gameplay(mockEndGameHandler, mockShowQuestion, mockUpdateTime);
     const answer = { answer: 'test', isCorrect: false };
@@ -85,9 +87,15 @@ describe('gameplay', () => {
     // when
     await gameplay.startGame();
     gameplay.onHumanAnswer(answer);
+    await new Promise((res) => {
+      setTimeout(res, 1000);
+    });
 
+    console.log(mockUpdateTime.mock.calls);
+
+    console.log(gameplay.secondsLeft);
     // then
-    expect(gameplay.onAnswerCheck).toHaveBeenCalledTimes(1);
+    expect(gameplay.onAnswerCheck).toHaveBeenCalledTimes(2);
     expect(mockUpdateTime).toHaveBeenCalledTimes(1);
   });
 });
