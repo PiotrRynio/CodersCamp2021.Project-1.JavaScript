@@ -42,7 +42,10 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     }
   };
 
-  returnedGame.startGame = () => {
+  returnedGame.startGame = async () => {
+    console.log(
+      'lolololdsbfkjsdbfkjsdbksasdadasdasdadajsdbfksjdbfkjsbdfkjsdbfkjsdbfkjsdbfkdbfkjsdbkfsbol',
+    );
     questionGenerator(returnedGame.gameMode).then((generator) => {
       returnedGame.questionGenerator = generator;
       returnedGame.secondsLeft = 60;
