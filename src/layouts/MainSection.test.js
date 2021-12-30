@@ -4,6 +4,7 @@ import { renderComponent } from '../testsUtilities/renderComponent';
 import MainSection from './MainSection';
 import * as scores from '../model/saveScore';
 import { GAME_MODE } from '../model/constants';
+import fetch from '../testsUtilities/fetch';
 
 describe('MainSection', () => {
   afterEach(() => {
@@ -27,6 +28,7 @@ describe('MainSection', () => {
 
   it('should hide menu buttons and content on "New Game" button click', () => {
     // given
+    global.fetch = fetch;
     const testMainSection = renderComponent(MainSection());
     const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
 
