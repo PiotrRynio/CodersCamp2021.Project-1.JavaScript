@@ -1,5 +1,10 @@
 const player = () => {
   const returnedPlayer = {
+    name: '',
+    answers: [],
+    currentQuestionIndex: 0,
+    type: 'HUMAN',
+
     askQuestion(showQuestionToPlayer, questionAndAnswers) {
       showQuestionToPlayer(questionAndAnswers);
     },
