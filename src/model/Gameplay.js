@@ -38,7 +38,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     if (askedPlayer.type === 'HUMAN') {
       askedPlayer.askQuestion(handleShowQuestion, question);
     } else if (askedPlayer.type === 'COMPUTER') {
-      askedPlayer.askQuestion(() => {}, question, returnedGame.onAnswerCheck);
+      askedPlayer.askQuestion(question, returnedGame.onAnswerCheck);
     }
   };
 
