@@ -34,7 +34,6 @@ async function fetchData(category) {
   if (category === 'deaths') {
     return deathTypeData(data);
   }
-  return 'Wrong type';
 }
 
 const areAllDifferent = (filtredAnswers) => {
