@@ -1,6 +1,6 @@
 import Gameplay from '../model/Gameplay';
 import GameSection from '../components/GameSection/GameSection';
-import MenuButton from '../components/MenuButton';
+import MainMenuButton from '../components/MainMenuButton';
 import RankSection from '../components/RankSection/RankSection';
 import RulesSection from '../components/RulesSection/RulesSection';
 import { GAME_MODE } from '../model/constants';
@@ -12,7 +12,8 @@ const MainSection = () => {
   mainSection.classList.add('mainSection');
 
   const menuSection = document.createElement('section');
-  menuSection.classList.add('menuSection');
+  menuSection.classList.add('mainSection__mainMenuSection');
+
   const contentSection = document.createElement('div');
   contentSection.classList.add('contentSection');
   const rankSection = RankSection(GAME_MODE.CHARACTERS);
@@ -43,9 +44,9 @@ const MainSection = () => {
     menuSection.removeChild(rulesButton);
     menuSection.appendChild(rankButton);
   };
-  const rankButton = MenuButton('Ranking', showRank);
-  const rulesButton = MenuButton('Rules', showRules);
-  const newGameButton = MenuButton('New Game', startGame);
+  const rankButton = MainMenuButton('Ranking', showRank);
+  const rulesButton = MainMenuButton('Rules', showRules);
+  const newGameButton = MainMenuButton('New Game', startGame);
   menuSection.append(newGameButton, rankButton);
   contentSection.append(rulesSection);
   mainSection.append(menuSection);

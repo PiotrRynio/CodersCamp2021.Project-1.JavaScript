@@ -1,9 +1,9 @@
 const MenuButton = (textInsideButton, onButtonClick) => {
   const button = document.createElement('button');
-  button.classList.add('menuButton');
+  button.classList.add('mainMenuButton');
 
   const innerTextButton = document.createElement('span');
-  innerTextButton.classList.add('menuButton__text');
+  innerTextButton.classList.add('mainMenuButton__text');
   innerTextButton.textContent = textInsideButton;
 
   button.appendChild(innerTextButton);

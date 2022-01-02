@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   padding: 8px 4px;
-}
 
-.menuSection {
-  display: grid;
-  place-self: center;
-  gap: 10px;
-}
+  &__mainMenuSection {
+    display: grid;
+    place-self: center;
+    gap: 10px;
+  }
 
-.contentSection {
-  margin: 10px 0 0;
+  .contentSection {
+    margin-top: 10px;
+  }
 }

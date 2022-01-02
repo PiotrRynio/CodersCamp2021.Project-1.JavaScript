@@ -1,13 +1,19 @@
 import { saveScore, getScores } from '../../model/saveScore';
+import ResultModalContent from './ResultModalContent';
 
 const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
   const endOfGameModalContent = document.createElement('div');
   endOfGameModalContent.classList.add('endOfGameModalContent');
 
   endOfGameModalContent.onCloseButtonClick = () => {};
+  endOfGameModalContent.onShowResultButtonClick = () => {};
 
   endOfGameModalContent.setOnModalClose = (closeModal) => {
     endOfGameModalContent.onCloseButtonClick = closeModal;
+  };
+
+  endOfGameModalContent.setOnChangeContent = (changeModalContent) => {
+    endOfGameModalContent.onShowResultButtonClick = changeModalContent;
   };
 
   const gameOver = document.createElement('p');
@@ -73,7 +79,11 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const handleButtonAcceptAndShowResults = (name, score) => {
-    handleSaveScore(name, score);
+    if (handleSaveScore(name, score)) {
+      endOfGameModalContent.onShowResultButtonClick(
+        ResultModalContent(answersListPlayer, answersListComputer),
+      );
+    }
   };
 
   acceptEndButton.addEventListener('click', () =>
