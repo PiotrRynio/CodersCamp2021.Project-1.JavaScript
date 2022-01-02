@@ -22,9 +22,11 @@ const ResultModalContent = (playerAnswers, computerAnswers) => {
 
   const resultTableHeaderPlayer = document.createElement('th');
   resultTableHeaderPlayer.textContent = 'Player';
+  resultTableHeaderPlayer.classList.add('table__header__column');
 
   const resultTableHeaderComputer = document.createElement('th');
   resultTableHeaderComputer.textContent = 'Computer';
+  resultTableHeaderComputer.classList.add('table__header__column');
 
   resultTableHeader.append(
     resultTableHeaderQuestionNumber,
