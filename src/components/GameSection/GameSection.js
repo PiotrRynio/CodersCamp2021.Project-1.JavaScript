@@ -26,6 +26,9 @@ const GameSection = (category, handleUserAnswer) => {
     category === GAME_MODE.CHARACTERS
       ? MainImage(question.questionObject)
       : TextQuestion(question.questionObject);
+  if (category !== GAME_MODE.CHARACTERS) {
+    questionObject.classList.add('gameSection--text__question');
+  }
   const categoryQuestion = TextQuestion(RULES[category].question);
 
   const categoryQuestionWithTimer = document.createElement('div');

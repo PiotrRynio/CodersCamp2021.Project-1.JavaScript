@@ -19,14 +19,14 @@ const AnswerSection = (questionAnswers, onButtonClick) => {
     return correctAnswerButton().classList.contains('answersSection__answer--correct');
   };
 
-  const handleAnswerButtonClick = ({ target }) => {
+  const handleAnswerButtonClick = async ({ target }) => {
     if (isButtonClicked()) {
       return;
     }
     const isCorrect = isAnswerCorrect(correctAnswer, target.textContent);
     target.setWrong();
     correctAnswerButton().setCorrect();
-    onButtonClick(isCorrect, target.textContent);
+    setTimeout(() => onButtonClick(isCorrect, target.textContent), 400);
   };
 
   answersButtons.forEach((button) => {
