@@ -7,9 +7,9 @@ coverage:
   round: down
   range: '70...100'
   status:
-  project:
-    default:
-      target: 80%
+    project:
+      default:
+        target: 80%
 
 parsers:
   gcov:

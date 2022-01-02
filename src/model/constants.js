@@ -21,5 +21,3 @@ export const GAME_MODE = {
   DEATHS: 'Deaths',
   QUOTES: 'Quotes',
 };
-
-//ssss
