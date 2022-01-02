@@ -27,7 +27,7 @@ const GameSection = (category, handleUserAnswer) => {
       ? MainImage(question.questionObject)
       : TextQuestion(question.questionObject);
   if (category !== GAME_MODE.CHARACTERS) {
-    questionObject.classList.add('gameSection--text__question');
+    questionObject.classList.add('question--text');
   }
   const categoryQuestion = TextQuestion(RULES[category].question);
 

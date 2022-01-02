@@ -1,8 +1,9 @@
 .rankSection {
   // height: 250px;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.65);
   margin: 0 0 5px 0;
+  border-radius: $standard-border-radius;
+  background-color: rgba(255, 255, 255, 0.65);
 
   &__category {
     font-size: 1rem;

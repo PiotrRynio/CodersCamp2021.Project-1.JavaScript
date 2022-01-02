@@ -60,7 +60,7 @@ describe('AnswersSection', () => {
     expect(correctButton).toHaveClass('answersSection__answer--correct');
   });
 
-  it('should call once mockHandler even if we click three times', () => {
+  it('should call once mockHandler even if we click three times', async () => {
     // given
     const mockHandler = jest.fn();
     const answersSection = renderComponent(AnswersSection({ answers, correctAnswer }, mockHandler));
@@ -70,12 +70,13 @@ describe('AnswersSection', () => {
     userEvent.click(answersButtons[0]);
     userEvent.click(answersButtons[0]);
     userEvent.click(answersButtons[1]);
+    await new Promise((res) => setTimeout(res, 500));
 
     // then
     expect(mockHandler).toHaveBeenCalledTimes(1);
   });
 
-  it('should call mockHandler second time after we set new answers', () => {
+  it('should call mockHandler second time after we set new answers', async () => {
     // given
     const mockHandler = jest.fn();
     const answersSection = renderComponent(AnswersSection({ answers, correctAnswer }, mockHandler));
@@ -87,9 +88,11 @@ describe('AnswersSection', () => {
 
     // when
     userEvent.click(answersButtons[0]);
+    await new Promise((res) => setTimeout(res, 500));
     answersSection.setNewQuestionAnswers(newQuestionObject);
     userEvent.click(answersButtons[0]);
     userEvent.click(answersButtons[1]);
+    await new Promise((res) => setTimeout(res, 500));
 
     // then
     expect(mockHandler).toHaveBeenCalledTimes(2);

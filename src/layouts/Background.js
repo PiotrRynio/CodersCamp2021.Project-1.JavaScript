@@ -1,4 +1,4 @@
-const Background = (handleChangeMode) => {
+const Background = () => {
   const background = document.createElement('div');
   background.classList.add('background');
 

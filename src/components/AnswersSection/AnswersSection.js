@@ -19,7 +19,7 @@ const AnswerSection = (questionAnswers, onButtonClick) => {
     return correctAnswerButton().classList.contains('answersSection__answer--correct');
   };
 
-  const handleAnswerButtonClick = async ({ target }) => {
+  const handleAnswerButtonClick = ({ target }) => {
     if (isButtonClicked()) {
       return;
     }

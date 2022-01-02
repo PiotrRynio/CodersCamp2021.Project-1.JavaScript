@@ -33,7 +33,7 @@ describe('GameSection', () => {
     expect(gameSection).toHaveClass('gameSection--image');
   });
 
-  it('should run callback on answer click', () => {
+  it('should run callback on answer click', async () => {
     // given
     const mockHandler = jest.fn();
     const category = 'Characters';
@@ -42,6 +42,7 @@ describe('GameSection', () => {
     const answersButtons = gameSection.querySelectorAll('.answersSection__answer');
     // when
     userEvent.click(answersButtons[1]);
+    await new Promise((res) => setTimeout(res, 500));
     // then
     expect(mockHandler).toHaveBeenCalledTimes(1);
   });
@@ -50,6 +51,7 @@ describe('GameSection', () => {
     // given
     const mockHandler = jest.fn();
     const category = 'Quotes';
+
     // when
     const gameSection = renderComponent(GameSection(category, mockHandler));
     gameSection.changeQuestion(testQuestion);
