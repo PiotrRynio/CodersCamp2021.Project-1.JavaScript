@@ -1,15 +1,15 @@
 codecov:
   require_ci_to_pass: yes
-  allow_pseudo_compare: False
 
 coverage:
   precision: 2
   round: down
-  range: '70...100'
+  range: '70...80'
   status:
-  project:
-    default:
-      target: 80%
+    patch:
+      default:
+        target: 80%
+        threshold: 20%
 
 parsers:
   gcov:

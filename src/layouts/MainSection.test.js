@@ -4,6 +4,7 @@ import { renderComponent } from '../testsUtilities/renderComponent';
 import MainSection from './MainSection';
 import * as scores from '../model/saveScore';
 import { GAME_MODE } from '../model/constants';
+import fetch from '../testsUtilities/fetch';
 
 describe('MainSection', () => {
   afterEach(() => {
@@ -27,6 +28,7 @@ describe('MainSection', () => {
 
   it('should hide menu buttons and content on "New Game" button click', () => {
     // given
+    global.fetch = fetch;
     const testMainSection = renderComponent(MainSection());
     const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
 
@@ -117,6 +119,25 @@ describe('MainSection', () => {
     // then
     expect(screen.getByText('Rules: Quotes')).toBeTruthy();
     expect(screen.getByText('Ranking')).toBeTruthy();
+    expect(screen.getByText('New Game')).toBeTruthy();
+  });
+
+  it('tt', () => {
+    // given
+    const testMainSection = renderComponent(MainSection());
+    const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(newGameButton);
+    testMainSection.game.endGame();
+    const menuSection = testMainSection.querySelector('.menuSection');
+    const contentSection = testMainSection.querySelector('.contentSection');
+    const modalPopup = testMainSection.querySelector('.modalPopup');
+
+    // then
+    expect(menuSection).toBeTruthy();
+    expect(contentSection).toBeTruthy();
+    expect(modalPopup).toBeTruthy();
     expect(screen.getByText('New Game')).toBeTruthy();
   });
 });

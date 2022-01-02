@@ -1,53 +1,6 @@
 import generateQuestion from './questionGenerator';
 
 describe('generateQuestion', () => {
-  test('if we ask for characters we should get object with answers, correctAnswer and questionObject', async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({ json: () => charactersTestData, charactersTestData }),
-    );
-    const { answers, correctAnswer, questionObject } = await generateQuestion('characters', []);
-    expect(answers).toBeTruthy();
-    expect(correctAnswer).toBeTruthy();
-    expect(questionObject).toBeTruthy();
-  });
-
-  test('if we ask for quotes we should get object with answers, correctAnswer and questionObject', async () => {
-    global.fetch = jest.fn(() => Promise.resolve({ json: () => quotesTestData, quotesTestData }));
-    const { answers, correctAnswer, questionObject } = await generateQuestion('quotes', []);
-    expect(answers).toBeTruthy();
-    expect(correctAnswer).toBeTruthy();
-    expect(questionObject).toBeTruthy();
-  });
-
-  test('if we ask for characters we should get object with answers, correctAnswer and questionObject', async () => {
-    global.fetch = jest.fn(() => Promise.resolve({ json: () => deathsTestData, deathsTestData }));
-    const { answers, correctAnswer, questionObject } = await generateQuestion('deaths', []);
-    expect(answers).toBeTruthy();
-    expect(correctAnswer).toBeTruthy();
-    expect(questionObject).toBeTruthy();
-  });
-
-  test('if we ask for question we should get object with 4 answers', async () => {
-    global.fetch = jest.fn(() => Promise.resolve({ json: () => deathsTestData, deathsTestData }));
-    const { answers } = await generateQuestion('deaths', []);
-    expect(answers.length).toBe(4);
-  });
-
-  test('if we ask for question we should get corectAnswer inside answers', async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({ json: () => charactersTestData, charactersTestData }),
-    );
-    const { answers, correctAnswer } = await generateQuestion('characters', []);
-    expect(answers.includes(correctAnswer)).toBeTruthy();
-  });
-
-  test('if we ask for question we should get different answers', async () => {
-    global.fetch = jest.fn(() => Promise.resolve({ json: () => quotesTestData, quotesTestData }));
-    const { answers } = await generateQuestion('quotes', []);
-    const answersSet = new Set(answers);
-    expect(answersSet.size).toBe(4);
-  });
-
   const charactersTestData = [
     { name: 'CharacterName 1', img: 'Character1.img' },
     { name: 'CharacterName 2', img: 'Character2.img' },
@@ -86,4 +39,57 @@ describe('generateQuestion', () => {
     { death: 'CharacterName 6', cause: 'Cause 9' },
     { death: 'CharacterName 7', cause: 'Cause 10' },
   ];
+
+  test('if we ask for characters we should get object with answers, correctAnswer and questionObject', async () => {
+    global.fetch = jest.fn(() =>
+      Promise.resolve({ json: () => charactersTestData, charactersTestData }),
+    );
+    const generator = await generateQuestion('characters');
+    const { answers, correctAnswer, questionObject } = generator.getQuestion('Kmicic');
+    expect(answers).toBeTruthy();
+    expect(correctAnswer).toBeTruthy();
+    expect(questionObject).toBeTruthy();
+  });
+
+  test('if we ask for quotes we should get object with answers, correctAnswer and questionObject', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({ json: () => quotesTestData, quotesTestData }));
+    const generator = await generateQuestion('quotes');
+    const { answers, correctAnswer, questionObject } = generator.getQuestion('Kmicic');
+    expect(answers).toBeTruthy();
+    expect(correctAnswer).toBeTruthy();
+    expect(questionObject).toBeTruthy();
+  });
+
+  test('if we ask for deaths we should get object with answers, correctAnswer and questionObject', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({ json: () => deathsTestData, deathsTestData }));
+    const generator = await generateQuestion('deaths');
+    const { answers, correctAnswer, questionObject } = generator.getQuestion('Kmicic');
+    expect(answers).toBeTruthy();
+    expect(correctAnswer).toBeTruthy();
+    expect(questionObject).toBeTruthy();
+  });
+
+  test('if we ask for question we should get object with 4 answers', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({ json: () => deathsTestData, deathsTestData }));
+    const generator = await generateQuestion('deaths');
+    const { answers } = generator.getQuestion('Kmicic');
+    expect(answers).toHaveLength(4);
+  });
+
+  test('if we ask for question we should get corectAnswer inside answers', async () => {
+    global.fetch = jest.fn(() =>
+      Promise.resolve({ json: () => charactersTestData, charactersTestData }),
+    );
+    const generator = await generateQuestion('characters');
+    const { answers, correctAnswer } = generator.getQuestion('Kmicic');
+    expect(answers.includes(correctAnswer)).toBeTruthy();
+  });
+
+  test('if we ask for question we should get different answers', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({ json: () => quotesTestData, quotesTestData }));
+    const generator = await generateQuestion('quotes');
+    const { answers } = generator.getQuestion('Kmicic');
+    const answersSet = new Set(answers);
+    expect(answersSet.size).toBe(4);
+  });
 });

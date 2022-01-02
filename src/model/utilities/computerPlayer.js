@@ -7,13 +7,8 @@ const computerPlayer = () => {
   returnedComputerPlayer.type = 'COMPUTER';
   returnedComputerPlayer.answers = [];
   returnedComputerPlayer.name = 'Tuco';
-  returnedComputerPlayer.askQuestion = (
-    showQuestionToPlayer,
-    questionAndAnswers,
-    handlePlayerAnswered,
-  ) => {
+  returnedComputerPlayer.askQuestion = (questionAndAnswers, handlePlayerAnswered) => {
     returnedComputerPlayer.questionAndAnswersToAnswer = questionAndAnswers;
-    // showQuestionToPlayer(questionAndAnswers);
     // eslint-disable-next-line func-names
     setTimeout(function () {
       returnedComputerPlayer.answer();

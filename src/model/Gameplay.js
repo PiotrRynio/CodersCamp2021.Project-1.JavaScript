@@ -10,6 +10,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     humanPlayer: player(),
     computerPlayer: computerPlayer(),
     questionGenerator: {},
+    interval: false,
   };
 
   returnedGame.onHumanAnswer = (answer) => {
@@ -38,18 +39,16 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     if (askedPlayer.type === 'HUMAN') {
       askedPlayer.askQuestion(handleShowQuestion, question);
     } else if (askedPlayer.type === 'COMPUTER') {
-      askedPlayer.askQuestion(() => {}, question, returnedGame.onAnswerCheck);
+      askedPlayer.askQuestion(question, returnedGame.onAnswerCheck);
     }
   };
 
-  returnedGame.startGame = () => {
-    questionGenerator(returnedGame.gameMode).then((generator) => {
-      returnedGame.questionGenerator = generator;
-      returnedGame.secondsLeft = 60;
-      handleUpdateTime(returnedGame.secondsLeft);
-      generateQuestion(returnedGame.computerPlayer);
-      generateQuestion(returnedGame.humanPlayer);
-    });
+  returnedGame.startGame = async () => {
+    returnedGame.questionGenerator = await questionGenerator(returnedGame.gameMode);
+    returnedGame.secondsLeft = 60;
+    handleUpdateTime(returnedGame.secondsLeft);
+    generateQuestion(returnedGame.computerPlayer);
+    generateQuestion(returnedGame.humanPlayer);
   };
 
   returnedGame.onAnswerCheck = (answer, answeredPlayer) => {
@@ -67,8 +66,6 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     clearInterval(returnedGame.interval);
     returnedGame.interval = false;
     handleEndOfGame();
-    console.log('koniec gry');
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
   };
 
   return returnedGame;
