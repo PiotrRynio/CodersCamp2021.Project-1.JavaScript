@@ -47,6 +47,7 @@ Mentor: [Piotr Rynio](https://github.com/PiotrRynio)
 - prettier
 - ESLint
 - methodology BEM
+- RWD
 
 ## Screenshots
 
