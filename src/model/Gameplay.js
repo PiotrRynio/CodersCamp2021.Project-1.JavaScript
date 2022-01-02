@@ -1,7 +1,6 @@
 import questionGenerator from './questionGenerator';
 import player from './utilities/Player';
 import computerPlayer from './utilities/computerPlayer';
-import fetch from '../testsUtilities/fetch';
 
 const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
