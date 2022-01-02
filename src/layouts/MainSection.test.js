@@ -121,4 +121,8 @@ describe('MainSection', () => {
     expect(screen.getByText('Ranking')).toBeTruthy();
     expect(screen.getByText('New Game')).toBeTruthy();
   });
+
+  // it('tt', () => {
+  //   const testMainSection = renderComponent(MainSection());
+  // })
 });
