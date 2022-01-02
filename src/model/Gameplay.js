@@ -10,6 +10,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
     humanPlayer: player(),
     computerPlayer: computerPlayer(),
     questionGenerator: {},
+    interval: false,
   };
 
   returnedGame.onHumanAnswer = (answer) => {

@@ -19,13 +19,15 @@ const MainSection = () => {
   const rulesSection = RulesSection(GAME_MODE.CHARACTERS);
 
   let gameMode = 'Characters';
+  let gameSection;
 
   const startGame = () => {
     mainSection.removeChild(menuSection);
     mainSection.removeChild(contentSection);
     mainSection.game = Gameplay(handleEndOfGame, handleShowQuestion, handleUpdateTime);
     mainSection.game.gameMode = gameMode;
-    mainSection.gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
+    gameSection = GameSection(mainSection.game.gameMode, handleUserAnswer);
+    mainSection.append(gameSection);
     mainSection.game.startGame();
   };
 
@@ -60,7 +62,7 @@ const MainSection = () => {
   };
 
   const handleEndOfGame = () => {
-    mainSection.removeChild(mainSection.gameSection);
+    mainSection.removeChild(gameSection);
     mainSection.appendChild(menuSection);
     mainSection.appendChild(contentSection);
 
@@ -74,15 +76,14 @@ const MainSection = () => {
   };
 
   const handleShowQuestion = (currentQuestionObject) => {
-    if (mainSection.getElementsByClassName('gameSection').length === 0) {
-      mainSection.append(mainSection.gameSection);
+    if (!mainSection.game.interval) {
       mainSection.game.startTiming();
     }
-    mainSection.gameSection.changeQuestion(currentQuestionObject);
+    gameSection.changeQuestion(currentQuestionObject);
   };
 
   const handleUpdateTime = (secondsToLeft) => {
-    mainSection.gameSection.timer.updateTime(secondsToLeft);
+    gameSection.timer.updateTime(secondsToLeft);
   };
   menuSection.append(newGameButton, rankButton);
   contentSection.append(rulesSection);

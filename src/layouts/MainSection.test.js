@@ -122,7 +122,22 @@ describe('MainSection', () => {
     expect(screen.getByText('New Game')).toBeTruthy();
   });
 
-  // it('tt', () => {
-  //   const testMainSection = renderComponent(MainSection());
-  // })
+  it('tt', () => {
+    // given
+    const testMainSection = renderComponent(MainSection());
+    const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
+
+    // when
+    userEvent.click(newGameButton);
+    testMainSection.game.endGame();
+    const menuSection = testMainSection.querySelector('.menuSection');
+    const contentSection = testMainSection.querySelector('.contentSection');
+    const modalPopup = testMainSection.querySelector('.modalPopup');
+
+    // then
+    expect(menuSection).toBeTruthy();
+    expect(contentSection).toBeTruthy();
+    expect(modalPopup).toBeTruthy();
+    expect(screen.getByText('New Game')).toBeTruthy();
+  });
 });
