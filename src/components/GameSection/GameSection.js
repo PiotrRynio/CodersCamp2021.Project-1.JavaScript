@@ -28,6 +28,10 @@ const GameSection = (category, handleUserAnswer) => {
       : TextQuestion(question.questionObject);
   const categoryQuestion = TextQuestion(RULES[category].question);
 
+  const categoryQuestionWithTimer = document.createElement('div');
+  categoryQuestionWithTimer.classList.add('gameSection__questionAndTimer');
+  categoryQuestionWithTimer.append(categoryQuestion, gameSection.timer);
+
   gameSection.changeQuestion = (newQuestion) => {
     if (category === GAME_MODE.CHARACTERS) {
       questionObject.setImage(newQuestion.questionObject);
@@ -37,7 +41,7 @@ const GameSection = (category, handleUserAnswer) => {
     answerSection.setNewQuestionAnswers(newQuestion);
   };
 
-  gameSection.append(categoryQuestion, questionObject, answerSection, gameSection.timer);
+  gameSection.append(categoryQuestionWithTimer, questionObject, answerSection);
 
   return gameSection;
 };

@@ -14,4 +14,5 @@ const Modal = (componentToShow, parentComponent) => {
   modal.append(componentToShow);
   return modalOverlay;
 };
+
 export default Modal;

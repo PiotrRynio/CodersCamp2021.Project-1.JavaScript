@@ -1,10 +1,11 @@
 import Gameplay from './Gameplay';
-import * as question from './questionGenerator';
+import fetch from '../testsUtilities/fetch';
 
 describe('gameplay', () => {
   afterEach(() => {
     jest.clearAllTimers();
     jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   it('should properly return game object', () => {
@@ -14,14 +15,14 @@ describe('gameplay', () => {
       'currentQuestion',
       'questionHistory',
       'gameMode',
-      'gamePlayer',
-      'playerName',
-      'score',
+      'humanPlayer',
+      'computerPlayer',
+      'questionGenerator',
       'endGame',
       'onAnswerCheck',
+      'onHumanAnswer',
       'startGame',
       'startTiming',
-      'questionIndex',
     ];
     // when
     const receivedGameKeys = Object.keys(gameplayObject);
@@ -36,9 +37,9 @@ describe('gameplay', () => {
     // given
     const mockEndGameHandler = jest.fn();
     const gameplay = Gameplay(mockEndGameHandler);
-    gameplay.questionIndex = 15;
+    gameplay.humanPlayer.currentQuestionIndex = 15;
     // when
-    gameplay.onAnswerCheck(false);
+    gameplay.onAnswerCheck(false, gameplay.humanPlayer);
     // then
     expect(mockEndGameHandler).toHaveBeenCalledTimes(1);
   });
@@ -71,27 +72,30 @@ describe('gameplay', () => {
     expect(gameplay.interval).toBe(false);
   });
 
-  it('should show question after was received', async () => {
+  it('should run onAnswerCheck onHumanAnswer', async () => {
     // given
     const mockEndGameHandler = jest.fn();
-    const mockAskQuesionHandler = jest.fn();
-    const mockHandleUpdateTime = jest.fn();
-    const gameplay = Gameplay(mockEndGameHandler, mockAskQuesionHandler, mockHandleUpdateTime);
-    const expectedQuestion = {
-      correctAnswer: 'A',
-      answers: ['A', 'B', 'C', 'D'],
-      questionObject: 'image',
-    };
-    const expectedQuestionPromise = new Promise((resolve) => {
-      resolve(expectedQuestion);
+    const mockShowQuestion = jest.fn(() => {
+      gameplay.startTiming();
     });
+    const mockUpdateTime = jest.fn();
+    const gameplay = Gameplay(mockEndGameHandler, mockShowQuestion, mockUpdateTime);
+    const answer = { answer: 'test', isCorrect: false };
+    jest.spyOn(gameplay, 'onAnswerCheck');
+    global.fetch = fetch;
 
-    jest.spyOn(question, 'default').mockReturnValue(expectedQuestionPromise);
     // when
     await gameplay.startGame();
+    gameplay.onHumanAnswer(answer);
+    await new Promise((res) => {
+      setTimeout(res, 1000);
+    });
+
+    console.log(mockUpdateTime.mock.calls);
+
+    console.log(gameplay.secondsLeft);
     // then
-    await expect(gameplay.currentQuestion).toBe(expectedQuestion);
-    expect(gameplay.questionIndex).toBe(1);
-    expect(mockAskQuesionHandler).toHaveBeenCalledTimes(1);
+    expect(gameplay.onAnswerCheck).toHaveBeenCalledTimes(2);
+    expect(mockUpdateTime).toHaveBeenCalledTimes(1);
   });
 });

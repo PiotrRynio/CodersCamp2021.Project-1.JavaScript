@@ -1,23 +1,20 @@
 import randomValueFromArray from './randomValueFromArray';
 import player from './Player';
+import isAnswerCorrect from '../isAnswerCorrect';
 
 const computerPlayer = () => {
   const returnedComputerPlayer = player();
   returnedComputerPlayer.type = 'COMPUTER';
   returnedComputerPlayer.answers = [];
   returnedComputerPlayer.name = 'Tuco';
-  returnedComputerPlayer.askQuestion = (
-    showQuestionToPlayer,
-    questionAndAnswers,
-    handlePlayerAnswered,
-  ) => {
+  returnedComputerPlayer.askQuestion = (questionAndAnswers, handlePlayerAnswered) => {
     returnedComputerPlayer.questionAndAnswersToAnswer = questionAndAnswers;
-
-    // showQuestionToPlayer(questionAndAnswers);
     // eslint-disable-next-line func-names
     setTimeout(function () {
       returnedComputerPlayer.answer();
-      handlePlayerAnswered(returnedComputerPlayer.randomAnswer, returnedComputerPlayer);
+      const answer = returnedComputerPlayer.randomAnswer;
+      const isCorrect = isAnswerCorrect(questionAndAnswers.correctAnswer, answer);
+      handlePlayerAnswered({ isCorrect, answer }, returnedComputerPlayer);
     }, 1000);
   };
   returnedComputerPlayer.answer = () => {

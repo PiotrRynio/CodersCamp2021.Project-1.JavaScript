@@ -1,46 +1,44 @@
+import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/dom';
 import { renderComponent } from '../../testsUtilities/renderComponent';
 import Modal from './Modal';
 
 describe('Modal', () => {
   it('should display modal with component inside', () => {
-    // // given
-    // const parent = document.createElement('div');
-    // component.textContent = 'Cześć, świecie';
-    // // when
-    // const testModal = renderComponent(Modal(component));
-    // const modalPopup = testModal.querySelector('.modalPopup');
-    // testModal.showModal();
-    // // then
-    // expect(modalPopup).toHaveClass('modalPopup--active');
-    // expect(testModal).toBeInTheDocument();
-    // expect(screen.getByText('Cześć, świecie')).toBeTruthy();
+    // given
+    const parent = document.createElement('div');
+    const component = document.createElement('p');
+    component.textContent = 'Cześć, świecie';
+    component.setOnModalClose = () => {};
+    renderComponent(parent);
+
+    // when
+    const testModal = Modal(component, parent);
+    parent.append(testModal);
+    const modalPopup = parent.querySelector('.modalPopup');
+
+    // then
+    expect(modalPopup).toHaveClass('modalPopup');
+    expect(testModal).toBeInTheDocument();
+    expect(screen.getByText('Cześć, świecie')).toBeTruthy();
   });
 
-  it('should not display modal after hide', () => {
-    // // given
-    // const component = document.createElement('p');
-    // component.textContent = 'Cześć, świecie';
-    // const testModal = renderComponent(Modal(component));
-    // const modalPopup = testModal.querySelector('.modalPopup');
-    // testModal.showModal();
-    // // when
-    // testModal.hideModal();
-    // // then
-    // expect(modalPopup).toHaveClass('modalPopup');
-  });
+  it('should close modal', () => {
+    // given
+    const parent = document.createElement('div');
+    const component = document.createElement('button');
+    component.setOnModalClose = (closeFunction) => {
+      component.onclick = closeFunction;
+    };
+    renderComponent(parent);
+    const testModal = Modal(component, parent);
+    parent.append(testModal);
 
-  it('should change content on changeContent function', () => {
-    // // given
-    // const component = document.createElement('p');
-    // component.textContent = 'Cześć, świecie';
-    // const testModal = renderComponent(Modal(component));
-    // testModal.showModal();
-    // const newComponent = document.createElement('p');
-    // newComponent.textContent = 'Cześć, super świecie';
-    // // when
-    // testModal.changeContent(newComponent);
-    // // then
-    // expect(screen.getByText('Cześć, super świecie')).toBeTruthy();
+    // when
+    userEvent.click(component);
+    const modal = parent.querySelector('.modalPopup');
+
+    // then
+    expect(modal).toBeFalsy();
   });
 });
