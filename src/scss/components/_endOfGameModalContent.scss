@@ -23,22 +23,27 @@
 
 .gameStats {
   width: 300px;
-  font-size: 20px;
+  font-size: $text-font-size;
   text-align: justify;
 }
 
 .form {
   display: grid;
-  grid-template-columns: 1fr 3fr;
   grid-template-rows: 35px 35px;
+  grid-template-columns: 1fr 3fr;
   align-content: space-around;
   justify-content: space-between;
 }
 
 .nameInput {
+  padding: 10px 5px;
   grid-column: span 2;
   grid-row: 1;
   width: 300px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .endOfGameButton {
@@ -63,67 +68,76 @@
   border-bottom-right-radius: 15px;
 }
 
-// .endOfGameModalContent {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-//   align-items: center;
+@media (min-width: $breakpoint-sm) {
+  .form {
+    grid-template-rows: 45px 50px;
+  }
+  .endOfGameButton {
+    font-size: 16px;
+  }
+}
 
-//   height: 100%;
-//   border-radius: 10px;
+@media (min-width: $breakpoint-lg) {
+  .endOfGameModalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
-//   // TODO: Remove this  background-image: url('/images/background-image.png');
-//   background-image: url('/images/modal-background2.png');
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
+    height: 100%;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-// .gameOver {
-//   // TODO change all to BEM style like: &__gameOver
-//   font-size: 50px;
-//   font-weight: lighter;
-//   text-align: center;
-// }
+  .gameOver {
+    // TODO change all to BEM style like: &__gameOver
+    font-size: 50px;
+    font-weight: lighter;
+    text-align: center;
+  }
 
-// .gameStats {
-//   width: 300px;
-//   font-size: 20px;
-//   text-align: justify;
-// }
+  .gameStats {
+    width: 300px;
+    font-size: $text-font-size;
+    text-align: justify;
+  }
 
-// .form {
-//   display: grid;
-//   grid-template-columns: 1fr 3fr;
-//   grid-template-rows: 35px 35px;
-//   align-content: space-around;
-//   justify-content: space-between;
-// }
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 35px 35px;
+    align-content: space-around;
+    justify-content: space-between;
+  }
 
-// .nameInput {
-//   grid-column: span 2;
-//   grid-row: 1;
-//   width: 300px;
-// }
+  .nameInput {
+    grid-column: span 2;
+    grid-row: 1;
+    width: 300px;
+    margin-bottom: 10px;
+  }
 
-// .endOfGameButton {
-//   color: white;
-//   background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-//   background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-//   background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-//   background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-//   box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
-//   border: 2px solid #063612;
-// }
+  .endOfGameButton {
+    color: white;
+    background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
+    border: 2px solid #063612;
+  }
 
-// .acceptEndButton {
-//   grid-column: 1;
-//   grid-row: 2;
-//   border-bottom-left-radius: 15px;
-// }
+  .acceptEndButton {
+    grid-column: 1;
+    grid-row: 2;
+    border-bottom-left-radius: 15px;
+  }
 
-// .acceptShowResultsButton {
-//   grid-column: 2;
-//   grid-row: 2;
-//   border-bottom-right-radius: 15px;
-// }
+  .acceptShowResultsButton {
+    grid-column: 2;
+    grid-row: 2;
+    border-bottom-right-radius: 15px;
+  }
+}

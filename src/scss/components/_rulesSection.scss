@@ -8,39 +8,50 @@
 
   &__category,
   &__question {
-    font-size: 15px;
-    text-align: center;
+    @include title;
+    font-size: 16px;
     margin: 5px 0;
   }
 
   &__question {
-    font-size: 20px;
+    @include title;
     margin-bottom: 14px;
   }
 
   &__rules {
-    font-size: 15px;
+    font-size: $title-font-size;
     text-align: justify;
-    text-indent: 20px;
+    text-indent: $title-font-size;
   }
 }
 
-// .rulesSection {
-//   height: 100%;
-//   padding: 15px;
-//   border-radius: 0 0 20px 20px;
-//   background-color: rgba(255, 255, 255, 0.65);
+@media (min-width: $breakpoint-sm) {
+  .rulesSection {
+    max-width: 472px;
+    padding: 15px;
+    margin: auto;
+  }
+}
 
-//   &__category,
-//   &__question {
-//     font-size: 2.5rem;
-//     text-align: center;
-//     margin-bottom: 15px;
-//   }
+@media (min-width: $breakpoint-lg) {
+  .rulesSection {
+    height: 100%;
+    max-width: none;
+    padding: 15px;
+    border-radius: 0 0 20px 20px;
+    background-color: rgba(255, 255, 255, 0.65);
 
-//   &__rules {
-//     font-size: 1.8rem;
-//     text-align: justify;
-//     text-indent: 3rem;
-//   }
-// }
+    &__category,
+    &__question {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    &__rules {
+      font-size: 1.8rem;
+      text-align: justify;
+      text-indent: 3rem;
+    }
+  }
+}

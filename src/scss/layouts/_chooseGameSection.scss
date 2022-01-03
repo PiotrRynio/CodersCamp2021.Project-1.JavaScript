@@ -5,10 +5,9 @@
   width: 100%;
 }
 
-// .chooseGameSection {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 0px 40px;
-//   width: 70%;
-// }
+@media (min-width: $breakpoint-lg) {
+  .chooseGameSection {
+    padding: 0px 40px;
+    width: 70%;
+  }
+}

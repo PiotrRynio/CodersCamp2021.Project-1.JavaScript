@@ -9,7 +9,67 @@
     gap: 10px;
   }
 
-  .contentSection {
-    margin-top: 10px;
+  &__contentSection {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: $breakpoint-xs) {
+  .mainSection {
+    padding-top: 16px;
+
+    &__contentSection {
+      margin-top: 20px;
+    }
+  }
+}
+@media (min-width: $breakpoint-md) {
+  .mainSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &__menuSection {
+      display: flex;
+      gap: 25px;
+      padding: 50px 20px;
+      margin-top: 50px;
+      height: 100%;
+      width: 30%;
+    }
+
+    &__contentSection {
+      padding: 40px;
+      height: 100%;
+      width: 70%;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .mainSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &__mainMenuSection {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 50px 20px;
+      margin-top: 50px;
+      height: 100%;
+      width: 30%;
+    }
+    &__contentSection {
+      padding: 40px;
+      height: 100%;
+      width: 70%;
+    }
   }
 }

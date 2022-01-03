@@ -2,3 +2,11 @@ body {
   font-family: $font-family-primary;
   font-size: 10px;
 }
+
+@media (min-width: $breakpoint-lg) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

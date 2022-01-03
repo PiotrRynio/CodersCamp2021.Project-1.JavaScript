@@ -5,10 +5,17 @@
   width: 60%;
   margin: 10px auto 10px auto;
 }
+@media (min-width: $breakpoint-sm) {
+  .logoSection {
+    width: 288px;
+  }
+}
 
-// .logoSection {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 30%;
-// }
+@media (min-width: $breakpoint-lg) {
+  .logoSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+  }
+}

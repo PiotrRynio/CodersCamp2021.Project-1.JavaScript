@@ -2,6 +2,7 @@
   width: 100vw;
   height: 100vh;
   padding: 10px 0;
+  margin-top: 10px;
 }
 
 .mainWrapper__upperSection {
@@ -12,16 +13,19 @@
   width: 100%;
 }
 
-// .mainWrapper {
-//   width: 1280px;
-//   height: 720px;
-// }
-// .mainWrapper__upperSection {
-//   display: flex;
-//   height: 30%;
-//   width: 100%;
-// }
-// .mainWrapper__lowerSection {
-//   width: 100%;
-//   height: 70%;
-// }
+@media (min-width: $breakpoint-lg) {
+  .mainWrapper {
+    max-width: 1280px;
+    height: 720px;
+    margin: 130px 20px 0;
+  }
+  .mainWrapper__upperSection {
+    display: flex;
+    height: 30%;
+    width: 100%;
+  }
+  .mainWrapper__lowerSection {
+    width: 100%;
+    height: 70%;
+  }
+}

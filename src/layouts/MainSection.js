@@ -15,7 +15,7 @@ const MainSection = () => {
   menuSection.classList.add('mainSection__mainMenuSection');
 
   const contentSection = document.createElement('div');
-  contentSection.classList.add('contentSection');
+  contentSection.classList.add('mainSection__contentSection');
   const rankSection = RankSection(GAME_MODE.CHARACTERS);
   const rulesSection = RulesSection(GAME_MODE.CHARACTERS);
 
