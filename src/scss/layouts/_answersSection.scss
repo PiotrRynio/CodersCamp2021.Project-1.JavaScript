@@ -2,14 +2,14 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  width: 100%;
 
   &__answer {
-    font-size: 1.7rem;
+    font-size: 14px;
     border: 1px solid #444;
     background-color: #fff;
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-weight: bold;
 
     &:hover {
       background-color: #eee;
@@ -35,6 +35,58 @@
     &:hover {
       background-color: #036727;
       border-color: #036727;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-xs) {
+  .answersSection {
+    &__answer {
+      font-size: 18px;
+      padding: 20px 15px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .answersSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+
+    &__answer {
+      font-size: 1.7rem;
+      border: 1px solid #444;
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 15px;
+
+      &:hover {
+        background-color: #eee;
+        border-color: #333;
+      }
+    }
+
+    &__answer--wrong {
+      background-color: #952525;
+      color: #fff;
+      border-color: #952525;
+
+      &:hover {
+        background-color: #952525;
+        border-color: #952525;
+      }
+    }
+
+    &__answer--correct {
+      background-color: #036727;
+      color: #fff;
+      border-color: #036727;
+      &:hover {
+        background-color: #036727;
+        border-color: #036727;
+      }
     }
   }
 }

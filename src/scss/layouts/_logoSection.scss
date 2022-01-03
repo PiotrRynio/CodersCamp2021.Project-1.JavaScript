@@ -2,6 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
-  border: 1px solid black;
+  width: 60%;
+  margin: 10px auto 10px auto;
+}
+@media (min-width: $breakpoint-sm) {
+  .logoSection {
+    width: 288px;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .logoSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+  }
 }

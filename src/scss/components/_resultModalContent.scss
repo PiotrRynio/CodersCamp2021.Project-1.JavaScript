@@ -3,22 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   height: 100%;
-  border-radius: 10px;
-
-  background-image: url('/images/modal-background2.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 
   .table {
     display: block;
     margin-bottom: 10px;
-    width: 50%;
-    height: 300px;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
+    height: 80%;
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -30,22 +20,29 @@
     &__header__number {
       width: 10%;
     }
+    &__header__column {
+      width: 45%;
+    }
   }
 
   tr {
-    font-size: 1rem;
+    font-size: $text-font-size;
     height: 50px;
   }
 
   td,
   th {
-    border: 3px solid #fff;
+    border: 1px solid #fff;
     text-align: left;
     padding: 8px;
   }
 
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #999999;
   }
 
   td.correct {
@@ -58,7 +55,8 @@
 }
 
 .closeButton {
-  width: 50%;
+  width: 90%;
+  margin: 5px auto;
   height: 40px;
   color: white;
   background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);

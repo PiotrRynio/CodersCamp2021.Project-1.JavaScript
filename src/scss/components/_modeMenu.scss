@@ -4,17 +4,15 @@
   justify-content: space-around;
   width: 100%;
   background: rgba(255, 255, 255, 0.7);
-  border-radius: 20px 20px 0px 0px;
 
   &__button {
     padding: 0;
     border: none;
     background: none;
     font-family: Montserrat;
-    font-style: normal;
     font-weight: 600;
-    font-size: 2rem;
-    height: 100px;
+    font-size: $text-font-size;
+    height: 50px;
     cursor: pointer;
   }
 
@@ -27,3 +25,35 @@
     text-decoration: underline;
   }
 }
+
+@media (min-width: $breakpoint-lg) {
+  .modeMenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px 20px 0px 0px;
+
+    &__button {
+      padding: 0;
+      border: none;
+      background: none;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 2rem;
+      height: 100px;
+      cursor: pointer;
+    }
+
+    &__button--active {
+      text-decoration: underline;
+      color: #000;
+    }
+
+    .active {
+      text-decoration: underline;
+    }
+  }
+} ;

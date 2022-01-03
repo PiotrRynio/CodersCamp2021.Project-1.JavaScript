@@ -3,16 +3,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 700px;
-  width: 700px;
+  height: 100%;
+  width: 100%;
   min-height: 500px;
   background-color: rgb(255, 255, 255);
-  background-image: url('../../../public/images/modal-endofgame-image.png');
-  background-size: 120% 120%;
-  // background-repeat: no-repeat;
-  background-size: 100% 100%;
   border: 1px solid black;
-  border-radius: 10px;
   z-index: 10;
 }
 
@@ -24,4 +19,42 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9;
+}
+
+@media (min-width: $breakpoint-md) {
+  .modalPopup {
+    height: 500px;
+    width: 600px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .modalPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 700px;
+    width: 700px;
+    min-height: 500px;
+    background-color: rgb(255, 255, 255);
+    background-image: url('../../../public/images/modal-endofgame-image.png');
+    background-size: 120% 120%;
+    // background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
 }

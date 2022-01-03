@@ -4,9 +4,9 @@ const RulesSection = (categoryName) => {
   const rulesSection = document.createElement('section');
   rulesSection.classList.add('rulesSection');
 
-  const category = document.createElement('h2');
+  const category = document.createElement('h3');
   category.classList.add('rulesSection__category');
-  const question = document.createElement('h2');
+  const question = document.createElement('h4');
   question.classList.add('rulesSection__question');
   const rules = document.createElement('p');
   rules.classList.add('rulesSection__rules');

@@ -1,17 +1,23 @@
 import { saveScore, getScores } from '../../model/saveScore';
+import ResultModalContent from './ResultModalContent';
 
 const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
   const endOfGameModalContent = document.createElement('div');
   endOfGameModalContent.classList.add('endOfGameModalContent');
 
   endOfGameModalContent.onCloseButtonClick = () => {};
+  endOfGameModalContent.onShowResultButtonClick = () => {};
 
   endOfGameModalContent.setOnModalClose = (closeModal) => {
     endOfGameModalContent.onCloseButtonClick = closeModal;
   };
 
+  endOfGameModalContent.setOnChangeContent = (changeModalContent) => {
+    endOfGameModalContent.onShowResultButtonClick = changeModalContent;
+  };
+
   const gameOver = document.createElement('p');
-  gameOver.classList.add('gameOver'); // TODO change to BEM ('endOfGameModalContent__gameOver')
+  gameOver.classList.add('gameOver');
   gameOver.textContent = 'Game Over!';
 
   const getPoints = (player) => {
@@ -19,14 +25,12 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const getPointsInPercentage = (player) => {
-    return (getPoints(player) / player.length) * 100;
+    return Math.floor((getPoints(player) / player.length) * 100);
   };
 
   const getPlaceFromHistoryRank = (points) => {
     const scores = getScores(gameType);
     const scoresBetterThanCurrent = scores.filter((entry) => entry.score > points).length;
-    console.log(scores);
-    console.log(scoresBetterThanCurrent);
     return scoresBetterThanCurrent;
   };
 
@@ -75,8 +79,11 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const handleButtonAcceptAndShowResults = (name, score) => {
-    handleSaveScore(name, score);
-    // TODO call "lista odpowiedzi"
+    if (handleSaveScore(name, score)) {
+      endOfGameModalContent.onShowResultButtonClick(
+        ResultModalContent(answersListPlayer, answersListComputer),
+      );
+    }
   };
 
   acceptEndButton.addEventListener('click', () =>

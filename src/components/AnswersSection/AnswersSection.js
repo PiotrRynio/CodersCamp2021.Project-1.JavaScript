@@ -26,7 +26,7 @@ const AnswerSection = (questionAnswers, onButtonClick) => {
     const isCorrect = isAnswerCorrect(correctAnswer, target.textContent);
     target.setWrong();
     correctAnswerButton().setCorrect();
-    onButtonClick(isCorrect, target.textContent);
+    setTimeout(() => onButtonClick(isCorrect, target.textContent), 400);
   };
 
   answersButtons.forEach((button) => {

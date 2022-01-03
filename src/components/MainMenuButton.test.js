@@ -2,7 +2,7 @@ import { renderComponent } from '../testsUtilities/renderComponent';
 import MenuButton from './MenuButton';
 import userEvent from '@testing-library/user-event';
 
-describe('Menu button test', () => {
+describe('Main menu button test', () => {
   const mockHandler = jest.fn();
 
   renderComponent(MenuButton('Test button', mockHandler));
