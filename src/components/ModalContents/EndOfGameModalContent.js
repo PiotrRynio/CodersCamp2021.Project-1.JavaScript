@@ -11,7 +11,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const gameOver = document.createElement('p');
-  gameOver.classList.add('gameOver'); // TODO change to BEM ('endOfGameModalContent__gameOver')
+  gameOver.classList.add('endOfGameModalContent__paragraph--gameOver');
   gameOver.textContent = 'Game Over!';
 
   const getPoints = (player) => {
@@ -34,30 +34,36 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
     const message = `The purity of your results is ${getPointsInPercentage(answersListPlayer)}%.
     You've taken the # ${
       getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1
-    } spot in the rankings. A competing dealer scored ${getPointsInPercentage(
+    } spot in the ranking. A competing dealer scored ${getPointsInPercentage(
       answersListComputer,
     )}% during this time. What is your name?`;
     return message;
   };
 
   const gameStats = document.createElement('p');
-  gameStats.classList.add('gameStats');
+  gameStats.classList.add('endOfGameModalContent__paragraph--gameStats');
   gameStats.textContent = showResults();
 
   const form = document.createElement('div');
-  form.classList.add('form');
+  form.classList.add('endOfGameModalContent__form');
 
   const input = document.createElement('input');
   input.type = 'text';
   input.placeholder = 'Type your name here...';
-  input.classList.add('nameInput');
+  input.classList.add('endOfGameModalContent__input');
 
   const acceptEndButton = document.createElement('button');
-  acceptEndButton.classList.add('endOfGameButton', 'acceptEndButton');
+  acceptEndButton.classList.add(
+    'endOfGameModalContent__button',
+    'endOfGameModalContent__button--closeButton',
+  );
   acceptEndButton.innerText = 'Accept';
 
   const acceptShowResultsButton = document.createElement('button');
-  acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
+  acceptShowResultsButton.classList.add(
+    'endOfGameModalContent__button',
+    'endOfGameModalContent__button--showResultsButton',
+  );
   acceptShowResultsButton.innerText = 'Accept and show results';
 
   const handleSaveScore = (name, score) => {
