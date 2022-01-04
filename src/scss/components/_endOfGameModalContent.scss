@@ -7,7 +7,6 @@
   height: 100%;
   border-radius: 10px;
 
-  // TODO: Remove this  background-image: url('/images/background-image.png');
   background-image: url('../../../public/images/modal-endofgame-image.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -15,7 +14,6 @@
 }
 
 .gameOver {
-  // TODO change all to BEM style like: &__gameOver
   font-size: 50px;
   font-weight: lighter;
   text-align: center;
@@ -48,9 +46,6 @@
 
 .endOfGameButton {
   color: white;
-  background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
   background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
   box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
   border: 2px solid #063612;
@@ -92,7 +87,6 @@
   }
 
   .gameOver {
-    // TODO change all to BEM style like: &__gameOver
     font-size: 50px;
     font-weight: lighter;
     text-align: center;
@@ -121,9 +115,6 @@
 
   .endOfGameButton {
     color: white;
-    background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-    background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-    background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
     background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
     box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
     border: 2px solid #063612;
