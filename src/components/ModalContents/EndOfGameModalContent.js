@@ -25,7 +25,11 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const getPointsInPercentage = (player) => {
-    return Math.floor((getPoints(player) / player.length) * 100);
+    const pointsEarned = getPoints(player);
+    if (pointsEarned === 0) {
+      return 0;
+    }
+    return Math.floor((pointsEarned / player.length) * 100);
   };
 
   const getPlaceFromHistoryRank = (points) => {
