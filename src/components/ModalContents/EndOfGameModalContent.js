@@ -1,5 +1,6 @@
 import { saveScore, getScores } from '../../model/saveScore';
 import ResultModalContent from './ResultModalContent';
+import { QUESTIONS_NUMBER } from '../../model/constants';
 
 const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
   const endOfGameModalContent = document.createElement('div');
@@ -29,7 +30,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
     if (pointsEarned === 0) {
       return 0;
     }
-    return Math.floor((pointsEarned / player.length) * 100);
+    return Math.floor((pointsEarned / QUESTIONS_NUMBER) * 100);
   };
 
   const getPlaceFromHistoryRank = (points) => {
