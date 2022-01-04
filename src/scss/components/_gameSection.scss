@@ -7,15 +7,14 @@
   &__questionAndTimer {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
   }
 }
 
 .gameSection--image {
   .textQuestion {
-    // todo: DO bem:
-    font-size: $text-font-size; // TODO: Is it ok?
+    font-size: $text-font-size;
     justify-self: center;
   }
 }
@@ -34,6 +33,23 @@
   height: 200px;
 }
 
+@media (min-width: $breakpoint-md) {
+  .gameSection {
+    &__questionAndTimer {
+      & > :first-child {
+        font-size: 1.5rem;
+        padding-left: 90px;
+      }
+      & > :nth-child(2) {
+        font-size: 1.5rem;
+        margin-left: 20px;
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+}
+
 @media (min-width: $breakpoint-lg) {
   .gameSection {
     width: 100%;
@@ -43,7 +59,7 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     margin: 0 40px;
-    padding: 35px 40px;
+    padding: 0 40px 0 0;
 
     &__questionAndTimer {
       width: 100%;
