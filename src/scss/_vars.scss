@@ -2,28 +2,12 @@ $font-family-primary: 'Montserrat', sans-serif;
 
 $standard-border-radius: 10px;
 
-// font-sizes:
 $title-font-size: 18px;
 $subtitle-font-size: 16px;
 $text-font-size: 20px;
 
-// ! xxs - czyli od początku:
-
 $breakpoint-xs: 370px;
-
-$breakpoint-sm: 480px; // Aga to robi jak coś
-// * TODO: logo kończy kosnąć,
-// * TODO:  rules i ranking przestaje rosąć i robi się dymek
-//* TODO: powiększyć przyciski na popup "gameOver"
-
-$breakpoint-md: 750px; //Bartek
-// * TODO: popup w okienku już , a nie na całość,
-// * TODO: popup ma mieć zaokrąglenia dopiero tutaj
-// Aga robi TODO: Ułożenie mainMenuButtons and ranking/rules like in Figma,
-// TODO: Ułożenie głównych sekcji (logo, chooseGame, main section) jak w figma
-// TODO: ranking ma być zwinięty w scrollu
-// TODO: przyciski newGame oraz Rules i Ranking powinny mieć szerokości różne (jak w FIGMA - i  w początkowym kodzie)
-// TODO: zrób żeby jeszcze rozszerzał się popup aby końcowo był szerszy niż wysoki (może proporcje 16:9 albo 4:3)
-
+$breakpoint-sm: 480px;
+$breakpoint-md: 750px;
 $breakpoint-lg: 1200px;
 $breakpoint-xl: 1600px;
