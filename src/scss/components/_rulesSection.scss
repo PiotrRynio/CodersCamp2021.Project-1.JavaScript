@@ -1,5 +1,4 @@
 .rulesSection {
-  // height: 100%;
   width: 100%;
   padding: 15px;
   margin: 0 0 10px 0;
@@ -14,13 +13,12 @@
   }
 
   &__question {
-    @include title;
     margin-bottom: 14px;
   }
 
   &__rules {
-    font-size: $title-font-size;
     text-align: justify;
+    font-size: $title-font-size;
     text-indent: $title-font-size;
   }
 }
@@ -28,7 +26,6 @@
 @media (min-width: $breakpoint-sm) {
   .rulesSection {
     max-width: 472px;
-    padding: 15px;
     margin: auto;
   }
 }
@@ -37,21 +34,19 @@
   .rulesSection {
     height: 100%;
     max-width: none;
-    padding: 15px;
     border-radius: 0 0 20px 20px;
-    background-color: rgba(255, 255, 255, 0.65);
 
     &__category,
     &__question {
-      font-size: 2.5rem;
+      font-size: 40px;
       text-align: center;
       margin-bottom: 15px;
     }
 
     &__rules {
-      font-size: 1.8rem;
+      font-size: 29px;
       text-align: justify;
-      text-indent: 3rem;
+      text-indent: 48px;
     }
   }
 }
