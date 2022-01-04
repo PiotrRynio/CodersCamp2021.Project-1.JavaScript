@@ -35,10 +35,12 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const showResults = () => {
-    const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(answersListPlayer)}%.
-    Zająłeś ${getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1} miejsce w rankingu.
-    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%.
-    Jak się nazywasz?`;
+    const message = `The purity of your results is ${getPointsInPercentage(answersListPlayer)}%.
+    You've taken the #${
+      getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1
+    } spot in the ranking. A competing dealer scored ${getPointsInPercentage(
+      answersListComputer,
+    )}%. What is your name?`;
     return message;
   };
 
@@ -64,10 +66,9 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
 
   const handleSaveScore = (name, score) => {
     if (name.length === 0) {
-      alert('Nie możesz ciągle działać pod przykrywką. Podaj swój pseudonim!');
+      alert("You can't go undercover all the time. Tell us your name!");
       return false;
     }
-    console.log('Score saved:', gameType, name, score);
     saveScore(gameType, name, score);
     return true;
   };
