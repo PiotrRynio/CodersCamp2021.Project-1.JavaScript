@@ -9,13 +9,12 @@ const computerPlayer = () => {
   returnedComputerPlayer.name = 'Tuco';
   returnedComputerPlayer.askQuestion = (questionAndAnswers, handlePlayerAnswered) => {
     returnedComputerPlayer.questionAndAnswersToAnswer = questionAndAnswers;
-    // eslint-disable-next-line func-names
-    setTimeout(function () {
+    setTimeout(() => {
       returnedComputerPlayer.answer();
       const answer = returnedComputerPlayer.randomAnswer;
       const isCorrect = isAnswerCorrect(questionAndAnswers.correctAnswer, answer);
       handlePlayerAnswered({ isCorrect, answer }, returnedComputerPlayer);
-    }, 1000);
+    }, 200);
   };
   returnedComputerPlayer.answer = () => {
     returnedComputerPlayer.randomAnswer = randomValueFromArray(
@@ -26,27 +25,3 @@ const computerPlayer = () => {
 };
 
 export default computerPlayer;
-
-// import randomValueFromArray from './randomValueFromArray';
-// import player from './Player';
-
-// const computerPlayer = () => {
-//   const returnedPlayer = player();
-//   returnedPlayer.questionAndAnswersToAnswer = {};
-
-//   returnedPlayer.askQuestion = (questionObject, handlePlayerAnswered) => {
-//     returnedPlayer.currentQuestion = questionObject;
-
-//     // eslint-disable-next-line func-names
-//     // setTimeout(function () {
-//     //   returnedPlayer.answer();
-//     //   handlePlayerAnswered();
-//     // }, 1000);
-//   };
-//   returnedPlayer.answer = () => {
-//     returnedPlayer.randomAnswer = randomValueFromArray(returnedPlayer.questionObject.answers);
-//   };
-//   return returnedPlayer;
-// };
-
-// export default computerPlayer;

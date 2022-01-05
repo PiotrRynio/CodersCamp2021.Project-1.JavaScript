@@ -102,7 +102,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
     handleButtonAcceptAndEnd(input.value, getPoints(answersListPlayer)),
   );
   acceptShowResultsButton.addEventListener('click', () =>
-    handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
+    handleButtonAcceptAndShowResults(input.value, getPoints(answersListPlayer)),
   );
 
   form.append(input, acceptEndButton, acceptShowResultsButton);
