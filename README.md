@@ -1,6 +1,6 @@
 # Breaking Bad Quiz
 
-**Demo on Netlify:** [LINK](https://breaking-bad-quiz-game.netlify.app/)
+[![codecov](https://codecov.io/gh/PiotrRynio/CodersCamp2021.Project.JavaScript/branch/main/graph/badge.svg?token=UF79DJ2XLN)](https://codecov.io/gh/PiotrRynio/CodersCamp2021.Project.JavaScript)
 
 ## Table of contents
 
@@ -10,8 +10,7 @@
   - [Our Crew](#our-crew)
   - [Technologies used](#technologies-used)
   - [Screenshots](#screenshots)
-  - [Running the project](#running-the-project)
-          - [From the repo:](#from-the-repo)
+  - [Running the project](#running-the-project) - [From the repo:](#from-the-repo)
   - [Project Status](#project-status)
 
 ## General Information
