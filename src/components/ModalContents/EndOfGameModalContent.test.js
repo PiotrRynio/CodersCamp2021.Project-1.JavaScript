@@ -22,7 +22,7 @@ describe('EndOfGameModalContent', () => {
     ];
     renderComponent(EndOfGameModalContent(GAME_MODE.CHARACTERS, answers, answers));
 
-    const statsMessage = document.querySelector('.gameStats').textContent;
+    const statsMessage = document.querySelector('.endOfGameModalContent__gameStats').textContent;
     expect(statsMessage).toContain('The purity of your results is 0%');
   });
 
@@ -30,10 +30,23 @@ describe('EndOfGameModalContent', () => {
     const answers = [
       { answer: 'TestNameA', isCorrect: true },
       { answer: 'TestNameB', isCorrect: true },
+      { answer: 'TestNameC', isCorrect: true },
+      { answer: 'TestNameD', isCorrect: true },
+      { answer: 'TestNameE', isCorrect: true },
+      { answer: 'TestNameF', isCorrect: true },
+      { answer: 'TestNameG', isCorrect: true },
+      { answer: 'TestNameH', isCorrect: true },
+      { answer: 'TestNameI', isCorrect: true },
+      { answer: 'TestNameJ', isCorrect: true },
+      { answer: 'TestNameK', isCorrect: true },
+      { answer: 'TestNameL', isCorrect: true },
+      { answer: 'TestNameM', isCorrect: true },
+      { answer: 'TestNameN', isCorrect: true },
+      { answer: 'TestNameO', isCorrect: true },
     ];
     renderComponent(EndOfGameModalContent(GAME_MODE.CHARACTERS, answers, answers));
 
-    const statsMessage = document.querySelector('.gameStats').textContent;
+    const statsMessage = document.querySelector('.endOfGameModalContent__gameStats').textContent;
     expect(statsMessage).toContain('The purity of your results is 100%');
   });
 });
