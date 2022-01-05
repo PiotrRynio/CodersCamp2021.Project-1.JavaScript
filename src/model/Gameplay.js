@@ -55,9 +55,11 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   returnedGame.onAnswerCheck = (answer, answeredPlayer) => {
     answeredPlayer.answers.push(answer);
     const isLastQuestion = answeredPlayer.currentQuestionIndex === QUESTIONS_NUMBER;
+    if (answeredPlayer.type === 'COMPUTER' && isLastQuestion) {
+      return;
+    }
     if (answeredPlayer.type === 'HUMAN' && isLastQuestion) {
       returnedGame.endGame();
-    } else if (answeredPlayer.type === 'COMPUTER' && isLastQuestion) {
     } else {
       generateQuestion(answeredPlayer);
     }
@@ -65,6 +67,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   returnedGame.endGame = () => {
     clearInterval(returnedGame.interval);
+    returnedGame.computerPlayer.isGameFinished = true;
     returnedGame.interval = false;
     handleEndOfGame();
   };

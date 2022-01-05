@@ -1,5 +1,4 @@
 import computerPlayer from './computerPlayer';
-import player from './Player';
 
 describe('Computer Player', () => {
   const testQuestion = {

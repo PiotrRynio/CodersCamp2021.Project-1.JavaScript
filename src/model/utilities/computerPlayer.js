@@ -7,14 +7,18 @@ const computerPlayer = () => {
   returnedComputerPlayer.type = 'COMPUTER';
   returnedComputerPlayer.answers = [];
   returnedComputerPlayer.name = 'Tuco';
+  returnedComputerPlayer.isGameFinished = false;
   returnedComputerPlayer.askQuestion = (questionAndAnswers, handlePlayerAnswered) => {
     returnedComputerPlayer.questionAndAnswersToAnswer = questionAndAnswers;
+    if (returnedComputerPlayer.isGameFinished) {
+      return;
+    }
     setTimeout(() => {
       returnedComputerPlayer.answer();
       const answer = returnedComputerPlayer.randomAnswer;
       const isCorrect = isAnswerCorrect(questionAndAnswers.correctAnswer, answer);
       handlePlayerAnswered({ isCorrect, answer }, returnedComputerPlayer);
-    }, 200);
+    }, 1000);
   };
   returnedComputerPlayer.answer = () => {
     returnedComputerPlayer.randomAnswer = randomValueFromArray(
