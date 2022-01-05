@@ -37,21 +37,29 @@ Mentor: [Piotr Rynio](https://github.com/PiotrRynio)
 - [Kuba Jarosz](https://github.com/kubajaro)
 - [Jarosław Kaczor](https://github.com/jaroslawkaczor)
 
-## Technologies used
+## Technologies/Libraries/Methodologies/Tools we used
 
+- JavaScript
 - HTML
 - SCSS
-- JavaScript
 - Jest
-- husky (pre-commit)
-- prettier
+- Husky
 - ESLint
-- methodology BEM
-- RWD
+- prettier
+- BEM
+- Responive Web Design
+- Mobile First Design
+- Git
+- GitHub
+- Figma
+- Netlify
+- Codecov
+- LiveShare
+- Visual Studio Code
 
 ## Screenshots
 
-![website_preview](https://user-images.githubusercontent.com/27691628/146769568-5efeb7a3-bcff-4470-a62b-51ad3b75de69.PNG)
+![website_preview](https://user-images.githubusercontent.com/26107469/148242449-cf2e82e7-1c10-40a2-9e10-3c3ea88c60ab.png)
 
 ## Running the project
 
