@@ -3,141 +3,80 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
   height: 100%;
   border-radius: 10px;
-
-  // TODO: Remove this  background-image: url('/images/background-image.png');
   background-image: url('../../../public/images/modal-endofgame-image.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-.gameOver {
-  // TODO change all to BEM style like: &__gameOver
-  font-size: 50px;
-  font-weight: lighter;
-  text-align: center;
-}
-
-.gameStats {
-  width: 300px;
-  font-size: $text-font-size;
-  text-align: justify;
-}
-
-.form {
-  display: grid;
-  grid-template-rows: 35px 35px;
-  grid-template-columns: 1fr 3fr;
-  align-content: space-around;
-  justify-content: space-between;
-}
-
-.nameInput {
-  padding: 10px 5px;
-  grid-column: span 2;
-  grid-row: 1;
-  width: 300px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.endOfGameButton {
-  color: white;
-  background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
-  border: 2px solid #063612;
-}
-
-.acceptEndButton {
-  grid-column: 1;
-  grid-row: 2;
-  border-bottom-left-radius: 15px;
-}
-
-.acceptShowResultsButton {
-  grid-column: 2;
-  grid-row: 2;
-  border-bottom-right-radius: 15px;
-}
-
-@media (min-width: $breakpoint-sm) {
-  .form {
-    grid-template-rows: 45px 50px;
-  }
-  .endOfGameButton {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: $breakpoint-lg) {
-  .endOfGameModalContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
-    height: 100%;
-    border-radius: 10px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .gameOver {
-    // TODO change all to BEM style like: &__gameOver
+  &__gameOver {
     font-size: 50px;
     font-weight: lighter;
     text-align: center;
   }
 
-  .gameStats {
+  &__gameStats {
     width: 300px;
     font-size: $text-font-size;
     text-align: justify;
   }
 
-  .form {
+  &__form {
     display: grid;
-    grid-template-columns: 1fr 3fr;
     grid-template-rows: 35px 35px;
+    grid-template-columns: 1fr 3fr;
     align-content: space-around;
     justify-content: space-between;
   }
 
-  .nameInput {
+  &__input {
+    padding: 10px 5px;
     grid-column: span 2;
     grid-row: 1;
     width: 300px;
-    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
   }
 
-  .endOfGameButton {
+  &__button {
     color: white;
-    background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-    background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-    background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
     background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
     box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
     border: 2px solid #063612;
+    font-size: 13px;
   }
 
-  .acceptEndButton {
+  &__button--closeButton {
     grid-column: 1;
     grid-row: 2;
     border-bottom-left-radius: 15px;
   }
 
-  .acceptShowResultsButton {
+  &__button--showResultsButton {
     grid-column: 2;
     grid-row: 2;
     border-bottom-right-radius: 15px;
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .endOfGameModalContent {
+    &__form {
+      grid-template-rows: 45px 50px;
+    }
+    &__button {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .endOfGameModalContent {
+    &__input {
+      margin-bottom: 10px;
+    }
   }
 }
