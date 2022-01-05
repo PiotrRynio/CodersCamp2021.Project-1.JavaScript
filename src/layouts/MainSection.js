@@ -22,6 +22,10 @@ const MainSection = () => {
   let gameMode = 'Characters';
   let gameSection;
 
+  const reloadRank = () => {
+    rankSection.changeRanks(gameMode);
+  };
+
   const startGame = () => {
     mainSection.removeChild(menuSection);
     mainSection.removeChild(contentSection);
@@ -72,7 +76,7 @@ const MainSection = () => {
       mainSection.game.humanPlayer.answers,
       mainSection.game.computerPlayer.answers,
     );
-    const modal = Modal(modalContent, mainSection);
+    const modal = Modal(modalContent, mainSection, reloadRank);
     mainSection.appendChild(modal);
   };
 

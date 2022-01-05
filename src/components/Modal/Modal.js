@@ -1,4 +1,4 @@
-const Modal = (componentToShow, parentComponent) => {
+const Modal = (componentToShow, parentComponent, onModalClose = () => {}) => {
   const modalOverlay = document.createElement('div');
   const modal = document.createElement('section');
   modalOverlay.classList.add('overlay');
@@ -7,6 +7,7 @@ const Modal = (componentToShow, parentComponent) => {
 
   const closeModal = () => {
     parentComponent.removeChild(modalOverlay);
+    onModalClose();
   };
 
   const changeModalContent = (newModalContent) => {
