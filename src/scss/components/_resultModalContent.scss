@@ -1,69 +1,88 @@
 .resultModalContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: $standard-border-radius;
 
   .table {
     display: block;
-    margin-bottom: 10px;
-    height: 80%;
-    overflow: scroll;
+    width: 100%;
+    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    font-size: $small-text-font-size;
+    color: white;
+    border-radius: $standard-border-radius $standard-border-radius 0 0;
 
     &::-webkit-scrollbar {
       display: none;
     }
 
+    &__header__column,
     &__header__number {
-      width: 10%;
+      background-color: #063612;
+      color: #fff;
+      width: calc(50% - 20px);
+      border: 1px solid #fff;
+      padding: 15px 0;
     }
-    &__header__column {
-      width: 45%;
+
+    &__header,
+    &__dataRow {
+      display: flex;
+      width: 100%;
+      height: 50px;
+    }
+
+    &__header__number,
+    &__dataRow__number {
+      display: block;
+      width: 40px;
+      text-align: center;
+      background-color: #063612;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 15px 0;
+    }
+
+    &__dataRow__column {
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      border: 1px solid #fff;
+      width: calc(50% - 20px);
     }
   }
 
-  tr {
-    font-size: $text-font-size;
+  .correct {
+    background: linear-gradient(145deg, #063612 0%, #35973e 100%, #2c2c2c 90%);
+  }
+
+  .wrong {
+    background: linear-gradient(145deg, #370606 0%, #973535 100%, #2c2c2c 90%);
+  }
+
+  .closeButton {
+    display: block;
     height: 50px;
-  }
-
-  td,
-  th {
+    width: 100%;
+    background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
+    border-radius: 0 0 $standard-border-radius $standard-border-radius;
+    color: #fff;
     border: 1px solid #fff;
-    text-align: left;
-    padding: 8px;
   }
 
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-
-  tr:nth-child(odd) {
-    background-color: #999999;
-  }
-
-  td.correct {
-    background-color: #40c456;
-  }
-
-  td.wrong {
-    background-color: #c45040;
+  .closeButton:hover {
+    background: linear-gradient(145deg, #063612 0%, #35973e 100%, #2c2c2c 90%);
   }
 }
 
-.closeButton {
-  width: 90%;
-  margin: 5px auto;
-  height: 40px;
-  color: white;
-  background: -webkit-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: -moz-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: -o-linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  background: linear-gradient(145deg, #35973e 0%, #063612 100%, #2c2c2c 90%);
-  box-shadow: inset 0px 2px 2px rgba(75, 75, 75, 0.5);
-  border: 2px solid #063612;
-  border-radius: 0 0 15px 15px;
-}
+// @media (min-width: $breakpoint-sm) {
+//   .resultModalContent {
+//     .table {
+//       font-size: $text-font-size;
+//     }
+//   }
+// }

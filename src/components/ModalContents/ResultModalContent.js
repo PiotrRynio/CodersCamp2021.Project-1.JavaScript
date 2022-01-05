@@ -40,24 +40,33 @@ const ResultModalContent = (playerAnswers, computerAnswers) => {
 
   for (let answerIndex = 0; answerIndex < howManyAnswers; answerIndex += 1) {
     const row = document.createElement('tr');
+    row.classList.add('table__dataRow');
 
     const questionNumber = document.createElement('td');
     questionNumber.textContent = answerIndex + 1;
+    questionNumber.classList.add('table__dataRow__number');
 
     const playerCell = document.createElement('td');
-    playerCell.textContent = playerAnswers[answerIndex]
+    const playerCellText = document.createElement('span');
+    playerCellText.textContent = playerAnswers[answerIndex]
       ? playerAnswers[answerIndex].answer
       : 'No answer';
     playerCell.classList.add(
       playerAnswers[answerIndex] && playerAnswers[answerIndex].isCorrect ? 'correct' : 'wrong',
     );
+    playerCell.classList.add('table__dataRow__column');
+    playerCell.append(playerCellText);
+
     const computerCell = document.createElement('td');
-    computerCell.textContent = computerAnswers[answerIndex]
+    const computerCellText = document.createElement('span');
+    computerCellText.textContent = computerAnswers[answerIndex]
       ? computerAnswers[answerIndex].answer
       : 'No answer';
     computerCell.classList.add(
       computerAnswers[answerIndex] && computerAnswers[answerIndex].isCorrect ? 'correct' : 'wrong',
     );
+    computerCell.classList.add('table__dataRow__column');
+    computerCell.append(computerCellText);
 
     row.append(questionNumber, playerCell, computerCell);
     resultTable.append(row);
