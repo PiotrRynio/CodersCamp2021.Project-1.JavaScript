@@ -21,9 +21,6 @@ describe('saveScore', () => {
 
   global.localStorage = new LocalStorageMock();
 
-  //   jest.spyOn(global.localStorage, 'setItem')
-  //     jest.spyOn(global.localStorage, 'getItem')
-
   beforeEach(() => {
     localStorage.clear();
   });

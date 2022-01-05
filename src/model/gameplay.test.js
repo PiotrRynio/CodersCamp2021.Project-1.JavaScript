@@ -91,9 +91,6 @@ describe('gameplay', () => {
       setTimeout(res, 1000);
     });
 
-    console.log(mockUpdateTime.mock.calls);
-
-    console.log(gameplay.secondsLeft);
     // then
     expect(gameplay.onAnswerCheck).toHaveBeenCalledTimes(2);
     expect(mockUpdateTime).toHaveBeenCalledTimes(1);

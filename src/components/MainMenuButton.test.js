@@ -1,14 +1,14 @@
-import { renderComponent } from '../testsUtilities/renderComponent';
-import MenuButton from './MenuButton';
 import userEvent from '@testing-library/user-event';
+import { renderComponent } from '../testsUtilities/renderComponent';
+import MenuButton from './MainMenuButton';
 
 describe('Main menu button test', () => {
   const mockHandler = jest.fn();
 
   renderComponent(MenuButton('Test button', mockHandler));
 
-  const testButton = document.querySelector('.menuButton');
-  const testButtonInnerText = document.querySelector('.menuButton__text');
+  const testButton = document.querySelector('.mainMenuButton');
+  const testButtonInnerText = document.querySelector('.mainMenuButton__text');
 
   it('Should show renederd component', () => {
     expect(testButton).toBeInTheDocument();

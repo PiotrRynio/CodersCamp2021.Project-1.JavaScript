@@ -1,5 +1,6 @@
 import { saveScore, getScores } from '../../model/saveScore';
 import ResultModalContent from './ResultModalContent';
+import { QUESTIONS_NUMBER } from '../../model/constants';
 
 const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer) => {
   const endOfGameModalContent = document.createElement('div');
@@ -17,7 +18,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const gameOver = document.createElement('p');
-  gameOver.classList.add('gameOver');
+  gameOver.classList.add('endOfGameModalContent__gameOver');
   gameOver.textContent = 'Game Over!';
 
   const getPoints = (player) => {
@@ -25,7 +26,11 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const getPointsInPercentage = (player) => {
-    return Math.floor((getPoints(player) / player.length) * 100);
+    const pointsEarned = getPoints(player);
+    if (pointsEarned === 0) {
+      return 0;
+    }
+    return Math.floor((pointsEarned / QUESTIONS_NUMBER) * 100);
   };
 
   const getPlaceFromHistoryRank = (points) => {
@@ -35,39 +40,46 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
   };
 
   const showResults = () => {
-    const message = `Czystość Twoich wyników wynosi ${getPointsInPercentage(answersListPlayer)}%.
-    Zająłeś ${getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1} miejsce w rankingu.
-    Konkurencjny dealer uzyskał w tym czasie ${getPointsInPercentage(answersListComputer)}%.
-    Jak się nazywasz?`;
+    const message = `The purity of your results is ${getPointsInPercentage(answersListPlayer)}%.
+    You've taken the #${
+      getPlaceFromHistoryRank(getPoints(answersListPlayer)) + 1
+    } spot in the ranking. A competing dealer scored ${getPointsInPercentage(
+      answersListComputer,
+    )}%. What is your name?`;
     return message;
   };
 
   const gameStats = document.createElement('p');
-  gameStats.classList.add('gameStats');
+  gameStats.classList.add('endOfGameModalContent__gameStats');
   gameStats.textContent = showResults();
 
   const form = document.createElement('div');
-  form.classList.add('form');
+  form.classList.add('endOfGameModalContent__form');
 
   const input = document.createElement('input');
   input.type = 'text';
   input.placeholder = 'Type your name here...';
-  input.classList.add('nameInput');
+  input.classList.add('endOfGameModalContent__input');
 
   const acceptEndButton = document.createElement('button');
-  acceptEndButton.classList.add('endOfGameButton', 'acceptEndButton');
+  acceptEndButton.classList.add(
+    'endOfGameModalContent__button',
+    'endOfGameModalContent__button--closeButton',
+  );
   acceptEndButton.innerText = 'Accept';
 
   const acceptShowResultsButton = document.createElement('button');
-  acceptShowResultsButton.classList.add('endOfGameButton', 'acceptShowResultsButton');
+  acceptShowResultsButton.classList.add(
+    'endOfGameModalContent__button',
+    'endOfGameModalContent__button--showResultsButton',
+  );
   acceptShowResultsButton.innerText = 'Accept and show results';
 
   const handleSaveScore = (name, score) => {
     if (name.length === 0) {
-      alert('Nie możesz ciągle działać pod przykrywką. Podaj swój pseudonim!');
+      alert("You can't go undercover all the time. Tell us your name!");
       return false;
     }
-    console.log('Score saved:', gameType, name, score);
     saveScore(gameType, name, score);
     return true;
   };
@@ -90,7 +102,7 @@ const EndOfGameModalContent = (gameType, answersListPlayer, answersListComputer)
     handleButtonAcceptAndEnd(input.value, getPoints(answersListPlayer)),
   );
   acceptShowResultsButton.addEventListener('click', () =>
-    handleButtonAcceptAndShowResults(input.value, getPoints(answersListComputer)),
+    handleButtonAcceptAndShowResults(input.value, getPoints(answersListPlayer)),
   );
 
   form.append(input, acceptEndButton, acceptShowResultsButton);

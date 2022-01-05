@@ -10,6 +10,7 @@ describe('Modal', () => {
     const component = document.createElement('p');
     component.textContent = 'Cześć, świecie';
     component.setOnModalClose = () => {};
+    component.setOnChangeContent = () => {};
     renderComponent(parent);
 
     // when
@@ -30,6 +31,7 @@ describe('Modal', () => {
     component.setOnModalClose = (closeFunction) => {
       component.onclick = closeFunction;
     };
+    component.setOnChangeContent = () => {};
     renderComponent(parent);
     const testModal = Modal(component, parent);
     parent.append(testModal);

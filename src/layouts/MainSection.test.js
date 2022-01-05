@@ -16,7 +16,7 @@ describe('MainSection', () => {
 
     // when
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const menuButtons = testMainSection.querySelectorAll('.mainMenuButton');
 
     // then
     expect(testMainSection).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('MainSection', () => {
     // given
     global.fetch = fetch;
     const testMainSection = renderComponent(MainSection());
-    const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
+    const [newGameButton] = testMainSection.querySelectorAll('.mainMenuButton');
 
     // when
     userEvent.click(newGameButton);
@@ -46,7 +46,7 @@ describe('MainSection', () => {
   it('should change category to new on changeMode function', () => {
     // given
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const menuButtons = testMainSection.querySelectorAll('.mainMenuButton');
 
     // when
     testMainSection.changeMode(GAME_MODE.DEATHS);
@@ -66,7 +66,7 @@ describe('MainSection', () => {
     ];
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
     const testMainSection = renderComponent(MainSection());
-    const menuButtons = testMainSection.querySelectorAll('.menuButton');
+    const menuButtons = testMainSection.querySelectorAll('.mainMenuButton');
 
     // when
     userEvent.click(menuButtons[1]);
@@ -87,7 +87,7 @@ describe('MainSection', () => {
     ];
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
     const testMainSection = renderComponent(MainSection());
-    const [, rankingButton] = testMainSection.querySelectorAll('.menuButton');
+    const [, rankingButton] = testMainSection.querySelectorAll('.mainMenuButton');
 
     // when
     userEvent.click(rankingButton);
@@ -109,9 +109,9 @@ describe('MainSection', () => {
     jest.spyOn(scores, 'getScores').mockReturnValue(testScores);
     const testMainSection = renderComponent(MainSection());
     testMainSection.changeMode(GAME_MODE.QUOTES);
-    const [, RankingButton] = testMainSection.querySelectorAll('.menuButton');
+    const [, RankingButton] = testMainSection.querySelectorAll('.mainMenuButton');
     userEvent.click(RankingButton);
-    const [, RulesButton] = testMainSection.querySelectorAll('.menuButton');
+    const [, RulesButton] = testMainSection.querySelectorAll('.mainMenuButton');
 
     // when
     userEvent.click(RulesButton);
@@ -125,13 +125,13 @@ describe('MainSection', () => {
   it('tt', () => {
     // given
     const testMainSection = renderComponent(MainSection());
-    const [newGameButton] = testMainSection.querySelectorAll('.menuButton');
+    const [newGameButton] = testMainSection.querySelectorAll('.mainMenuButton');
 
     // when
     userEvent.click(newGameButton);
     testMainSection.game.endGame();
-    const menuSection = testMainSection.querySelector('.menuSection');
-    const contentSection = testMainSection.querySelector('.contentSection');
+    const menuSection = testMainSection.querySelector('.mainSection__mainMenuSection');
+    const contentSection = testMainSection.querySelector('.mainSection__contentSection');
     const modalPopup = testMainSection.querySelector('.modalPopup');
 
     // then

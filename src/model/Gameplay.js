@@ -1,6 +1,7 @@
 import questionGenerator from './questionGenerator';
 import player from './utilities/Player';
 import computerPlayer from './utilities/computerPlayer';
+import { QUESTIONS_NUMBER, GAME_TIME } from './constants';
 
 const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
   const returnedGame = {
@@ -45,7 +46,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   returnedGame.startGame = async () => {
     returnedGame.questionGenerator = await questionGenerator(returnedGame.gameMode);
-    returnedGame.secondsLeft = 60;
+    returnedGame.secondsLeft = GAME_TIME;
     handleUpdateTime(returnedGame.secondsLeft);
     generateQuestion(returnedGame.computerPlayer);
     generateQuestion(returnedGame.humanPlayer);
@@ -53,10 +54,12 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   returnedGame.onAnswerCheck = (answer, answeredPlayer) => {
     answeredPlayer.answers.push(answer);
-    const isLastQuestion = answeredPlayer.currentQuestionIndex === 15;
+    const isLastQuestion = answeredPlayer.currentQuestionIndex === QUESTIONS_NUMBER;
+    if (answeredPlayer.type === 'COMPUTER' && isLastQuestion) {
+      return;
+    }
     if (answeredPlayer.type === 'HUMAN' && isLastQuestion) {
       returnedGame.endGame();
-    } else if (answeredPlayer.type === 'COMPUTER' && isLastQuestion) {
     } else {
       generateQuestion(answeredPlayer);
     }
@@ -64,6 +67,7 @@ const Gameplay = (handleEndOfGame, handleShowQuestion, handleUpdateTime) => {
 
   returnedGame.endGame = () => {
     clearInterval(returnedGame.interval);
+    returnedGame.computerPlayer.isGameFinished = true;
     returnedGame.interval = false;
     handleEndOfGame();
   };

@@ -21,3 +21,6 @@ export const GAME_MODE = {
   DEATHS: 'Deaths',
   QUOTES: 'Quotes',
 };
+
+export const QUESTIONS_NUMBER = 15;
+export const GAME_TIME = 60;
