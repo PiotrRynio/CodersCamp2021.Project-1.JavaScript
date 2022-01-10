@@ -2,6 +2,8 @@
 
 [![codecov](https://codecov.io/gh/PiotrRynio/CodersCamp2021.Project.JavaScript/branch/main/graph/badge.svg?token=UF79DJ2XLN)](https://codecov.io/gh/PiotrRynio/CodersCamp2021.Project.JavaScript)
 
+-----
+
 ## Table of contents
 
 - [Breaking Bad Quiz](#breaking-bad-quiz)
