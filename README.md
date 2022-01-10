@@ -78,4 +78,4 @@ Others:
 
 ## Project Status
 
-The project is currently _in progress_.
+The project status is _completed_.
