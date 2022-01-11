@@ -38,7 +38,7 @@ Mentor: [Piotr Rynio](https://github.com/PiotrRynio)
 
 ## Technologies/Libraries/Methodologies/Tools we used
 
-- JavaScript
+- JavaScript (only JS required)
 - HTML
 - SCSS
 - Jest
